@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiFincaVirtual.Views.OrdenosEditPage"
+             xmlns:i18n="clr-namespace:MiFincaVirtual.Helpers"
+             BindingContext="{Binding Main,  Source={StaticResource Locator}}"
+             Title="{i18n:Translate FarmAdd}">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding OrdenoEditM}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label
+                    Text="{i18n:Translate CodeAnimal}"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    Grid.Row="0"/>
+                <Entry
+                    Placeholder="{i18n:Translate CodeAnimal}"
+                    Text="{Binding Ordeno.CodigoAnimal}"
+                    Grid.Column="1"
+                    Grid.Row="0"/>
+                <Label
+                    Text="{i18n:Translate MilkingNumber}"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    Grid.Row="1"/>
+                <Entry
+                    Placeholder="{i18n:Translate MilkingNumber}"
+                    Text="{Binding Ordeno.NumeroOrdeno}"
+                    Keyboard="Numeric" 
+                    Grid.Column="1"
+                    Grid.Row="1"/>
+                <Label
+                    Text="{i18n:Translate MilkingLiters}"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    Grid.Row="2"/>
+                <Entry
+                    Placeholder="{i18n:Translate MilkingLiters}"
+                    Text="{Binding Ordeno.LitrosOrdeno}"
+                    Keyboard="Numeric" 
+                    Grid.Column="1"
+                    Grid.Row="2">
+                </Entry>
+                <Label
+                    Text="{i18n:Translate MilkingWeight}"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    Grid.Row="3"/>
+                <Entry
+                    Placeholder="{i18n:Translate MilkingWeight}"
+                    Text="{Binding Ordeno.PesoOrdeno}"
+                    Grid.Column="1"
+                    Grid.Row="3"/>
+                <Label
+                    Text="{i18n:Translate MilkingDate}"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    Grid.Row="4"/>
+                <DatePicker 
+                    Date="{Binding Ordeno.FechaOrdeno}" 
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    Grid.Row="4"/>
+            </Grid>
+            <ActivityIndicator 
+                VerticalOptions="FillAndExpand"
+                IsRunning="{Binding IsRunning}">
+            </ActivityIndicator>
+            <Button
+                BorderRadius="23" 
+                HeightRequest="46" 
+                BackgroundColor="Navy" 
+                IsEnabled="{Binding IsEnabled}"
+                Command="{Binding SaveCommand}"
+                Text="{i18n:Translate Save}"
+                TextColor="White">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

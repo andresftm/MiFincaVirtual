@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiFincaVirtual.Views.OrdePage"
+             xmlns:i18n="clr-namespace:MiFincaVirtual.Helpers"
+             BindingContext="{Binding Main,  Source={StaticResource Locator}}"
+             Title="{i18n:Translate Milking}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="Add"  Command="{Binding AddOrdenoCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding OrdenosM}"
+            Padding="5, 10">
+            <ListView 
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                RefreshCommand="{Binding RefreshCommand}"
+                ItemsSource="{Binding OrdenosOVM}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="{i18n:Translate Edit}" Command="{Binding EditOrdenoCommand}"/>
+                                <MenuItem Text="{i18n:Translate Delete}" Command="{Binding DeleteOrdenoCommand}" IsDestructive="True"/>
+                            </ViewCell.ContextActions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    FontAttributes="Bold"
+                                    Grid.Column="0"
+                                    Text="{Binding CodigoAnimal}">
+
+                                </Label>
+                                <Label
+                                    FontAttributes="Bold"
+                                    Grid.Column="1"
+                                    HorizontalOptions="End"
+                                    
+                                    Text="{Binding FechaOrdeno, StringFormat='{0:yyyy/MM/dd}'}">
+
+                                </Label>
+                                <Label
+                                    FontAttributes="Bold"
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    
+                                    Text="{Binding LitrosOrdeno}">
+
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
