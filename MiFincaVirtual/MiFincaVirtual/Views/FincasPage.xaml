@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiFincaVirtual.Views.FincasPage"
+             xmlns:i18n="clr-namespace:MiFincaVirtual.Helpers"
+             BindingContext="{Binding Main,  Source={StaticResource Locator}}"
+             Title="{i18n:Translate Farm}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="Add"  Command="{Binding AddFincaCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding FincasM}"
+            Padding="5, 10">
+            <SearchBar HeightRequest="40"
+                Placeholder="{i18n:Translate Search}"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding Filter}">
+                
+            </SearchBar>
+            <ListView 
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                RefreshCommand="{Binding RefreshCommand}"
+                ItemsSource="{Binding FincasFVM}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="{i18n:Translate Edit}" Command="{Binding EditFincaCommand}"/>
+                                <MenuItem Text="{i18n:Translate Delete}" Command="{Binding DeleteFincaCommand}" IsDestructive="True"/>
+                            </ViewCell.ContextActions>
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EditFincaCommand}"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Source="{Binding ImageFullPath}"
+                                    WidthRequest="100">
+                                </Image>
+                                <StackLayout
+                                    Grid.Column="1"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        Text="{Binding NombreFinca}">
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        Text="{Binding CiudadFinca}">
+                                    </Label>
+                                </StackLayout>
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Text="{Binding PaisFinca}">
+
+                                </Label >
+                                <Image 
+                                    Grid.Column="3"
+                                    Source="ic_check.png"
+                                    VerticalOptions="Center">
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
