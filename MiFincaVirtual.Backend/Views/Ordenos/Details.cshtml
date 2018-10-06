@@ -1,0 +1,58 @@
+﻿@model MiFincaVirtual.Common.Models.Ordenos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ordenos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoAnimal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoAnimal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroOrdeno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroOrdeno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LitrosOrdeno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LitrosOrdeno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PesoOrdeno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PesoOrdeno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaOrdeno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaOrdeno)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrdenoId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+</p>

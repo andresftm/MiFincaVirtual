@@ -1,0 +1,74 @@
+﻿@model MiFincaVirtual.Common.Models.Fincas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fincas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaisFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaisFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CiudadFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CiudadFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IngresoFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IngresoFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HabilitadaFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HabilitadaFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FincaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

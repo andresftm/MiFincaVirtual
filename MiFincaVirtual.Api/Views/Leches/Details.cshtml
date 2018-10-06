@@ -1,0 +1,66 @@
+﻿@model MiFincaVirtual.Common.Models.Leches
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Leches</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LecheAnimal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LecheAnimal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroLeche)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroLeche)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LitrosLeche)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LitrosLeche)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PesoLeche)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PesoLeche)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaLeche)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaLeche)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Leche)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Leche)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LecheId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

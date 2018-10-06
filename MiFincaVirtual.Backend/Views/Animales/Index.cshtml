@@ -1,0 +1,87 @@
+﻿@model IEnumerable<MiFincaVirtual.Common.Models.Animales>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AnimalesTipos.TipoAnimalTipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Razas.NombreRaza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaIngresoAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimientoAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivoAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PerteneceAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EshembraAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PadreAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MadreAnimal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnimalesTipos.TipoAnimalTipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Razas.NombreRaza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaIngresoAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNacimientoAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivoAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PerteneceAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EshembraAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PadreAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MadreAnimal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AnimalId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AnimalId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AnimalId })
+        </td>
+    </tr>
+}
+
+</table>

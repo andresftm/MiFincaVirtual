@@ -1,0 +1,80 @@
+﻿@model MiFincaVirtual.Common.Models.Fincas
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Fincas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaisFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaisFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CiudadFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CiudadFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IngresoFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IngresoFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HabilitadaFinca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HabilitadaFinca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

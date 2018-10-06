@@ -1,0 +1,34 @@
+﻿@model MiFincaVirtual.Common.Models.Razas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Razas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreRaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreRaza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionRaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionRaza)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RazaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
