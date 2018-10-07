@@ -7,10 +7,11 @@
     public class AnimalesTipos
     {
         [Key]
+        [Display(Name = "Tipo")]
         public int AnimalTipoId { get; set; }
 
         /// <summary> Nombre de la raza. </summary>
-        [Display(Name = "Tipo")]
+        [Display(Name = "Descripción")]
         [Required]
         public string TipoAnimalTipo { get; set; }
 

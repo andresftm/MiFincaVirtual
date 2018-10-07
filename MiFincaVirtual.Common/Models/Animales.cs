@@ -49,12 +49,17 @@
         [Display(Name = "Madre")]
         public string MadreAnimal { get; set; }
 
+        #region Raza
         public int RazaId { get; set; }
 
-        public virtual Razas Razas { get; set; }
+        public virtual Razas Razas { get; set; } 
+        #endregion
 
+        #region Tipo de animal
+        [Display(Name = "Tipo")]
         public int AnimalTipoId { get; set; }
 
         public virtual AnimalesTipos AnimalesTipos { get; set; }
+        #endregion
     }
 }

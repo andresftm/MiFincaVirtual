@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Models\AnimalesTipos.cs" />
     <Compile Include="Models\BaseModelo.cs" />
+    <Compile Include="Models\CerdasCargadas.cs" />
     <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\Corrales.cs" />
     <Compile Include="Models\Cuido.cs" />

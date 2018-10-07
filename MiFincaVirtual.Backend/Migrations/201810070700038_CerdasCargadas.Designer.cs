@@ -7,13 +7,13 @@ namespace MiFincaVirtual.Backend.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Librasde : IMigrationMetadata
+    public sealed partial class CerdasCargadas : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Librasde));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CerdasCargadas));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810061955054_Librasde"; }
+            get { return "201810070700038_CerdasCargadas"; }
         }
         
         string IMigrationMetadata.Source
