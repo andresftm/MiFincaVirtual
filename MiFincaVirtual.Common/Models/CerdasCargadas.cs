@@ -2,6 +2,8 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class CerdasCargadas
     {
         [Key]
@@ -15,21 +17,28 @@
 
         [Required]
         [Display(Name = "Cargada")]
+        [Column(TypeName = "datetime2")]
+        [DataType(DataType.Date)]
         public DateTime FechaMontaCerdaCargada { get; set; }
 
         [Required]
         [Display(Name = "Recordación")]
+        [Column(TypeName = "datetime2")]
         public DateTime FechaRecordacionCerdaCargada { get; set; }
 
         [Required]
         [Display(Name = "Inyectar")]
+        [Column(TypeName = "datetime2")]
         public DateTime FechaInyectarCerdaCargada { get; set; }
 
         [Required]
         [Display(Name = "Posible parto")]
+        [Column(TypeName = "datetime2")]
         public DateTime FechaPosiblePartoCerdaCargada { get; set; }
 
         [Display(Name = "Fecha parto")]
+        [Column(TypeName = "datetime2")]
+        [DataType(DataType.Date)]
         public DateTime FechaRealPartoCerdaCargada { get; set; }
 
         [Required]

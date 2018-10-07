@@ -1,0 +1,120 @@
+﻿@model MiFincaVirtual.Common.Models.CerdasCargadas
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CerdasCargadas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animales.CodigoAnimal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Animales.CodigoAnimal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaMontaCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaMontaCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRecordacionCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRecordacionCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInyectarCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInyectarCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPosiblePartoCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPosiblePartoCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRealPartoCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRealPartoCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivoCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivoCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacidosCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacidosCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacidosVivosCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacidosVivosCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacidosMuertosCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacidosMuertosCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacidosMomiasCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacidosMomiasCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DestetosCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DestetosCerdaCargada)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+        </div>
+    }
+</div>

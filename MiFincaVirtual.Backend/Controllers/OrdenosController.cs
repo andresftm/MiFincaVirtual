@@ -11,6 +11,7 @@
     using System.Web.Mvc;
     using System.Web.Routing;
 
+    [Authorize]
     public class OrdenosController : Controller
     {
         private LocalDataContext db = new LocalDataContext();

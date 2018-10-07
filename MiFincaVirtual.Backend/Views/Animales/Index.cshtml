@@ -4,42 +4,42 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Listado de animales de la finca</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar animal", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AnimalesTipos.TipoAnimalTipo)
+            Tipo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Razas.NombreRaza)
+            Raza
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CodigoAnimal)
+            Código
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaIngresoAnimal)
+            Ingreso
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaNacimientoAnimal)
+            Nacimiento
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActivoAnimal)
+            Activo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PerteneceAnimal)
+            Pertenece
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EshembraAnimal)
+            Hembra
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PadreAnimal)
+            Padre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MadreAnimal)
+            Animal
         </th>
         <th></th>
     </tr>
@@ -77,9 +77,9 @@
             @Html.DisplayFor(modelItem => item.MadreAnimal)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AnimalId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AnimalId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AnimalId })
+            @Html.ActionLink("E", "Edit", new { id=item.AnimalId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id=item.AnimalId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id=item.AnimalId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

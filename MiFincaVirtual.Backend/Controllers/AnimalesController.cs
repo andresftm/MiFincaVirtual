@@ -12,6 +12,7 @@ using MiFincaVirtual.Common.Models;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
+    [Authorize]
     public class AnimalesController : Controller
     {
         private LocalDataContext db = new LocalDataContext();

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
+    [Authorize]
     public class FincasController : Controller
     {
         private LocalDataContext db = new LocalDataContext();

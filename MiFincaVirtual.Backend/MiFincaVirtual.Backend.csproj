@@ -211,6 +211,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnimalesController.cs" />
     <Compile Include="Controllers\AnimalesTiposController.cs" />
+    <Compile Include="Controllers\CerdasCargadasController.cs" />
     <Compile Include="Controllers\FincasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -220,9 +221,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
-    <Compile Include="Migrations\201810070700038_CerdasCargadas.cs" />
-    <Compile Include="Migrations\201810070700038_CerdasCargadas.Designer.cs">
-      <DependentUpon>201810070700038_CerdasCargadas.cs</DependentUpon>
+    <Compile Include="Migrations\201810071459561_FormatoF.cs" />
+    <Compile Include="Migrations\201810071459561_FormatoF.Designer.cs">
+      <DependentUpon>201810071459561_FormatoF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810071501174_FormatoFF.cs" />
+    <Compile Include="Migrations\201810071501174_FormatoFF.Designer.cs">
+      <DependentUpon>201810071501174_FormatoFF.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -324,6 +329,11 @@
     <Content Include="Views\Fincas\Edit.cshtml" />
     <Content Include="Views\Fincas\Index.cshtml" />
     <Content Include="Views\Shared\_paginador.cshtml" />
+    <Content Include="Views\CerdasCargadas\Create.cshtml" />
+    <Content Include="Views\CerdasCargadas\Delete.cshtml" />
+    <Content Include="Views\CerdasCargadas\Details.cshtml" />
+    <Content Include="Views\CerdasCargadas\Edit.cshtml" />
+    <Content Include="Views\CerdasCargadas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -353,8 +363,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810070700038_CerdasCargadas.resx">
-      <DependentUpon>201810070700038_CerdasCargadas.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810071459561_FormatoF.resx">
+      <DependentUpon>201810071459561_FormatoF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810071501174_FormatoFF.resx">
+      <DependentUpon>201810071501174_FormatoFF.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

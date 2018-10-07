@@ -61,5 +61,8 @@
 
         public virtual AnimalesTipos AnimalesTipos { get; set; }
         #endregion
+
+        [JsonIgnore]
+        public virtual ICollection<CerdasCargadas> CerdasCargadas { get; set; }
     }
 }

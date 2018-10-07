@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MiFincaVirtual.Common.Models.Razas>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Razas";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar razas", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.DescripcionRaza)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RazaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RazaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RazaId })
+            @Html.ActionLink("E", "Edit", new { id=item.RazaId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id=item.RazaId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id=item.RazaId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

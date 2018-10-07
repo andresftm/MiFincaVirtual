@@ -27,5 +27,7 @@ namespace MiFincaVirtual.Backend.Models
         public DbSet<AnimalesTipos> AnimalesTipos { get; set; }
 
         public DbSet<Fincas> Fincas { get; set; }
+
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.CerdasCargadas> CerdasCargadas { get; set; }
     }
 }

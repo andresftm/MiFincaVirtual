@@ -1,0 +1,114 @@
+﻿@model MiFincaVirtual.Common.Models.CerdasCargadas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CerdasCargadas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animales.CodigoAnimal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Animales.CodigoAnimal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaMontaCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaMontaCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRecordacionCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRecordacionCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInyectarCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInyectarCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPosiblePartoCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPosiblePartoCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRealPartoCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRealPartoCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivoCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivoCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacidosCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacidosCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacidosVivosCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacidosVivosCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacidosMuertosCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacidosMuertosCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacidosMomiasCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacidosMomiasCerdaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DestetosCerdaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DestetosCerdaCargada)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CerdaCargadaId }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+</p>
