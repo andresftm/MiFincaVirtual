@@ -79,7 +79,6 @@
             //ordeViewModel.RefreshList();
         }
 
-
         private async void EditOrdeno()
         {
             MainViewModel.GetInstance().OrdenoEditM = new OrdenosEditViewModel(this);

@@ -7,13 +7,13 @@ namespace MiFincaVirtual.Backend.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AdicionarFinca : IMigrationMetadata
+    public sealed partial class Librasde : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AdicionarFinca));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Librasde));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809230352305_AdicionarFinca"; }
+            get { return "201810061955054_Librasde"; }
         }
         
         string IMigrationMetadata.Source

@@ -12,7 +12,7 @@
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            System.Threading.Thread.Sleep(1800); //Let's wait awhile...
+            System.Threading.Thread.Sleep(800); //Let's wait awhile...
             this.StartActivity(typeof(MainActivity));
         }
     }

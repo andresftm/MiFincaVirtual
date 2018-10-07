@@ -28,7 +28,8 @@
                             </ViewCell.ContextActions>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
@@ -36,23 +37,24 @@
                                     FontAttributes="Bold"
                                     Grid.Column="0"
                                     Text="{Binding CodigoAnimal}">
-
                                 </Label>
                                 <Label
                                     FontAttributes="Bold"
                                     Grid.Column="1"
                                     HorizontalOptions="End"
-                                    
                                     Text="{Binding FechaOrdeno, StringFormat='{0:yyyy/MM/dd}'}">
-
                                 </Label>
                                 <Label
                                     FontAttributes="Bold"
                                     Grid.Column="2"
                                     HorizontalOptions="End"
-                                    
                                     Text="{Binding LitrosOrdeno}">
-
+                                </Label>
+                                <Label
+                                    FontAttributes="Bold"
+                                    Grid.Column="3"
+                                    HorizontalOptions="End"
+                                    Text="{Binding GramosCuidoOrdeno}">
                                 </Label>
                             </Grid>
                         </ViewCell>

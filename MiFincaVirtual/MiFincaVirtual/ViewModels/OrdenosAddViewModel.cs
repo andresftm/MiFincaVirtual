@@ -31,6 +31,8 @@ namespace MiFincaVirtual.ViewModels
 
         public String PesoOrdeno { get; set; }
 
+        public String GramosCuidoOrdeno { get; set; }
+
         public DateTime FechaOrdeno { get; set; }
 
         public Boolean IsRunning
@@ -131,6 +133,16 @@ namespace MiFincaVirtual.ViewModels
                 return;
             }
 
+            var gramosCuidoOrdeno = Int32.Parse(this.GramosCuidoOrdeno);
+            if (gramosCuidoOrdeno < 0)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.GramsMilking,
+                    Languages.Accept);
+                return;
+            }
+
             this.IsRunning = true;
             this.IsEnabled = false;
 
@@ -150,6 +162,7 @@ namespace MiFincaVirtual.ViewModels
                 LitrosOrdeno = litrosOrdeño,
                 NumeroOrdeno = Convert.ToInt32(NumeroOrdeno),
                 PesoOrdeno = pesosOrdeño,
+                GramosCuidoOrdeno = gramosCuidoOrdeno,
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();

@@ -22,7 +22,7 @@ namespace MiFincaVirtual.Api.Controllers
         // GET: api/Ordenos
         public IQueryable<Ordenos> GetOrdenos()
         {
-            return db.Ordenos.OrderByDescending(o => o.OrdenoId).Take(15);
+            return db.Ordenos.OrderByDescending(o => o.OrdenoId).Take(16);
         }
 
         // GET: api/Ordenos/5
@@ -83,8 +83,6 @@ namespace MiFincaVirtual.Api.Controllers
             }
 
             ordenos.FechaOrdeno = ordenos.FechaOrdeno.ToUniversalTime();
-            ordenos.PesoOrdeno = 10;
-
             db.Ordenos.Add(ordenos);
             await db.SaveChangesAsync();
 

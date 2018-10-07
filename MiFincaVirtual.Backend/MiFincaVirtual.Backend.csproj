@@ -220,9 +220,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
-    <Compile Include="Migrations\201809230352305_AdicionarFinca.cs" />
-    <Compile Include="Migrations\201809230352305_AdicionarFinca.Designer.cs">
-      <DependentUpon>201809230352305_AdicionarFinca.cs</DependentUpon>
+    <Compile Include="Migrations\201810061941208_LibrasdeCuido.cs" />
+    <Compile Include="Migrations\201810061941208_LibrasdeCuido.Designer.cs">
+      <DependentUpon>201810061941208_LibrasdeCuido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810061955054_Librasde.cs" />
+    <Compile Include="Migrations\201810061955054_Librasde.Designer.cs">
+      <DependentUpon>201810061955054_Librasde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810061955516_Librasde1.cs" />
+    <Compile Include="Migrations\201810061955516_Librasde1.Designer.cs">
+      <DependentUpon>201810061955516_Librasde1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810061958154_Libras.cs" />
+    <Compile Include="Migrations\201810061958154_Libras.Designer.cs">
+      <DependentUpon>201810061958154_Libras.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -353,8 +365,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809230352305_AdicionarFinca.resx">
-      <DependentUpon>201809230352305_AdicionarFinca.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810061941208_LibrasdeCuido.resx">
+      <DependentUpon>201810061941208_LibrasdeCuido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810061955054_Librasde.resx">
+      <DependentUpon>201810061955054_Librasde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810061955516_Librasde1.resx">
+      <DependentUpon>201810061955516_Librasde1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810061958154_Libras.resx">
+      <DependentUpon>201810061958154_Libras.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -354,5 +354,15 @@ namespace MiFincaVirtual.Helpers
             get { return Resource.Confirm; }
         }
 
+        public static string Grams
+        {
+            get { return Resource.Grams; }
+        }
+
+        public static string GramsMilking
+        {
+            get { return Resource.GramsMilking; }
+        }
+
     }
 }

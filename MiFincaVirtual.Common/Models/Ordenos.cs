@@ -33,6 +33,12 @@
         [Display(Name = "Peso Leche")]
         public Decimal PesoOrdeno { get; set; }
 
+
+        /// <summary>Los gramos de cuido consumidos por el animal en el ordeño.</summary>
+        [Required]
+        [Display(Name = "Gramos de cuido")]
+        public int GramosCuidoOrdeno { get; set; }
+        
         /// <summary> Fecha en la que se registra el ordeño. </summary>
         [Required]
         [DataType(DataType.Date)]

@@ -30,6 +30,9 @@
             Peso
         </th>
         <th>
+            Gramos
+        </th>
+        <th>
             Fecha
         </th>
         <th></th>
@@ -37,26 +40,29 @@
 
     @foreach (var item in Model.OrdenosO)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoAnimal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroOrdeno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LitrosOrdeno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PesoOrdeno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaOrdeno)
-            </td>
-            <td>
-                @Html.ActionLink("Detalle", "Details", new { id = item.OrdenoId }, new { @class = "btn btn-info" })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroOrdeno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LitrosOrdeno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PesoOrdeno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GramosCuidoOrdeno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaOrdeno)
+        </td>
+        <td>
+            @Html.ActionLink("Detalle", "Details", new { id = item.OrdenoId }, new { @class = "btn btn-info" })
+        </td>
+    </tr>
     }
 
 </table>

@@ -349,6 +349,24 @@ namespace MiFincaVirtual.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grams.
+        /// </summary>
+        internal static string Grams {
+            get {
+                return ResourceManager.GetString("Grams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grams of care used in milking.
+        /// </summary>
+        internal static string GramsMilking {
+            get {
+                return ResourceManager.GetString("GramsMilking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Where do you take the picture?.
         /// </summary>
         internal static string ImageSource {

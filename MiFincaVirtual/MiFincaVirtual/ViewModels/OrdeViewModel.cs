@@ -75,6 +75,7 @@
                 NumeroOrdeno = o.NumeroOrdeno,
                 PesoOrdeno = o.PesoOrdeno,
                 OrdenoId = o.OrdenoId,
+                GramosCuidoOrdeno = o.GramosCuidoOrdeno,
             });
 
             this.OrdenosOVM = new ObservableCollection<OrdenosItemViewModel>(myListOrdenosItemViewModel.OrderByDescending(f => f.FechaOrdeno));
