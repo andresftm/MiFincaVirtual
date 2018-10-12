@@ -21,11 +21,13 @@
 
         /// Fecha de ingreso del animal a la finca.
         [Display(Name = "Fecha Ingreso")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime FechaIngresoAnimal { get; set; }
 
         ///Fecha de nacimiento del animal.
         [Display(Name = "Fecha Nacimiento")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime FechaNacimientoAnimal { get; set; }
 
