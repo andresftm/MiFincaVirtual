@@ -354,4 +354,7 @@
   <data name="GramsMilking" xml:space="preserve">
     <value>Grams of care used in milking</value>
   </data>
+  <data name="Animals" xml:space="preserve">
+    <value>Animals</value>
+  </data>
 </root>

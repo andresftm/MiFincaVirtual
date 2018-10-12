@@ -73,7 +73,6 @@
             //this.OrdenosM = new OrdeViewModel();
             //this.FincasM = new FincasViewModel();
             this.LoadMenu();
-
         }
         #endregion
 
@@ -97,7 +96,6 @@
 
         #region Singleton
         private static MainViewModel instance;
-
         public static MainViewModel GetInstance()
         {
             if (instance == null)
@@ -131,9 +129,17 @@
             this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "ic_exit_to_app",
+                PageName = "AnimalesPage",
+                Title = Languages.Animals,
+            });
+
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_exit_to_app",
                 PageName = "LoginPage",
                 Title = Languages.Exit,
             });
+
         }
 
         private async void GoToAddFarm()

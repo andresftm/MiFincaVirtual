@@ -52,8 +52,7 @@
                     Text="{Binding LitrosOrdeno}"
                     Keyboard="Numeric" 
                     Grid.Column="1"
-                    Grid.Row="2">
-                </Entry>
+                    Grid.Row="2"/>
                 <Label
                     Text="{i18n:Translate MilkingWeight}"
                     VerticalOptions="Center"

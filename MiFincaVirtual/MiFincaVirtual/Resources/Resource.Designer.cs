@@ -97,6 +97,15 @@ namespace MiFincaVirtual.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Animals.
+        /// </summary>
+        internal static string Animals {
+            get {
+                return ResourceManager.GetString("Animals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Cancel {

@@ -20,7 +20,7 @@ namespace MiFincaVirtual.Backend.Controllers
         // GET: Animales
         public async Task<ActionResult> Index()
         {
-            var animales = db.Animales.Include(a => a.AnimalesTipos).Include(a => a.Razas);
+            var animales = db.Animales.Include(a => a.Opciones).Include(a => a.Razas);
             return View(await animales.ToListAsync());
         }
 
@@ -42,7 +42,14 @@ namespace MiFincaVirtual.Backend.Controllers
         // GET: Animales/Create
         public ActionResult Create()
         {
-            ViewBag.AnimalTipoId = new SelectList(db.AnimalesTipos, "AnimalTipoId", "TipoAnimalTipo");
+            List<Opciones> lstOpciones = new List<Opciones>();
+            Opciones objOpcion = new Opciones();
+            objOpcion.OpcionId = -1;
+            objOpcion.Codigopcion = "-- Seleccione --";
+            lstOpciones.Add(objOpcion);
+            lstOpciones.AddRange(db.Opciones);
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
+
             ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza");
             return View();
         }
@@ -52,16 +59,36 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "AnimalId,CodigoAnimal,DescripcionAnimal,FechaIngresoAnimal,FechaNacimientoAnimal,ActivoAnimal,PerteneceAnimal,EshembraAnimal,PadreAnimal,MadreAnimal,RazaId,AnimalTipoId")] Animales animales)
+        public async Task<ActionResult> Create([Bind(Include = "AnimalId,CodigoAnimal,DescripcionAnimal,FechaIngresoAnimal,FechaNacimientoAnimal,ActivoAnimal,PerteneceAnimal,EshembraAnimal,PadreAnimal,MadreAnimal,RazaId,OpcionId")] Animales animales)
         {
+            List<Opciones> lstOpciones = new List<Opciones>();
+            Opciones objOpcion = new Opciones();
+
             if (ModelState.IsValid)
             {
+                if(animales.OpcionId == -1)
+                {
+                    objOpcion.OpcionId = -1;
+                    objOpcion.Codigopcion = "-- Seleccione --";
+                    lstOpciones.Add(objOpcion);
+                    lstOpciones.AddRange(db.Opciones);
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
+
+                    ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza", animales.RazaId);
+                    return View(animales);
+                }
+
                 db.Animales.Add(animales);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AnimalTipoId = new SelectList(db.AnimalesTipos, "AnimalTipoId", "TipoAnimalTipo", animales.AnimalTipoId);
+            objOpcion.OpcionId = -1;
+            objOpcion.Codigopcion = "-- Seleccione --";
+            lstOpciones.Add(objOpcion);
+            lstOpciones.AddRange(db.Opciones);
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
+
             ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza", animales.RazaId);
             return View(animales);
         }
@@ -78,7 +105,7 @@ namespace MiFincaVirtual.Backend.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AnimalTipoId = new SelectList(db.AnimalesTipos, "AnimalTipoId", "TipoAnimalTipo", animales.AnimalTipoId);
+            ViewBag.OpcionId = new SelectList(db.Opciones, "OpcionId", "Codigopcion", animales.OpcionId);
             ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza", animales.RazaId);
             return View(animales);
         }
@@ -88,7 +115,7 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "AnimalId,CodigoAnimal,DescripcionAnimal,FechaIngresoAnimal,FechaNacimientoAnimal,ActivoAnimal,PerteneceAnimal,EshembraAnimal,PadreAnimal,MadreAnimal,RazaId,AnimalTipoId")] Animales animales)
+        public async Task<ActionResult> Edit([Bind(Include = "AnimalId,CodigoAnimal,DescripcionAnimal,FechaIngresoAnimal,FechaNacimientoAnimal,ActivoAnimal,PerteneceAnimal,EshembraAnimal,PadreAnimal,MadreAnimal,RazaId,OpcionId")] Animales animales)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +123,7 @@ namespace MiFincaVirtual.Backend.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.AnimalTipoId = new SelectList(db.AnimalesTipos, "AnimalTipoId", "TipoAnimalTipo", animales.AnimalTipoId);
+            ViewBag.OpcionId = new SelectList(db.Opciones, "OpcionId", "Codigopcion", animales.OpcionId);
             ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza", animales.RazaId);
             return View(animales);
         }

@@ -1,0 +1,50 @@
+﻿@model MiFincaVirtual.Common.Models.CorralesComida
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CorralesComida</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Corrales.CodigoCorral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Corrales.CodigoCorral)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadCorralComida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadCorralComida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCorralComida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCorralComida)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CorralComidaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

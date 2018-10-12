@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MiFincaVirtual.Common.Models.Corrales>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoCorral)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadAnimalesCorral)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedidasCorral)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivoCorral)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoCorral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CantidadAnimalesCorral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedidasCorral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivoCorral)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CorralId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CorralId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CorralId })
+        </td>
+    </tr>
+}
+
+</table>

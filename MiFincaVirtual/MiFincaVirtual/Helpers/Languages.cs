@@ -364,5 +364,10 @@ namespace MiFincaVirtual.Helpers
             get { return Resource.GramsMilking; }
         }
 
+        public static string Animals
+        {
+            get { return Resource.Animals; }
+        }
+
     }
 }

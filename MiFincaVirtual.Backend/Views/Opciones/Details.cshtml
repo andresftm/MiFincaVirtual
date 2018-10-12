@@ -1,0 +1,42 @@
+﻿@model MiFincaVirtual.Common.Models.Opciones
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Opciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigopcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionOpcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionOpcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoOpcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoOpcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OpcionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

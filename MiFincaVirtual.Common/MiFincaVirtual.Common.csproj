@@ -49,12 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\AnimalesTipos.cs" />
     <Compile Include="Models\BaseModelo.cs" />
     <Compile Include="Models\CerdasCargadas.cs" />
     <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\Corrales.cs" />
-    <Compile Include="Models\Cuido.cs" />
+    <Compile Include="Models\CorralesComida.cs" />
+    <Compile Include="Models\ICollection.cs" />
+    <Compile Include="Models\Opciones.cs" />
     <Compile Include="Models\DataFacebook.cs" />
     <Compile Include="Models\Fincas.cs" />
     <Compile Include="Models\Animales.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Models\MyUserASP.cs" />
     <Compile Include="Models\Ordenos.cs" />
     <Compile Include="Models\Pesos.cs" />
+    <Compile Include="Models\Quesos.cs" />
     <Compile Include="Models\Razas.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\TokenResponse.cs" />

@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            Tipo
+            Tipo Animal
         </th>
         <th>
             Raza
@@ -39,7 +39,7 @@
             Padre
         </th>
         <th>
-            Animal
+            Madre
         </th>
         <th></th>
     </tr>
@@ -47,7 +47,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AnimalesTipos.TipoAnimalTipo)
+            @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Razas.NombreRaza)

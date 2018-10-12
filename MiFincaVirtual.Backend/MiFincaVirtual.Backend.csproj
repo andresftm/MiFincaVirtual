@@ -210,25 +210,20 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnimalesController.cs" />
-    <Compile Include="Controllers\AnimalesTiposController.cs" />
     <Compile Include="Controllers\CerdasCargadasController.cs" />
+    <Compile Include="Controllers\CorralesComidasController.cs" />
+    <Compile Include="Controllers\CorralesController.cs" />
     <Compile Include="Controllers\FincasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OpcionesController.cs" />
     <Compile Include="Controllers\OrdenosController.cs" />
+    <Compile Include="Controllers\QuesosController.cs" />
     <Compile Include="Controllers\RazasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
-    <Compile Include="Migrations\201810071459561_FormatoF.cs" />
-    <Compile Include="Migrations\201810071459561_FormatoF.Designer.cs">
-      <DependentUpon>201810071459561_FormatoF.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810071501174_FormatoFF.cs" />
-    <Compile Include="Migrations\201810071501174_FormatoFF.Designer.cs">
-      <DependentUpon>201810071501174_FormatoFF.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModelo.cs" />
@@ -247,6 +242,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Fincas\imagen1.jpg" />
     <Content Include="Content\Fincas\imagen2.jpg" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\font-awesome\HELP-US-OUT.txt" />
     <Content Include="Documents\Actualización de base de datos.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -257,8 +256,50 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\animated.less" />
+    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome\less\core.less" />
+    <Content Include="Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\less\icons.less" />
+    <Content Include="Content\font-awesome\less\larger.less" />
+    <Content Include="Content\font-awesome\less\list.less" />
+    <Content Include="Content\font-awesome\less\mixins.less" />
+    <Content Include="Content\font-awesome\less\path.less" />
+    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome\less\screen-reader.less" />
+    <Content Include="Content\font-awesome\less\stacked.less" />
+    <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome\scss\_core.scss" />
+    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\font-awesome\scss\_list.scss" />
+    <Content Include="Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome\scss\_path.scss" />
+    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\fonts\roboto-v15-latin-300.woff" />
+    <Content Include="Content\fonts\roboto-v15-latin-300.woff2" />
+    <Content Include="Content\fonts\roboto-v15-latin-500.woff" />
+    <Content Include="Content\fonts\roboto-v15-latin-500.woff2" />
+    <Content Include="Content\fonts\roboto-v15-latin-700.woff" />
+    <Content Include="Content\fonts\roboto-v15-latin-700.woff2" />
+    <Content Include="Content\fonts\roboto-v15-latin-regular.woff" />
+    <Content Include="Content\fonts\roboto-v15-latin-regular.woff2" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -268,6 +309,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -313,11 +355,6 @@
     <Content Include="Views\Razas\Details.cshtml" />
     <Content Include="Views\Razas\Edit.cshtml" />
     <Content Include="Views\Razas\Index.cshtml" />
-    <Content Include="Views\AnimalesTipos\Create.cshtml" />
-    <Content Include="Views\AnimalesTipos\Delete.cshtml" />
-    <Content Include="Views\AnimalesTipos\Details.cshtml" />
-    <Content Include="Views\AnimalesTipos\Edit.cshtml" />
-    <Content Include="Views\AnimalesTipos\Index.cshtml" />
     <Content Include="Views\Animales\Create.cshtml" />
     <Content Include="Views\Animales\Delete.cshtml" />
     <Content Include="Views\Animales\Details.cshtml" />
@@ -334,6 +371,28 @@
     <Content Include="Views\CerdasCargadas\Details.cshtml" />
     <Content Include="Views\CerdasCargadas\Edit.cshtml" />
     <Content Include="Views\CerdasCargadas\Index.cshtml" />
+    <Content Include="Views\Quesos\Create.cshtml" />
+    <Content Include="Views\Quesos\Delete.cshtml" />
+    <Content Include="Views\Quesos\Details.cshtml" />
+    <Content Include="Views\Quesos\Edit.cshtml" />
+    <Content Include="Views\Quesos\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Opciones\Create.cshtml" />
+    <Content Include="Views\Opciones\Delete.cshtml" />
+    <Content Include="Views\Opciones\Details.cshtml" />
+    <Content Include="Views\Opciones\Edit.cshtml" />
+    <Content Include="Views\Opciones\Index.cshtml" />
+    <Content Include="Views\Corrales\Create.cshtml" />
+    <Content Include="Views\Corrales\Delete.cshtml" />
+    <Content Include="Views\Corrales\Details.cshtml" />
+    <Content Include="Views\Corrales\Edit.cshtml" />
+    <Content Include="Views\Corrales\Index.cshtml" />
+    <Content Include="Views\CorralesComidas\Create.cshtml" />
+    <Content Include="Views\CorralesComidas\Delete.cshtml" />
+    <Content Include="Views\CorralesComidas\Details.cshtml" />
+    <Content Include="Views\CorralesComidas\Edit.cshtml" />
+    <Content Include="Views\CorralesComidas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -361,14 +420,6 @@
       <Project>{3725572d-e16e-4c0c-8383-503a0ad7db07}</Project>
       <Name>MiFincaVirtual.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810071459561_FormatoF.resx">
-      <DependentUpon>201810071459561_FormatoF.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810071501174_FormatoFF.resx">
-      <DependentUpon>201810071501174_FormatoFF.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

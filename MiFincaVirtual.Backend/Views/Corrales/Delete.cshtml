@@ -1,0 +1,64 @@
+﻿@model MiFincaVirtual.Common.Models.Corrales
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Corrales</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoCorral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoCorral)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadAnimalesCorral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadAnimalesCorral)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedidasCorral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedidasCorral)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivoCorral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivoCorral)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

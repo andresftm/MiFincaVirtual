@@ -13,11 +13,6 @@
         [Required]
         public String CodigoCorral { get; set; }
 
-        /// <summary> Tipo del corral, por ejemplo, Cerdos, Cabras, Equinos.</summary>
-        [Display(Name = "Tipo")]
-        [Required]
-        public String TipoCorral { get; set; }
-
         /// <summary>. Cantidad de animales que caben en el corral.</summary>
         [Display(Name = "Cantidad Animales")]
         [Required]
@@ -27,5 +22,18 @@
         [Display(Name = "Medidas")]
         [Required]
         public String MedidasCorral { get; set; }
+
+        [Display(Name = "Activo")]
+        /// <summary>Indica si el corral se esta utilizando o no.</summary>
+        public Boolean ActivoCorral { get; set; }
+
+        #region Opcion
+        public int OpcionId { get; set; }
+
+        [Required]
+        /// <summary> Tipo del corral, por ejemplo, Cerdos, Cabras, Equinos.</summary>
+        public virtual Opciones Opciones { get; set; }
+        #endregion
+
     }
 }
