@@ -12,6 +12,7 @@ using MiFincaVirtual.Common.Models;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
+    [Authorize]
     public class CorralesComidasController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
