@@ -47,10 +47,16 @@ namespace MiFincaVirtual.Backend.Controllers
             objOpcion.OpcionId = -1;
             objOpcion.Codigopcion = "-- Seleccione --";
             lstOpciones.Add(objOpcion);
-            lstOpciones.AddRange(db.Opciones);
+            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
             ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
 
-            ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza");
+            List<Razas> lstRazas = new List<Razas>();
+            Razas objRaza = new Razas();
+            objRaza.RazaId = -1;
+            objRaza.NombreRaza = "-- Seleccione --";
+            lstRazas.Add(objRaza);
+            lstRazas.AddRange(db.Razas);
+            ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza");
             return View();
         }
 
@@ -63,6 +69,8 @@ namespace MiFincaVirtual.Backend.Controllers
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();
+            List<Razas> lstRazas = new List<Razas>();
+            Razas objRaza = new Razas();
 
             if (ModelState.IsValid)
             {
@@ -71,10 +79,32 @@ namespace MiFincaVirtual.Backend.Controllers
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
                     lstOpciones.Add(objOpcion);
-                    lstOpciones.AddRange(db.Opciones);
-                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
+                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
 
-                    ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza", animales.RazaId);
+                    objRaza.RazaId = -1;
+                    objRaza.NombreRaza = "-- Seleccione --";
+                    lstRazas.Add(objRaza);
+                    lstRazas.AddRange(db.Razas);
+                    ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
+
+                    return View(animales);
+                }
+
+                if (animales.RazaId == -1)
+                {
+                    objOpcion.OpcionId = -1;
+                    objOpcion.Codigopcion = "-- Seleccione --";
+                    lstOpciones.Add(objOpcion);
+                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
+
+                    objRaza.RazaId = -1;
+                    objRaza.NombreRaza = "-- Seleccione --";
+                    lstRazas.Add(objRaza);
+                    lstRazas.AddRange(db.Razas);
+                    ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
+
                     return View(animales);
                 }
 
@@ -86,10 +116,15 @@ namespace MiFincaVirtual.Backend.Controllers
             objOpcion.OpcionId = -1;
             objOpcion.Codigopcion = "-- Seleccione --";
             lstOpciones.Add(objOpcion);
-            lstOpciones.AddRange(db.Opciones);
-            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
+            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
 
-            ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza", animales.RazaId);
+            objRaza.RazaId = -1;
+            objRaza.NombreRaza = "-- Seleccione --";
+            lstRazas.Add(objRaza);
+            lstRazas.AddRange(db.Razas);
+            ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
+
             return View(animales);
         }
 
@@ -105,8 +140,23 @@ namespace MiFincaVirtual.Backend.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OpcionId = new SelectList(db.Opciones, "OpcionId", "Codigopcion", animales.OpcionId);
-            ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza", animales.RazaId);
+
+            List<Opciones> lstOpciones = new List<Opciones>();
+            Opciones objOpcion = new Opciones();
+            objOpcion.OpcionId = -1;
+            objOpcion.Codigopcion = "-- Seleccione --";
+            lstOpciones.Add(objOpcion);
+            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
+
+            List<Razas> lstRazas = new List<Razas>();
+            Razas objRaza = new Razas();
+            objRaza.RazaId = -1;
+            objRaza.NombreRaza = "-- Seleccione --";
+            lstRazas.Add(objRaza);
+            lstRazas.AddRange(db.Razas);
+            ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
+
             return View(animales);
         }
 
@@ -117,14 +167,63 @@ namespace MiFincaVirtual.Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "AnimalId,CodigoAnimal,DescripcionAnimal,FechaIngresoAnimal,FechaNacimientoAnimal,ActivoAnimal,PerteneceAnimal,EshembraAnimal,PadreAnimal,MadreAnimal,RazaId,OpcionId")] Animales animales)
         {
+            List<Opciones> lstOpciones = new List<Opciones>();
+            Opciones objOpcion = new Opciones();
+            List<Razas> lstRazas = new List<Razas>();
+            Razas objRaza = new Razas();
+
             if (ModelState.IsValid)
             {
+                if (animales.OpcionId == -1)
+                {
+                    objOpcion.OpcionId = -1;
+                    objOpcion.Codigopcion = "-- Seleccione --";
+                    lstOpciones.Add(objOpcion);
+                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
+
+                    objRaza.RazaId = -1;
+                    objRaza.NombreRaza = "-- Seleccione --";
+                    lstRazas.Add(objRaza);
+                    lstRazas.AddRange(db.Razas);
+                    ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
+
+                    return View(animales);
+                }
+
+                if (animales.RazaId == -1)
+                {
+                    objOpcion.OpcionId = -1;
+                    objOpcion.Codigopcion = "-- Seleccione --";
+                    lstOpciones.Add(objOpcion);
+                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
+
+                    objRaza.RazaId = -1;
+                    objRaza.NombreRaza = "-- Seleccione --";
+                    lstRazas.Add(objRaza);
+                    lstRazas.AddRange(db.Razas);
+                    ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
+
+                    return View(animales);
+                }
+
                 db.Entry(animales).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.OpcionId = new SelectList(db.Opciones, "OpcionId", "Codigopcion", animales.OpcionId);
-            ViewBag.RazaId = new SelectList(db.Razas, "RazaId", "NombreRaza", animales.RazaId);
+
+            objOpcion.OpcionId = -1;
+            objOpcion.Codigopcion = "-- Seleccione --";
+            lstOpciones.Add(objOpcion);
+            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
+
+            objRaza.RazaId = -1;
+            objRaza.NombreRaza = "-- Seleccione --";
+            lstRazas.Add(objRaza);
+            lstRazas.AddRange(db.Razas);
+            ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
             return View(animales);
         }
 

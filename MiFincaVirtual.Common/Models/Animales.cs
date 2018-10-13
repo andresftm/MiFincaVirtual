@@ -52,6 +52,7 @@
         public string MadreAnimal { get; set; }
 
         #region Raza
+        [Range(1, 32767, ErrorMessage = "Debe seleccionar una raza")]
         public int RazaId { get; set; }
 
         public virtual Razas Razas { get; set; }
@@ -59,6 +60,7 @@
 
         #region Tipo de animal
         [Display(Name = "Tipo")]
+        [Range (1, 32767, ErrorMessage="Debe seleccionar un tipo de animal")]
         public int OpcionId { get; set; }
 
         public virtual Opciones Opciones { get; set; }
