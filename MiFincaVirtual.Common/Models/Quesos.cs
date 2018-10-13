@@ -11,6 +11,7 @@
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Fecha")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaQueso { get; set; }
 
         [Required]

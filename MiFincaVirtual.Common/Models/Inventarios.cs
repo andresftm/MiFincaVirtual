@@ -12,10 +12,18 @@ namespace MiFincaVirtual.Common.Models
         [Key]
         public int InventarioId { get; set; }
 
-        /// Código del cuido
+        #region Tipo de Cuido
+        [Range(1, 32767, ErrorMessage = "Debe seleccionar un tipo de cuido")]
+        public int OpcionId { get; set; }
+
+        public virtual Opciones Opciones { get; set; }
+        #endregion
+
         [Required]
-        [Display(Name ="Producto")]
-        public String CodigoCuido { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha de ingreso")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime FechaIngreso { get; set; }
 
         /// Cantidad ingresada
         [Required]
@@ -32,12 +40,10 @@ namespace MiFincaVirtual.Common.Models
         [Display(Name = "Flete")]
         public Decimal FleteInventario { get; set; }
 
-        [Required]
         [Display(Name = "Valor Unitario")]
         public Decimal ValorUnitarioInventario { get; set; }
 
         ///Valor total de lo comprado
-        [Required]
         [Display(Name = "Valor Total")]
         public Decimal ValorTotalInventario { get; set; }
 

@@ -42,8 +42,22 @@ namespace MiFincaVirtual.Backend.Controllers
         // GET: CorralesComidas/Create
         public ActionResult Create()
         {
-            ViewBag.CorralId = new SelectList(db.Corrales, "CorralId", "CodigoCorral");
-            ViewBag.OpcionId = new SelectList(db.Opciones, "OpcionId", "Codigopcion");
+            List<Opciones> lstOpciones = new List<Opciones>();
+            Opciones objOpcion = new Opciones();
+            objOpcion.OpcionId = -1;
+            objOpcion.Codigopcion = "-- Seleccione --";
+            lstOpciones.Add(objOpcion);
+            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
+
+            List<Corrales> lstCorrales = new List<Corrales>();
+            Corrales objCorral = new Corrales();
+            objCorral.OpcionId = -1;
+            objCorral.CodigoCorral = "-- Seleccione --";
+            lstCorrales.Add(objCorral);
+            lstCorrales.AddRange(db.Corrales.ToList());
+            ViewBag.CorralId = new SelectList(lstCorrales, "CorralId", "CodigoCorral");
+
             return View();
         }
 
@@ -54,15 +68,48 @@ namespace MiFincaVirtual.Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "CorralComidaId,CantidadCorralComida,FechaCorralComida,CorralId,OpcionId")] CorralesComida corralesComida)
         {
+            List<Opciones> lstOpciones = new List<Opciones>();
+            Opciones objOpcion = new Opciones();
+            List<Corrales> lstCorrales = new List<Corrales>();
+            Corrales objCorral = new Corrales();
+
             if (ModelState.IsValid)
             {
+                if (corralesComida.OpcionId == -1)
+                {
+                    objOpcion.OpcionId = -1;
+                    objOpcion.Codigopcion = "-- Seleccione --";
+                    lstOpciones.Add(objOpcion);
+                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
+                }
+
+                if (corralesComida.CorralId == -1)
+                {
+                    objCorral.OpcionId = -1;
+                    objCorral.CodigoCorral = "-- Seleccione --";
+                    lstCorrales.Add(objCorral);
+                    lstCorrales.AddRange(db.Corrales.ToList());
+                    ViewBag.CorralId = new SelectList(lstCorrales, "CorralId", "CodigoCorral");
+                }
+
                 db.CorralesComidas.Add(corralesComida);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CorralId = new SelectList(db.Corrales, "CorralId", "CodigoCorral", corralesComida.CorralId);
-            ViewBag.OpcionId = new SelectList(db.Opciones, "OpcionId", "Codigopcion", corralesComida.OpcionId);
+            objCorral.OpcionId = -1;
+            objCorral.CodigoCorral = "-- Seleccione --";
+            lstCorrales.Add(objCorral);
+            lstCorrales.AddRange(db.Corrales.ToList());
+            ViewBag.CorralId = new SelectList(lstCorrales, "CorralId", "CodigoCorral", corralesComida.CorralId);
+
+            objOpcion.OpcionId = -1;
+            objOpcion.Codigopcion = "-- Seleccione --";
+            lstOpciones.Add(objOpcion);
+            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", corralesComida.OpcionId);
+
             return View(corralesComida);
         }
 
@@ -79,7 +126,22 @@ namespace MiFincaVirtual.Backend.Controllers
                 return HttpNotFound();
             }
             ViewBag.CorralId = new SelectList(db.Corrales, "CorralId", "CodigoCorral", corralesComida.CorralId);
-            ViewBag.OpcionId = new SelectList(db.Opciones, "OpcionId", "Codigopcion", corralesComida.OpcionId);
+
+            List<Corrales> lstCorrales = new List<Corrales>();
+            Corrales objCorral = new Corrales();
+            objCorral.OpcionId = -1;
+            objCorral.CodigoCorral = "-- Seleccione --";
+            lstCorrales.Add(objCorral);
+            lstCorrales.AddRange(db.Corrales.ToList());
+            ViewBag.CorralId = new SelectList(lstCorrales, "CorralId", "CodigoCorral", corralesComida.CorralId);
+
+            List<Opciones> lstOpciones = new List<Opciones>();
+            Opciones objOpcion = new Opciones();
+            objOpcion.OpcionId = -1;
+            objOpcion.Codigopcion = "-- Seleccione --";
+            lstOpciones.Add(objOpcion);
+            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", corralesComida.OpcionId);
             return View(corralesComida);
         }
 
@@ -90,14 +152,47 @@ namespace MiFincaVirtual.Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "CorralComidaId,CantidadCorralComida,FechaCorralComida,CorralId,OpcionId")] CorralesComida corralesComida)
         {
+            List<Opciones> lstOpciones = new List<Opciones>();
+            Opciones objOpcion = new Opciones();
+            List<Corrales> lstCorrales = new List<Corrales>();
+            Corrales objCorral = new Corrales();
+
             if (ModelState.IsValid)
             {
+                if (corralesComida.OpcionId == -1)
+                {
+                    objOpcion.OpcionId = -1;
+                    objOpcion.Codigopcion = "-- Seleccione --";
+                    lstOpciones.Add(objOpcion);
+                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", corralesComida.OpcionId);
+                }
+
+                if (corralesComida.CorralId == -1)
+                {
+                    objCorral.OpcionId = -1;
+                    objCorral.CodigoCorral = "-- Seleccione --";
+                    lstCorrales.Add(objCorral);
+                    lstCorrales.AddRange(db.Corrales.ToList());
+                    ViewBag.CorralId = new SelectList(lstCorrales, "CorralId", "CodigoCorral", corralesComida.CorralId);
+                }
+
                 db.Entry(corralesComida).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.CorralId = new SelectList(db.Corrales, "CorralId", "CodigoCorral", corralesComida.CorralId);
-            ViewBag.OpcionId = new SelectList(db.Opciones, "OpcionId", "Codigopcion", corralesComida.OpcionId);
+            objCorral.OpcionId = -1;
+            objCorral.CodigoCorral = "-- Seleccione --";
+            lstCorrales.Add(objCorral);
+            lstCorrales.AddRange(db.Corrales.ToList());
+            ViewBag.CorralId = new SelectList(lstCorrales, "CorralId", "CodigoCorral", corralesComida.CorralId);
+
+            objOpcion.OpcionId = -1;
+            objOpcion.Codigopcion = "-- Seleccione --";
+            lstOpciones.Add(objOpcion);
+            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", corralesComida.OpcionId);
+
             return View(corralesComida);
         }
 

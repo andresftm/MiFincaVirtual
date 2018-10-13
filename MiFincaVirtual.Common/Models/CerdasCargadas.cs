@@ -19,26 +19,31 @@
         [Display(Name = "Cargada")]
         [Column(TypeName = "datetime2")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaMontaCerdaCargada { get; set; }
 
         [Required]
         [Display(Name = "Recordación")]
         [Column(TypeName = "datetime2")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaRecordacionCerdaCargada { get; set; }
 
         [Required]
         [Display(Name = "Inyectar")]
         [Column(TypeName = "datetime2")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaInyectarCerdaCargada { get; set; }
 
         [Required]
         [Display(Name = "Posible parto")]
         [Column(TypeName = "datetime2")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaPosiblePartoCerdaCargada { get; set; }
 
         [Display(Name = "Fecha parto")]
         [Column(TypeName = "datetime2")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaRealPartoCerdaCargada { get; set; }
 
         [Required]

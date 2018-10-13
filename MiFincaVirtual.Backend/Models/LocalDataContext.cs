@@ -37,5 +37,7 @@ namespace MiFincaVirtual.Backend.Models
         public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Corrales> Corrales { get; set; }
 
         public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.CorralesComida> CorralesComidas { get; set; }
+
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Inventarios> Inventarios { get; set; }
     }
 }

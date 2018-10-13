@@ -1,0 +1,82 @@
+﻿@model MiFincaVirtual.Common.Models.Inventarios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Inventarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tipo de cuido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaIngreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaIngreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FleteInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FleteInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorUnitarioInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorUnitarioInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotalInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotalInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepartidoInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepartidoInventario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InventarioId }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+</p>

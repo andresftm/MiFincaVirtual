@@ -1,5 +1,6 @@
 ﻿namespace MiFincaVirtual.Common.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.ComponentModel.DataAnnotations;
 
@@ -28,12 +29,14 @@
         public Boolean ActivoCorral { get; set; }
 
         #region Opcion
+        [Range(1, 32767, ErrorMessage = "Debe seleccionar un tipo de animal")]
         public int OpcionId { get; set; }
 
-        [Required]
         /// <summary> Tipo del corral, por ejemplo, Cerdos, Cabras, Equinos.</summary>
         public virtual Opciones Opciones { get; set; }
         #endregion
 
+        [JsonIgnore]
+        public virtual ICollection<CorralesComida> CorralesComida { get; set; }
     }
 }

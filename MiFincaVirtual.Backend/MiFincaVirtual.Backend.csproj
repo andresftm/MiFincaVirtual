@@ -215,6 +215,7 @@
     <Compile Include="Controllers\CorralesController.cs" />
     <Compile Include="Controllers\FincasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OpcionesController.cs" />
     <Compile Include="Controllers\OrdenosController.cs" />
@@ -224,18 +225,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
-    <Compile Include="Migrations\201810130119061_Animal.cs" />
-    <Compile Include="Migrations\201810130119061_Animal.Designer.cs">
-      <DependentUpon>201810130119061_Animal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810130428431_Ordenos.cs" />
-    <Compile Include="Migrations\201810130428431_Ordenos.Designer.cs">
-      <DependentUpon>201810130428431_Ordenos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810130444336_OrdenosFecha.cs" />
-    <Compile Include="Migrations\201810130444336_OrdenosFecha.Designer.cs">
-      <DependentUpon>201810130444336_OrdenosFecha.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModelo.cs" />
@@ -394,17 +383,22 @@
     <Content Include="Views\Opciones\Details.cshtml" />
     <Content Include="Views\Opciones\Edit.cshtml" />
     <Content Include="Views\Opciones\Index.cshtml" />
-    <Content Include="Views\Corrales\Create.cshtml" />
-    <Content Include="Views\Corrales\Delete.cshtml" />
-    <Content Include="Views\Corrales\Details.cshtml" />
-    <Content Include="Views\Corrales\Edit.cshtml" />
-    <Content Include="Views\Corrales\Index.cshtml" />
     <Content Include="Views\CorralesComidas\Create.cshtml" />
     <Content Include="Views\CorralesComidas\Delete.cshtml" />
     <Content Include="Views\CorralesComidas\Details.cshtml" />
     <Content Include="Views\CorralesComidas\Edit.cshtml" />
     <Content Include="Views\CorralesComidas\Index.cshtml" />
     <Content Include="Views\Ordenos\Create.cshtml" />
+    <Content Include="Views\Corrales\Create.cshtml" />
+    <Content Include="Views\Corrales\Delete.cshtml" />
+    <Content Include="Views\Corrales\Details.cshtml" />
+    <Content Include="Views\Corrales\Edit.cshtml" />
+    <Content Include="Views\Corrales\Index.cshtml" />
+    <Content Include="Views\Inventarios\Create.cshtml" />
+    <Content Include="Views\Inventarios\Delete.cshtml" />
+    <Content Include="Views\Inventarios\Details.cshtml" />
+    <Content Include="Views\Inventarios\Edit.cshtml" />
+    <Content Include="Views\Inventarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -432,17 +426,6 @@
       <Project>{3725572d-e16e-4c0c-8383-503a0ad7db07}</Project>
       <Name>MiFincaVirtual.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810130119061_Animal.resx">
-      <DependentUpon>201810130119061_Animal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810130428431_Ordenos.resx">
-      <DependentUpon>201810130428431_Ordenos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810130444336_OrdenosFecha.resx">
-      <DependentUpon>201810130444336_OrdenosFecha.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

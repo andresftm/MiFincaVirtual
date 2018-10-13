@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Listado de corrales</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear corral", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.ActivoCorral)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CorralId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CorralId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CorralId })
+            @Html.ActionLink("E", "Edit", new { id=item.CorralId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id=item.CorralId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id=item.CorralId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

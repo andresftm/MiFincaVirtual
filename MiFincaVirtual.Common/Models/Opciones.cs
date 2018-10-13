@@ -23,9 +23,9 @@
         public String TipoOpcion { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Corrales> Corrales { get; set; }
+        public virtual ICollection<Inventarios> Inventarios { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<CorralesComida> CorralesComidas { get; set; }
+        public virtual ICollection<CorralesComida> CorralesComida { get; set; }
     }
 }

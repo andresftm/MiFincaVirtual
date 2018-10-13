@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Listado de opciones</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar opción", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.TipoOpcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OpcionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OpcionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OpcionId })
+            @Html.ActionLink("E", "Edit", new { id=item.OpcionId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id=item.OpcionId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id=item.OpcionId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

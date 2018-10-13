@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MiFincaVirtual.Common.Models.Inventarios>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de inventarios</h2>
+
+<p>
+    @Html.ActionLink("Crear inventario", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadInventario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioInventario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FleteInventario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorUnitarioInventario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorTotalInventario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepartidoInventario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CantidadInventario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioInventario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FleteInventario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorUnitarioInventario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorTotalInventario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RepartidoInventario)
+        </td>
+        <td>
+            @Html.ActionLink("E", "Edit", new { id = item.InventarioId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id = item.InventarioId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id = item.InventarioId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

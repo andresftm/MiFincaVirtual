@@ -15,18 +15,20 @@
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Fecha")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaCorralComida { get; set; }
 
         #region Corrales
+        [Range(1, 32767, ErrorMessage = "Debe seleccionar un corral")]
         public int CorralId { get; set; }
 
         public virtual Corrales Corrales { get; set; }
         #endregion
 
         #region Opcion
+        [Range(1, 32767, ErrorMessage = "Debe seleccionar un tipo de animal")]
         public int OpcionId { get; set; }
 
-        [Required]
         /// <summary> Tipo de cuido, por ejemplo, Pre iniciador, Iniciador, Chanchito.</summary>
         public virtual Opciones Opciones { get; set; }
         #endregion

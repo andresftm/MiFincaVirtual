@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Listado de fincas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar finca", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -62,9 +62,9 @@
             }
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FincaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FincaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FincaId })
+            @Html.ActionLink("E", "Edit", new { id=item.FincaId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id=item.FincaId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id=item.FincaId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
