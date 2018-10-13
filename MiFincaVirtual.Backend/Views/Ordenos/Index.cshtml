@@ -42,7 +42,7 @@
     {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CodigoAnimal)
+            @Html.DisplayFor(modelItem => item.Animal)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumeroOrdeno)
@@ -60,7 +60,8 @@
             @Html.DisplayFor(modelItem => item.FechaOrdeno)
         </td>
         <td>
-            @Html.ActionLink("C", "Details", new { id = item.OrdenoId }, new { @class = "btn btn-info" })
+            @Html.ActionLink("C", "Details", new { id = item.OrdenoId }, new { @class = "btn btn-info" })|
+            @Html.ActionLink("D", "Delete", new { id = item.OrdenoId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
     }

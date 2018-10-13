@@ -63,7 +63,7 @@
         #region Metods
         private async void Edit()
         {
-            if (String.IsNullOrEmpty(this.ordeno.CodigoAnimal))
+            if (String.IsNullOrEmpty(this.ordeno.Animales.CodigoAnimal))
             {
                 await Application.Current.MainPage.DisplayAlert(Languages.Error
                     , Languages.CodeAnimalError

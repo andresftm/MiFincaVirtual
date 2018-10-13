@@ -157,7 +157,6 @@ namespace MiFincaVirtual.ViewModels
 
             var ordeno = new Ordenos
             {
-                CodigoAnimal = this.CodigoAnimal,
                 FechaOrdeno = this.FechaOrdeno.ToUniversalTime(),
                 LitrosOrdeno = litrosOrdeño,
                 NumeroOrdeno = Convert.ToInt32(NumeroOrdeno),

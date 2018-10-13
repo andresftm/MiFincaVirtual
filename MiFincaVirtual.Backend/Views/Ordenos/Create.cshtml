@@ -1,27 +1,22 @@
 ﻿@model MiFincaVirtual.Common.Models.Ordenos
 
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2>Ordeño</h2>
-
-
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
 <div class="form-horizontal">
     <h4>Ordenos</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <div class="form-group">
-        @Html.LabelFor(model => model.CodigoAnimal, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.AnimalId, "Bovino", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.CodigoAnimal, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CodigoAnimal, "", new { @class = "text-danger" })
+            @Html.DropDownList("AnimalId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.AnimalId, "", new { @class = "text-danger" })
         </div>
     </div>
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.NumeroOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -65,14 +60,12 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
             <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </div>
 </div>
 }
 
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+</div>

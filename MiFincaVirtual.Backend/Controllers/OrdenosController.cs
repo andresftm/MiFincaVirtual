@@ -3,6 +3,8 @@
     using MiFincaVirtual.Backend.Models;
     using MiFincaVirtual.Common.Models;
     using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Data;
     using System.Data.Entity;
     using System.Linq;
@@ -22,9 +24,7 @@
 
             using (var db = new LocalDataContext())
             {
-                Func<Ordenos, bool> predicado = x => animal == x.CodigoAnimal;
-
-                var ordenos = db.Ordenos.Where(predicado).OrderByDescending(o => o.FechaOrdeno)
+                var ordenos = db.Ordenos.Where(o => o.Animales.CodigoAnimal == animal).OrderByDescending(o => o.FechaOrdeno)
                     .Skip((pagina - 1) * cantidadRegistrosPorPagina)
                     .Take(cantidadRegistrosPorPagina).ToList();
 
@@ -38,12 +38,23 @@
                 var totalDeRegistros = db.Ordenos.Count();
 
                 var modelo = new ordenosPaginados();
-                modelo.OrdenosO = ordenos;
                 modelo.PaginaActual = pagina;
                 modelo.TotalDeRegistros = totalDeRegistros;
                 modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;
                 modelo.ValoresQueryString = new RouteValueDictionary();
                 modelo.ValoresQueryString["animal"] = animal;
+
+                var lstOrdenos = ordenos.Select(o => new Ordenos()
+                {
+                    FechaOrdeno = o.FechaOrdeno,
+                    LitrosOrdeno = o.LitrosOrdeno,
+                    NumeroOrdeno = o.NumeroOrdeno,
+                    PesoOrdeno = o.PesoOrdeno,
+                    OrdenoId = o.OrdenoId,
+                    GramosCuidoOrdeno = o.GramosCuidoOrdeno,
+                    Animal = o.Animales.CodigoAnimal,
+                });
+                modelo.OrdenosO = new ObservableCollection<Ordenos>(lstOrdenos);
 
                 return View(modelo);
             }
@@ -66,6 +77,14 @@
 
         public ActionResult Create()
         {
+            List<Animales> lstAnimales = new List<Animales>();
+            Animales objAnimal = new Animales();
+            objAnimal.AnimalId = -1;
+            objAnimal.CodigoAnimal = "-- Seleccione --";
+            lstAnimales.Add(objAnimal);
+            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Bovino" && O.EshembraAnimal == true).ToList());
+            ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal");
+
             return View();
         }
 
@@ -79,6 +98,14 @@
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
+            List<Animales> lstAnimales = new List<Animales>();
+            Animales objAnimal = new Animales();
+            objAnimal.AnimalId = -1;
+            objAnimal.CodigoAnimal = "-- Seleccione --";
+            lstAnimales.Add(objAnimal);
+            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Bovino" && O.EshembraAnimal == true).ToList());
+            ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal");
 
             return View(ordenos);
         }
