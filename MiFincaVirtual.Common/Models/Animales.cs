@@ -68,6 +68,9 @@
 
         [JsonIgnore]
         public virtual ICollection<CerdasCargadas> CerdasCargadas { get; set; }
-        
+
+        [JsonIgnore]
+        public virtual ICollection<Ordenos> Ordenos { get; set; }
+
     }
 }

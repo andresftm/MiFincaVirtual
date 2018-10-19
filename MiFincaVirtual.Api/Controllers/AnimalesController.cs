@@ -14,45 +14,44 @@ using MiFincaVirtual.Domain.Models;
 
 namespace MiFincaVirtual.Api.Controllers
 {
-    [Authorize]
-    public class OrdenosController : ApiController
+    public class AnimalesController : ApiController
     {
         private DataContext db = new DataContext();
 
-        // GET: api/Ordenos
-        public IQueryable<Ordenos> GetOrdenos()
+        // GET: api/Animales
+        public IQueryable<Animales> GetAnimales()
         {
-            return db.Ordenos.OrderByDescending(o => o.OrdenoId).Take(20);
+            return db.Animales;
         }
 
-        // GET: api/Ordenos/5
-        [ResponseType(typeof(Ordenos))]
-        public async Task<IHttpActionResult> GetOrdenos(int id)
+        // GET: api/Animales/5
+        [ResponseType(typeof(Animales))]
+        public async Task<IHttpActionResult> GetAnimales(int id)
         {
-            Ordenos ordenos = await db.Ordenos.FindAsync(id);
-            if (ordenos == null)
+            Animales animales = await db.Animales.FindAsync(id);
+            if (animales == null)
             {
                 return NotFound();
             }
 
-            return Ok(ordenos);
+            return Ok(animales);
         }
 
-        // PUT: api/Ordenos/5
+        // PUT: api/Animales/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutOrdenos(int id, Ordenos ordenos)
+        public async Task<IHttpActionResult> PutAnimales(int id, Animales animales)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != ordenos.OrdenoId)
+            if (id != animales.AnimalId)
             {
                 return BadRequest();
             }
 
-            db.Entry(ordenos).State = EntityState.Modified;
+            db.Entry(animales).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +59,7 @@ namespace MiFincaVirtual.Api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrdenosExists(id))
+                if (!AnimalesExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +72,35 @@ namespace MiFincaVirtual.Api.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Ordenos
-        [ResponseType(typeof(Ordenos))]
-        public async Task<IHttpActionResult> PostOrdenos(Ordenos ordenos)
+        // POST: api/Animales
+        [ResponseType(typeof(Animales))]
+        public async Task<IHttpActionResult> PostAnimales(Animales animales)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            ordenos.FechaOrdeno = ordenos.FechaOrdeno.ToUniversalTime();
-            db.Ordenos.Add(ordenos);
+            db.Animales.Add(animales);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = ordenos.OrdenoId }, ordenos);
+            return CreatedAtRoute("DefaultApi", new { id = animales.AnimalId }, animales);
         }
 
-        // DELETE: api/Ordenos/5
-        [ResponseType(typeof(Ordenos))]
-        public async Task<IHttpActionResult> DeleteOrdenos(int id)
+        // DELETE: api/Animales/5
+        [ResponseType(typeof(Animales))]
+        public async Task<IHttpActionResult> DeleteAnimales(int id)
         {
-            Ordenos ordenos = await db.Ordenos.FindAsync(id);
-            if (ordenos == null)
+            Animales animales = await db.Animales.FindAsync(id);
+            if (animales == null)
             {
                 return NotFound();
             }
 
-            db.Ordenos.Remove(ordenos);
+            db.Animales.Remove(animales);
             await db.SaveChangesAsync();
 
-            return Ok(ordenos);
+            return Ok(animales);
         }
 
         protected override void Dispose(bool disposing)
@@ -114,9 +112,9 @@ namespace MiFincaVirtual.Api.Controllers
             base.Dispose(disposing);
         }
 
-        private bool OrdenosExists(int id)
+        private bool AnimalesExists(int id)
         {
-            return db.Ordenos.Count(e => e.OrdenoId == id) > 0;
+            return db.Animales.Count(e => e.AnimalId == id) > 0;
         }
     }
 }

@@ -4,15 +4,15 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Eliminar inventario</h2>
+<h2>Delete</h2>
 
-<h3>¿Esta seguro que lo desea eliminar?</h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Inventarios</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Tipo de cuido
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
         </dt>
 
         <dd>
@@ -75,14 +75,22 @@
             @Html.DisplayFor(model => model.RepartidoInventario)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>

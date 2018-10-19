@@ -55,7 +55,7 @@
             var array = query.ToArray();
             var list = array.Select(p => new Ordenos
             {
-                CodigoAnimal = p.CodigoAnimal,
+                AnimalId = p.AnimalId,
                 FechaOrdeno = p.FechaOrdeno,
                 LitrosOrdeno = p.LitrosOrdeno,
                 NumeroOrdeno = p.NumeroOrdeno,

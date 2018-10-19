@@ -162,6 +162,7 @@ namespace MiFincaVirtual.ViewModels
                 NumeroOrdeno = Convert.ToInt32(NumeroOrdeno),
                 PesoOrdeno = pesosOrdeño,
                 GramosCuidoOrdeno = gramosCuidoOrdeno,
+                AnimalId = Convert.ToInt32(CodigoAnimal),
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();

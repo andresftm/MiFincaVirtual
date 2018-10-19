@@ -14,45 +14,44 @@ using MiFincaVirtual.Domain.Models;
 
 namespace MiFincaVirtual.Api.Controllers
 {
-    [Authorize]
-    public class OrdenosController : ApiController
+    public class CorralesComidasController : ApiController
     {
         private DataContext db = new DataContext();
 
-        // GET: api/Ordenos
-        public IQueryable<Ordenos> GetOrdenos()
+        // GET: api/CorralesComidas
+        public IQueryable<CorralesComida> GetCorralesComidas()
         {
-            return db.Ordenos.OrderByDescending(o => o.OrdenoId).Take(20);
+            return db.CorralesComidas;
         }
 
-        // GET: api/Ordenos/5
-        [ResponseType(typeof(Ordenos))]
-        public async Task<IHttpActionResult> GetOrdenos(int id)
+        // GET: api/CorralesComidas/5
+        [ResponseType(typeof(CorralesComida))]
+        public async Task<IHttpActionResult> GetCorralesComida(int id)
         {
-            Ordenos ordenos = await db.Ordenos.FindAsync(id);
-            if (ordenos == null)
+            CorralesComida corralesComida = await db.CorralesComidas.FindAsync(id);
+            if (corralesComida == null)
             {
                 return NotFound();
             }
 
-            return Ok(ordenos);
+            return Ok(corralesComida);
         }
 
-        // PUT: api/Ordenos/5
+        // PUT: api/CorralesComidas/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutOrdenos(int id, Ordenos ordenos)
+        public async Task<IHttpActionResult> PutCorralesComida(int id, CorralesComida corralesComida)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != ordenos.OrdenoId)
+            if (id != corralesComida.CorralComidaId)
             {
                 return BadRequest();
             }
 
-            db.Entry(ordenos).State = EntityState.Modified;
+            db.Entry(corralesComida).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +59,7 @@ namespace MiFincaVirtual.Api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrdenosExists(id))
+                if (!CorralesComidaExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +72,35 @@ namespace MiFincaVirtual.Api.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Ordenos
-        [ResponseType(typeof(Ordenos))]
-        public async Task<IHttpActionResult> PostOrdenos(Ordenos ordenos)
+        // POST: api/CorralesComidas
+        [ResponseType(typeof(CorralesComida))]
+        public async Task<IHttpActionResult> PostCorralesComida(CorralesComida corralesComida)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            ordenos.FechaOrdeno = ordenos.FechaOrdeno.ToUniversalTime();
-            db.Ordenos.Add(ordenos);
+            db.CorralesComidas.Add(corralesComida);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = ordenos.OrdenoId }, ordenos);
+            return CreatedAtRoute("DefaultApi", new { id = corralesComida.CorralComidaId }, corralesComida);
         }
 
-        // DELETE: api/Ordenos/5
-        [ResponseType(typeof(Ordenos))]
-        public async Task<IHttpActionResult> DeleteOrdenos(int id)
+        // DELETE: api/CorralesComidas/5
+        [ResponseType(typeof(CorralesComida))]
+        public async Task<IHttpActionResult> DeleteCorralesComida(int id)
         {
-            Ordenos ordenos = await db.Ordenos.FindAsync(id);
-            if (ordenos == null)
+            CorralesComida corralesComida = await db.CorralesComidas.FindAsync(id);
+            if (corralesComida == null)
             {
                 return NotFound();
             }
 
-            db.Ordenos.Remove(ordenos);
+            db.CorralesComidas.Remove(corralesComida);
             await db.SaveChangesAsync();
 
-            return Ok(ordenos);
+            return Ok(corralesComida);
         }
 
         protected override void Dispose(bool disposing)
@@ -114,9 +112,9 @@ namespace MiFincaVirtual.Api.Controllers
             base.Dispose(disposing);
         }
 
-        private bool OrdenosExists(int id)
+        private bool CorralesComidaExists(int id)
         {
-            return db.Ordenos.Count(e => e.OrdenoId == id) > 0;
+            return db.CorralesComidas.Count(e => e.CorralComidaId == id) > 0;
         }
     }
 }

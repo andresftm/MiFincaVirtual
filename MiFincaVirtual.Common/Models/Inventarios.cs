@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,5 +51,25 @@ namespace MiFincaVirtual.Common.Models
         /// Queryable se ha gastado.
         [Display(Name = "Repartido")]
         public int RepartidoInventario { get; set; }
+
+        /// <summary> Imagen de la factura. </summary>
+        [Display(Name = "Image")]
+        public string ImagePath { get; set; }
+
+        public string ImageFullPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.ImagePath))
+                {
+                    return "farm";
+                }
+
+                return $"http://mifincavirtual-001-site2.dtempurl.com/{this.ImagePath.Substring(1)}";
+            }
+        }
+
+        [NotMapped]
+        public byte[] ImageArray { get; set; }
     }
 }

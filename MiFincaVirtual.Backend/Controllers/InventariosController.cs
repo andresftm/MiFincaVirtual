@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using MiFincaVirtual.Backend.Models;
 using MiFincaVirtual.Common.Models;
+using MiFincaVirtual.Backend.Helpers;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
@@ -57,13 +58,14 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "InventarioId,OpcionId,CantidadInventario,PrecioInventario,FleteInventario,ValorUnitarioInventario,ValorTotalInventario,RepartidoInventario")] Inventarios inventarios)
+        public async Task<ActionResult> Create(InventariosView view)
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();
+
             if (ModelState.IsValid)
             {
-                if(inventarios.OpcionId == -1)
+                if (view.OpcionId == -1)
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
@@ -71,12 +73,22 @@ namespace MiFincaVirtual.Backend.Controllers
                     lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
                     ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
 
+                    return View(view);
                 }
 
-                inventarios.ValorTotalInventario = inventarios.PrecioInventario + inventarios.FleteInventario;
-                inventarios.ValorUnitarioInventario = inventarios.ValorTotalInventario / inventarios.CantidadInventario;
+                var pic = string.Empty;
+                var folder = "~/Content/Inventarios";
 
-                db.Inventarios.Add(inventarios);
+                if (view.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(view.ImageFile, folder);
+                    pic = string.Format("{0}/{1}", folder, pic);
+                }
+
+                var Inventario = this.ToInventario(view, pic);
+
+                db.Inventarios.Add(Inventario);
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -85,9 +97,27 @@ namespace MiFincaVirtual.Backend.Controllers
             objOpcion.Codigopcion = "-- Seleccione --";
             lstOpciones.Add(objOpcion);
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
-            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", inventarios.OpcionId);
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", view.OpcionId);
 
-            return View(inventarios);
+            return View(view);
+        }
+
+        private Inventarios ToInventario(InventariosView view, string pic)
+        {
+            return new Inventarios
+            {
+                CantidadInventario = view.CantidadInventario,
+                FechaIngreso = view.FechaIngreso,
+                FleteInventario = view.FleteInventario,
+                ImagePath = pic,
+                InventarioId = view.InventarioId,
+                OpcionId = view.OpcionId,
+                Opciones = view.Opciones,
+                PrecioInventario = view.PrecioInventario,
+                RepartidoInventario = view.RepartidoInventario,
+                ValorTotalInventario = view.ValorTotalInventario,
+                ValorUnitarioInventario = view.ValorUnitarioInventario,
+            };
         }
 
         // GET: Inventarios/Edit/5
@@ -119,7 +149,7 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "InventarioId,OpcionId,CantidadInventario,PrecioInventario,FleteInventario,ValorUnitarioInventario,ValorTotalInventario,RepartidoInventario")] Inventarios inventarios)
+        public async Task<ActionResult> Edit([Bind(Include = "InventarioId,OpcionId,FechaIngreso,CantidadInventario,PrecioInventario,FleteInventario,ValorUnitarioInventario,ValorTotalInventario,RepartidoInventario,ImagePath")] Inventarios inventarios)
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();

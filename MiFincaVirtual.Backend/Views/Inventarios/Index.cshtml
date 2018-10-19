@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Listado de inventarios</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear inventario", "Create", new { }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -34,6 +34,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RepartidoInventario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
         </th>
         <th></th>
     </tr>
@@ -65,9 +68,15 @@
             @Html.DisplayFor(modelItem => item.RepartidoInventario)
         </td>
         <td>
-            @Html.ActionLink("E", "Edit", new { id = item.InventarioId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("C", "Details", new { id = item.InventarioId }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("D", "Delete", new { id = item.InventarioId }, new { @class = "btn btn-danger" })
+            @if (!string.IsNullOrEmpty(item.ImagePath))
+            {
+                <img src="@Url.Content(item.ImagePath)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+            }
+        </td>
+        <td>
+            @Html.ActionLink("E", "Edit", new { id=item.InventarioId }) |
+            @Html.ActionLink("C", "Details", new { id=item.InventarioId }) |
+            @Html.ActionLink("D", "Delete", new { id=item.InventarioId })
         </td>
     </tr>
 }

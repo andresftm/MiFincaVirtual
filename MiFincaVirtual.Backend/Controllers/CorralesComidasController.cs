@@ -52,7 +52,7 @@ namespace MiFincaVirtual.Backend.Controllers
 
             List<Corrales> lstCorrales = new List<Corrales>();
             Corrales objCorral = new Corrales();
-            objCorral.OpcionId = -1;
+            objCorral.CorralId = -1;
             objCorral.CodigoCorral = "-- Seleccione --";
             lstCorrales.Add(objCorral);
             lstCorrales.AddRange(db.Corrales.ToList());
@@ -86,7 +86,7 @@ namespace MiFincaVirtual.Backend.Controllers
 
                 if (corralesComida.CorralId == -1)
                 {
-                    objCorral.OpcionId = -1;
+                    objCorral.CorralId = -1;
                     objCorral.CodigoCorral = "-- Seleccione --";
                     lstCorrales.Add(objCorral);
                     lstCorrales.AddRange(db.Corrales.ToList());
@@ -98,7 +98,7 @@ namespace MiFincaVirtual.Backend.Controllers
                 return RedirectToAction("Index");
             }
 
-            objCorral.OpcionId = -1;
+            objCorral.CorralId = -1;
             objCorral.CodigoCorral = "-- Seleccione --";
             lstCorrales.Add(objCorral);
             lstCorrales.AddRange(db.Corrales.ToList());
@@ -125,11 +125,10 @@ namespace MiFincaVirtual.Backend.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CorralId = new SelectList(db.Corrales, "CorralId", "CodigoCorral", corralesComida.CorralId);
 
             List<Corrales> lstCorrales = new List<Corrales>();
             Corrales objCorral = new Corrales();
-            objCorral.OpcionId = -1;
+            objCorral.CorralId = -1;
             objCorral.CodigoCorral = "-- Seleccione --";
             lstCorrales.Add(objCorral);
             lstCorrales.AddRange(db.Corrales.ToList());
@@ -170,7 +169,7 @@ namespace MiFincaVirtual.Backend.Controllers
 
                 if (corralesComida.CorralId == -1)
                 {
-                    objCorral.OpcionId = -1;
+                    objCorral.CorralId = -1;
                     objCorral.CodigoCorral = "-- Seleccione --";
                     lstCorrales.Add(objCorral);
                     lstCorrales.AddRange(db.Corrales.ToList());
@@ -181,7 +180,7 @@ namespace MiFincaVirtual.Backend.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            objCorral.OpcionId = -1;
+            objCorral.CorralId = -1;
             objCorral.CodigoCorral = "-- Seleccione --";
             lstCorrales.Add(objCorral);
             lstCorrales.AddRange(db.Corrales.ToList());

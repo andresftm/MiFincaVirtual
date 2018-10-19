@@ -69,7 +69,7 @@
         {
             var myListOrdenosItemViewModel = this.myOrdenos.Select(o => new OrdenosItemViewModel()
             {
-                CodigoAnimal = o.CodigoAnimal,
+                AnimalId = o.AnimalId,
                 FechaOrdeno = o.FechaOrdeno,
                 LitrosOrdeno = o.LitrosOrdeno,
                 NumeroOrdeno = o.NumeroOrdeno,

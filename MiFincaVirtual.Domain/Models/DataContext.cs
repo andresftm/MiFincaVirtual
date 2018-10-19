@@ -10,9 +10,18 @@
                 
         }
 
-        public DbSet<Ordenos> Ordenos { get; set; }
         public DbSet<Razas> Razas { get; set; }
 
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Ordenos> Ordenos { get; set; }
+
         public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Fincas> Fincas { get; set; }
+
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Animales> Animales { get; set; }
+
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Opciones> Opciones { get; set; }
+
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.CorralesComida> CorralesComidas { get; set; }
+
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Corrales> Corrales { get; set; }
     }
 }
