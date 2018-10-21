@@ -1,0 +1,56 @@
+﻿@model MiFincaVirtual.Common.Models.LotesComida
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar registro</h2>
+
+<h3>¿Esta seguro que lo desea eliminar?</h3>
+<div>
+    <h4>Lotes comida</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Lote
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lotes.NombreLote)
+        </dd>
+
+        <dt>
+            Cuido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadLoteComida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadLoteComida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaLoteComida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaLoteComida)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+        </div>
+    }
+</div>

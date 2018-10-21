@@ -5,20 +5,9 @@
     public class LotesComida
     {
         [Key]
-        public int CorralComidaId { get; set; }
+        public int LoteComidaId { get; set; }
 
-        [Required]
-        [Display(Name = "Cantidad")]
-        /// <summary>La cantidad en gramos de lo que se esta registrando.</summary>
-        public int CantidadLoteComida { get; set; }
-
-        [Required]
-        [DataType(DataType.Date)]
-        [Display(Name = "Fecha")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime FechaLoteComida { get; set; }
-
-        #region Corrales
+        #region Lotes
         [Range(1, 32767, ErrorMessage = "Debe seleccionar un lote")]
         public int LoteId { get; set; }
 
@@ -32,5 +21,17 @@
         /// <summary> Tipo de cuido, por ejemplo, Pre iniciador, Iniciador, Chanchito.</summary>
         public virtual Opciones Opciones { get; set; }
         #endregion
+
+        [Required]
+        [Display(Name = "Cantidad")]
+        /// <summary>La cantidad en gramos de lo que se esta registrando.</summary>
+        public int CantidadLoteComida { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime FechaLoteComida { get; set; }
+
     }
 }

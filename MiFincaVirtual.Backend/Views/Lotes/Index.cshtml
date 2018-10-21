@@ -18,6 +18,9 @@
             @Html.DisplayNameFor(model => model.NombreLote)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.AnimalesLote)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FechaAperturaLote)
         </th>
         <th>
@@ -50,6 +53,9 @@
             @Html.DisplayFor(modelItem => item.NombreLote)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.AnimalesLote)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.FechaAperturaLote)
         </td>
         <td>
@@ -71,9 +77,9 @@
             @Html.DisplayFor(modelItem => item.CerradoLote)
         </td>
         <td>
-            @Html.ActionLink("E", "Edit", new { id=item.LoteId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("C", "Details", new { id=item.LoteId }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("D", "Delete", new { id=item.LoteId }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("E", "Edit", new { id = item.LoteId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id = item.LoteId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id = item.LoteId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

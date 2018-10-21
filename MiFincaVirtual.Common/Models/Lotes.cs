@@ -18,8 +18,12 @@
         [Display(Name = "Descripción")]
         public String DescripcionLote { get; set; }
 
+        [Required]
+        [Display(Name = "Animales")]
+        public int AnimalesLote { get; set; }
+
         #region Opcion
-        [Range(1, 32767, ErrorMessage = "Debe seleccionar un tipo de animales del lote")]
+        [Range(1, 32767, ErrorMessage = "Debe seleccionar el tipo de animales del lote")]
         public int OpcionId { get; set; }
 
         /// <summary> Tipo de cuido, por ejemplo, Pre iniciador, Iniciador, Chanchito.</summary>
@@ -63,7 +67,6 @@
         [Display(Name = "Cerrar lote")]
         public Boolean CerradoLote { get; set; }
 
-        [JsonIgnore]
-        public virtual ICollection<LotesComida> LotesComida { get; set; }
+
     }
 }

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MiFincaVirtual.Common.Models.LotesComida>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de comidas registradas</h2>
+
+<p>
+    @Html.ActionLink("Registrar comidas", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Lote
+        </th>
+        <th>
+           Cuido
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadLoteComida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaLoteComida)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lotes.NombreLote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CantidadLoteComida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaLoteComida)
+        </td>
+        <td>
+            @Html.ActionLink("E", "Edit", new { id=item.LoteComidaId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id=item.LoteComidaId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id=item.LoteComidaId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

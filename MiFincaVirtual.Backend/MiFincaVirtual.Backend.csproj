@@ -217,6 +217,7 @@
     <Compile Include="Controllers\FincasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventariosController.cs" />
+    <Compile Include="Controllers\LotesComidasController.cs" />
     <Compile Include="Controllers\LotesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OpcionesController.cs" />
@@ -440,6 +441,11 @@
     <Content Include="Views\Lotes\Details.cshtml" />
     <Content Include="Views\Lotes\Edit.cshtml" />
     <Content Include="Views\Lotes\Index.cshtml" />
+    <Content Include="Views\LotesComidas\Create.cshtml" />
+    <Content Include="Views\LotesComidas\Delete.cshtml" />
+    <Content Include="Views\LotesComidas\Details.cshtml" />
+    <Content Include="Views\LotesComidas\Edit.cshtml" />
+    <Content Include="Views\LotesComidas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

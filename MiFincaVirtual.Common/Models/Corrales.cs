@@ -37,7 +37,5 @@
         public virtual Opciones Opciones { get; set; }
         #endregion
 
-        [JsonIgnore]
-        public virtual ICollection<LotesComida> CorralesComida { get; set; }
     }
 }
