@@ -2,6 +2,7 @@
 {
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class Opciones
@@ -26,6 +27,9 @@
         public virtual ICollection<Inventarios> Inventarios { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<CorralesComida> CorralesComida { get; set; }
+        public virtual ICollection<LotesComida> CorralesComida { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Lotes> Lotes { get; set; }
     }
 }

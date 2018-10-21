@@ -42,7 +42,14 @@ namespace MiFincaVirtual.Backend.Controllers
         // GET: CerdasCargadas/Create
         public ActionResult Create()
         {
-            ViewBag.AnimalId = new SelectList(db.Animales, "AnimalId", "CodigoAnimal");
+            List<Animales> lstAnimales = new List<Animales>();
+            Animales objAnimal = new Animales();
+            objAnimal.AnimalId = -1;
+            objAnimal.CodigoAnimal = "-- Seleccione --";
+            lstAnimales.Add(objAnimal);
+            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Porcino" && O.EshembraAnimal == true && O.EshembraGestanteAnimal == true).ToList());
+            ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal");
+
             return View();
         }
 
@@ -51,10 +58,24 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CerdaCargadaId,AnimalId,FechaMontaCerdaCargada,FechaRecordacionCerdaCargada,FechaInyectarCerdaCargada,FechaPosiblePartoCerdaCargada,FechaRealPartoCerdaCargada,ActivoCerdaCargada,NacidosCerdaCargada,NacidosVivosCerdaCargada,NacidosMuertosCerdaCargada,NacidosMomiasCerdaCargada,DestetosCerdaCargada")] CerdasCargadas cerdasCargadas)
+        public async Task<ActionResult> Create(CerdasCargadas cerdasCargadas)
         {
+            List<Animales> lstAnimales = new List<Animales>();
+            Animales objAnimal = new Animales();
+
             if (ModelState.IsValid)
             {
+                if (cerdasCargadas.AnimalId == -1)
+                {
+                    objAnimal.AnimalId = -1;
+                    objAnimal.CodigoAnimal = "-- Seleccione --";
+                    lstAnimales.Add(objAnimal);
+                    lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Porcino" && O.EshembraAnimal == true && O.EshembraGestanteAnimal == true).ToList());
+                    ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal");
+
+                    return View(cerdasCargadas);
+                }
+
                 cerdasCargadas.FechaRecordacionCerdaCargada = cerdasCargadas.FechaMontaCerdaCargada.AddDays(90);
                 cerdasCargadas.FechaInyectarCerdaCargada = cerdasCargadas.FechaMontaCerdaCargada.AddDays(100);
                 cerdasCargadas.FechaPosiblePartoCerdaCargada = cerdasCargadas.FechaMontaCerdaCargada.AddDays(113);
@@ -69,7 +90,12 @@ namespace MiFincaVirtual.Backend.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AnimalId = new SelectList(db.Animales, "AnimalId", "CodigoAnimal", cerdasCargadas.AnimalId);
+            objAnimal.AnimalId = -1;
+            objAnimal.CodigoAnimal = "-- Seleccione --";
+            lstAnimales.Add(objAnimal);
+            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Porcino" && O.EshembraAnimal == true && O.EshembraGestanteAnimal == true).ToList());
+            ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal", cerdasCargadas.AnimalId);
+
             return View(cerdasCargadas);
         }
 
@@ -85,7 +111,15 @@ namespace MiFincaVirtual.Backend.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AnimalId = new SelectList(db.Animales, "AnimalId", "CodigoAnimal", cerdasCargadas.AnimalId);
+
+            List<Animales> lstAnimales = new List<Animales>();
+            Animales objAnimal = new Animales();
+            objAnimal.AnimalId = -1;
+            objAnimal.CodigoAnimal = "-- Seleccione --";
+            lstAnimales.Add(objAnimal);
+            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Porcino" && O.EshembraAnimal == true && O.EshembraGestanteAnimal == true).ToList());
+            ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal", cerdasCargadas.AnimalId);
+
             return View(cerdasCargadas);
         }
 
@@ -94,15 +128,36 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CerdaCargadaId,AnimalId,FechaMontaCerdaCargada,FechaRecordacionCerdaCargada,FechaInyectarCerdaCargada,FechaPosiblePartoCerdaCargada,FechaRealPartoCerdaCargada,ActivoCerdaCargada,NacidosCerdaCargada,NacidosVivosCerdaCargada,NacidosMuertosCerdaCargada,NacidosMomiasCerdaCargada,DestetosCerdaCargada")] CerdasCargadas cerdasCargadas)
+        public async Task<ActionResult> Edit(CerdasCargadas cerdasCargadas)
         {
+            List<Animales> lstAnimales = new List<Animales>();
+            Animales objAnimal = new Animales();
+
             if (ModelState.IsValid)
             {
+                if (cerdasCargadas.AnimalId == -1)
+                {
+                    objAnimal.AnimalId = -1;
+                    objAnimal.CodigoAnimal = "-- Seleccione --";
+                    lstAnimales.Add(objAnimal);
+                    lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Porcino" && O.EshembraAnimal == true && O.EshembraGestanteAnimal == true).ToList());
+                    ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal", cerdasCargadas.AnimalId);
+
+                    return View(cerdasCargadas);
+                }
+
+
                 db.Entry(cerdasCargadas).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.AnimalId = new SelectList(db.Animales, "AnimalId", "CodigoAnimal", cerdasCargadas.AnimalId);
+
+            objAnimal.AnimalId = -1;
+            objAnimal.CodigoAnimal = "-- Seleccione --";
+            lstAnimales.Add(objAnimal);
+            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Porcino" && O.EshembraAnimal == true && O.EshembraGestanteAnimal == true).ToList());
+            ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal", cerdasCargadas.AnimalId);
+
             return View(cerdasCargadas);
         }
 

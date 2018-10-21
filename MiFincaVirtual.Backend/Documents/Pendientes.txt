@@ -1,0 +1,1 @@
+﻿** Comparar que si un animal es macho no puede seleccionarlo como gestante

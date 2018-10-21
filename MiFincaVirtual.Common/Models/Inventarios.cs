@@ -34,18 +34,22 @@ namespace MiFincaVirtual.Common.Models
         /// Precio de lo comprado.
         [Required]
         [Display(Name = "Precio")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public Decimal PrecioInventario { get; set; }
 
         /// Valor del transporte.
         [Required]
         [Display(Name = "Flete")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public Decimal FleteInventario { get; set; }
 
         [Display(Name = "Valor Unitario")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public Decimal ValorUnitarioInventario { get; set; }
 
         ///Valor total de lo comprado
         [Display(Name = "Valor Total")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public Decimal ValorTotalInventario { get; set; }
 
         /// Queryable se ha gastado.

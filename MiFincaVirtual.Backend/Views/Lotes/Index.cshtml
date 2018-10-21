@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MiFincaVirtual.Common.Models.Lotes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de lotes</h2>
+
+<p>
+    @Html.ActionLink("Crear lote", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tipo
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreLote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAperturaLote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KilosCarneInicialLote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorInicialLote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaFinalLote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KilosCarneFinalLote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorFinalLote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CerradoLote)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreLote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAperturaLote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KilosCarneInicialLote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorInicialLote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFinalLote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KilosCarneFinalLote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorFinalLote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CerradoLote)
+        </td>
+        <td>
+            @Html.ActionLink("E", "Edit", new { id=item.LoteId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id=item.LoteId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id=item.LoteId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

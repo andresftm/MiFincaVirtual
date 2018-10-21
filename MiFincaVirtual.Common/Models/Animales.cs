@@ -43,6 +43,10 @@
         [Display(Name = "Hembra")]
         public bool EshembraAnimal { get; set; }
 
+        /// En vcas de ser hemra indica si es gestante o no.
+        [Display(Name = "Gestante")]
+        public bool EshembraGestanteAnimal { get; set; }
+
         /// <summary> Nombre del padre del animal. </summary>
         [Display(Name = "Padre")]
         public string PadreAnimal { get; set; }

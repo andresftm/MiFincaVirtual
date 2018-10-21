@@ -44,7 +44,7 @@
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "QuedoId,FechaQueso,LecheUtilizadaQueso,PesoQueso,PrecioQueso")] Quesos quesos)
+        public async Task<ActionResult> Create( Quesos quesos)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "QuedoId,FechaQueso,LecheUtilizadaQueso,PesoQueso,PrecioQueso")] Quesos quesos)
+        public async Task<ActionResult> Edit( Quesos quesos)
         {
             if (ModelState.IsValid)
             {

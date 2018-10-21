@@ -213,11 +213,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnimalesController.cs" />
     <Compile Include="Controllers\CerdasCargadasController.cs" />
-    <Compile Include="Controllers\CorralesComidasController.cs" />
     <Compile Include="Controllers\CorralesController.cs" />
     <Compile Include="Controllers\FincasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventariosController.cs" />
+    <Compile Include="Controllers\LotesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OpcionesController.cs" />
     <Compile Include="Controllers\OrdenosController.cs" />
@@ -227,10 +227,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
-    <Compile Include="Migrations\201810190054108_inventario.cs" />
-    <Compile Include="Migrations\201810190054108_inventario.Designer.cs">
-      <DependentUpon>201810190054108_inventario.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModelo.cs" />
@@ -258,6 +254,7 @@
     <Content Include="Content\jumbotron.css" />
     <Content Include="Content\prueba.css" />
     <Content Include="Documents\Actualización de base de datos.txt" />
+    <Content Include="Documents\Pendientes.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -418,11 +415,6 @@
     <Content Include="Views\Opciones\Details.cshtml" />
     <Content Include="Views\Opciones\Edit.cshtml" />
     <Content Include="Views\Opciones\Index.cshtml" />
-    <Content Include="Views\CorralesComidas\Create.cshtml" />
-    <Content Include="Views\CorralesComidas\Delete.cshtml" />
-    <Content Include="Views\CorralesComidas\Details.cshtml" />
-    <Content Include="Views\CorralesComidas\Edit.cshtml" />
-    <Content Include="Views\CorralesComidas\Index.cshtml" />
     <Content Include="Views\Ordenos\Create.cshtml" />
     <Content Include="Views\Corrales\Create.cshtml" />
     <Content Include="Views\Corrales\Delete.cshtml" />
@@ -443,6 +435,11 @@
     <Content Include="Views\Inventarios\Details.cshtml" />
     <Content Include="Views\Inventarios\Edit.cshtml" />
     <Content Include="Views\Inventarios\Index.cshtml" />
+    <Content Include="Views\Lotes\Create.cshtml" />
+    <Content Include="Views\Lotes\Delete.cshtml" />
+    <Content Include="Views\Lotes\Details.cshtml" />
+    <Content Include="Views\Lotes\Edit.cshtml" />
+    <Content Include="Views\Lotes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -468,11 +465,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810190054108_inventario.resx">
-      <DependentUpon>201810190054108_inventario.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

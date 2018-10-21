@@ -19,16 +19,16 @@ namespace MiFincaVirtual.Api.Controllers
         private DataContext db = new DataContext();
 
         // GET: api/CorralesComidas
-        public IQueryable<CorralesComida> GetCorralesComidas()
+        public IQueryable<LotesComida> GetCorralesComidas()
         {
             return db.CorralesComidas;
         }
 
         // GET: api/CorralesComidas/5
-        [ResponseType(typeof(CorralesComida))]
+        [ResponseType(typeof(LotesComida))]
         public async Task<IHttpActionResult> GetCorralesComida(int id)
         {
-            CorralesComida corralesComida = await db.CorralesComidas.FindAsync(id);
+            LotesComida corralesComida = await db.CorralesComidas.FindAsync(id);
             if (corralesComida == null)
             {
                 return NotFound();
@@ -39,7 +39,7 @@ namespace MiFincaVirtual.Api.Controllers
 
         // PUT: api/CorralesComidas/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCorralesComida(int id, CorralesComida corralesComida)
+        public async Task<IHttpActionResult> PutCorralesComida(int id, LotesComida corralesComida)
         {
             if (!ModelState.IsValid)
             {
@@ -73,8 +73,8 @@ namespace MiFincaVirtual.Api.Controllers
         }
 
         // POST: api/CorralesComidas
-        [ResponseType(typeof(CorralesComida))]
-        public async Task<IHttpActionResult> PostCorralesComida(CorralesComida corralesComida)
+        [ResponseType(typeof(LotesComida))]
+        public async Task<IHttpActionResult> PostCorralesComida(LotesComida corralesComida)
         {
             if (!ModelState.IsValid)
             {
@@ -88,10 +88,10 @@ namespace MiFincaVirtual.Api.Controllers
         }
 
         // DELETE: api/CorralesComidas/5
-        [ResponseType(typeof(CorralesComida))]
+        [ResponseType(typeof(LotesComida))]
         public async Task<IHttpActionResult> DeleteCorralesComida(int id)
         {
-            CorralesComida corralesComida = await db.CorralesComidas.FindAsync(id);
+            LotesComida corralesComida = await db.CorralesComidas.FindAsync(id);
             if (corralesComida == null)
             {
                 return NotFound();

@@ -36,6 +36,9 @@
             Hembra
         </th>
         <th>
+            Gestante
+        </th>
+        <th>
             Padre
         </th>
         <th>
@@ -71,15 +74,18 @@
             @Html.DisplayFor(modelItem => item.EshembraAnimal)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.EshembraGestanteAnimal)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.PadreAnimal)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MadreAnimal)
         </td>
         <td>
-            @Html.ActionLink("E", "Edit", new { id=item.AnimalId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("C", "Details", new { id=item.AnimalId }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("D", "Delete", new { id=item.AnimalId }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("E", "Edit", new { id = item.AnimalId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id = item.AnimalId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id = item.AnimalId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

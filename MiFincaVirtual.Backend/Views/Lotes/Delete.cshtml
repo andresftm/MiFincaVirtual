@@ -1,0 +1,120 @@
+﻿@model MiFincaVirtual.Common.Models.Lotes
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar lote</h2>
+
+<h3>¿Esta seguro que lo desea eliminar?</h3>
+<div>
+    <h4>Lotes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionLote)
+        </dt>
+
+        <dd>
+            @Html.TextAreaFor(model => model.DescripcionLote, 5, 40, null)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MadreLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MadreLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PadreLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PadreLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAperturaLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAperturaLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KilosCarneInicialLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KilosCarneInicialLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorInicialLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorInicialLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinalLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinalLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KilosCarneFinalLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KilosCarneFinalLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorFinalLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorFinalLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CerradoLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CerradoLote)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+        </div>
+    }
+</div>

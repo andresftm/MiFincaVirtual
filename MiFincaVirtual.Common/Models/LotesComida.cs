@@ -2,7 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    public class CorralesComida
+    public class LotesComida
     {
         [Key]
         public int CorralComidaId { get; set; }
@@ -10,23 +10,23 @@
         [Required]
         [Display(Name = "Cantidad")]
         /// <summary>La cantidad en gramos de lo que se esta registrando.</summary>
-        public int CantidadCorralComida { get; set; }
+        public int CantidadLoteComida { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Fecha")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime FechaCorralComida { get; set; }
+        public DateTime FechaLoteComida { get; set; }
 
         #region Corrales
-        [Range(1, 32767, ErrorMessage = "Debe seleccionar un corral")]
-        public int CorralId { get; set; }
+        [Range(1, 32767, ErrorMessage = "Debe seleccionar un lote")]
+        public int LoteId { get; set; }
 
-        public virtual Corrales Corrales { get; set; }
+        public virtual Lotes Lotes { get; set; }
         #endregion
 
         #region Opcion
-        [Range(1, 32767, ErrorMessage = "Debe seleccionar un tipo de animal")]
+        [Range(1, 32767, ErrorMessage = "Debe seleccionar un tipo de cuido")]
         public int OpcionId { get; set; }
 
         /// <summary> Tipo de cuido, por ejemplo, Pre iniciador, Iniciador, Chanchito.</summary>

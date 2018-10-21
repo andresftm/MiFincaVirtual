@@ -20,8 +20,6 @@
         /// <summary> Listros del animal en el ordeño. </summary>
         [Required]
         [Display(Name = "Litros")]
-        [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
         public Decimal LitrosOrdeno { get; set; }
 
         /// <summary> Peso de la leche en el ordeño </summary>

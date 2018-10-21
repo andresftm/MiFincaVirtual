@@ -79,7 +79,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImagePath)
+            @if (!String.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Url.Content(Model.ImagePath)" alt="Image" style="width:300px;height:200px;max-width: 100%; height: auto;" />
+            }
         </dd>
 
     </dl>

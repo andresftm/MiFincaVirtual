@@ -1,0 +1,114 @@
+﻿@model MiFincaVirtual.Common.Models.Lotes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Lotes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionLote)
+        </dt>
+
+        <dd>
+            @Html.TextAreaFor(model => model.DescripcionLote, 10, 40, null)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MadreLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MadreLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PadreLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PadreLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAperturaLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAperturaLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KilosCarneInicialLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KilosCarneInicialLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorInicialLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorInicialLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinalLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinalLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KilosCarneFinalLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KilosCarneFinalLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorFinalLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorFinalLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CerradoLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CerradoLote)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LoteId }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+</p>

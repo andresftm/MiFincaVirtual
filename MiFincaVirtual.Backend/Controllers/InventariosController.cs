@@ -13,6 +13,7 @@ using MiFincaVirtual.Backend.Helpers;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
+    [Authorize]
     public class InventariosController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
@@ -21,7 +22,7 @@ namespace MiFincaVirtual.Backend.Controllers
         public async Task<ActionResult> Index()
         {
             var inventarios = db.Inventarios.Include(i => i.Opciones);
-            return View(await inventarios.ToListAsync());
+            return View(await inventarios.OrderByDescending(i => i.FechaIngreso).ToListAsync());
         }
 
         // GET: Inventarios/Details/5
@@ -87,6 +88,10 @@ namespace MiFincaVirtual.Backend.Controllers
 
                 var Inventario = this.ToInventario(view, pic);
 
+                Inventario.RepartidoInventario = 0;
+                Inventario.ValorTotalInventario = Inventario.PrecioInventario + Inventario.FleteInventario;
+                Inventario.ValorUnitarioInventario = Inventario.ValorTotalInventario / Inventario.CantidadInventario;
+
                 db.Inventarios.Add(Inventario);
 
                 await db.SaveChangesAsync();
@@ -140,32 +145,61 @@ namespace MiFincaVirtual.Backend.Controllers
             lstOpciones.Add(objOpcion);
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
             ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", inventarios.OpcionId);
+            var inventariosView = this.ToView(inventarios);
 
-            return View(inventarios);
+            return View(inventariosView);
         }
 
+        private InventariosView ToView(Inventarios inventario)
+        {
+            return new InventariosView
+            {
+                CantidadInventario = inventario.CantidadInventario,
+                FechaIngreso = inventario.FechaIngreso,
+                FleteInventario = inventario.FleteInventario,
+                ImagePath = inventario.ImagePath,
+                PrecioInventario = inventario.PrecioInventario,
+                RepartidoInventario = inventario.RepartidoInventario,
+                ValorTotalInventario = inventario.ValorTotalInventario,
+                ValorUnitarioInventario = inventario.ValorUnitarioInventario,
+                InventarioId = inventario.InventarioId,
+                OpcionId = inventario.OpcionId,
+            };
+        }
         // POST: Inventarios/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "InventarioId,OpcionId,FechaIngreso,CantidadInventario,PrecioInventario,FleteInventario,ValorUnitarioInventario,ValorTotalInventario,RepartidoInventario,ImagePath")] Inventarios inventarios)
+        public async Task<ActionResult> Edit (InventariosView view)
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();
 
             if (ModelState.IsValid)
             {
-                if (inventarios.OpcionId == -1)
+                if (view.OpcionId == -1)
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
                     lstOpciones.Add(objOpcion);
                     lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
-                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", inventarios.OpcionId);
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", view.OpcionId);
                 }
 
-                db.Entry(inventarios).State = EntityState.Modified;
+                var pic = view.ImagePath;
+                var folder = "~/Content/Inventarios";
+
+                if (view.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(view.ImageFile, folder);
+                    pic = string.Format("{0}/{1}", folder, pic);
+                }
+
+                var Inventario = this.ToInventario(view, pic);
+
+
+                db.Entry(Inventario).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -174,9 +208,9 @@ namespace MiFincaVirtual.Backend.Controllers
             objOpcion.Codigopcion = "-- Seleccione --";
             lstOpciones.Add(objOpcion);
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
-            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", inventarios.OpcionId);
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", view.OpcionId);
 
-            return View(inventarios);
+            return View(view);
         }
 
         // GET: Inventarios/Delete/5

@@ -53,8 +53,8 @@
     <Compile Include="Models\CerdasCargadas.cs" />
     <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\Corrales.cs" />
-    <Compile Include="Models\CorralesComida.cs" />
-    <Compile Include="Models\ICollection.cs" />
+    <Compile Include="Models\LotesComida.cs" />
+    <Compile Include="Models\Lotes.cs" />
     <Compile Include="Models\Opciones.cs" />
     <Compile Include="Models\DataFacebook.cs" />
     <Compile Include="Models\Fincas.cs" />

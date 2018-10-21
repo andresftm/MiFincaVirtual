@@ -76,26 +76,20 @@ namespace MiFincaVirtual.Backend.Controllers
                 PaisFinca = view.PaisFinca,
             };
         }
-
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             Fincas fincas = await db.Fincas.FindAsync(id);
-
             if (fincas == null)
             {
                 return HttpNotFound();
             }
-
             var fincaview = this.ToView(fincas);
-
             return View(fincaview);
         }
-
         private FincasView ToView(Fincas finca)
         {
             return new FincasView
@@ -108,6 +102,7 @@ namespace MiFincaVirtual.Backend.Controllers
                 NombreFinca = finca.NombreFinca,
                 FincaId = finca.FincaId,
                 PaisFinca = finca.PaisFinca,
+                
             };
         }
 

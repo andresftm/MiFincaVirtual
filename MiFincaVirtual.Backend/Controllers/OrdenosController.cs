@@ -82,7 +82,7 @@
             objAnimal.AnimalId = -1;
             objAnimal.CodigoAnimal = "-- Seleccione --";
             lstAnimales.Add(objAnimal);
-            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Bovino" && O.EshembraAnimal == true).ToList());
+            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Bovino" && O.EshembraAnimal == true && O.EshembraGestanteAnimal == true).ToList());
             ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal");
 
             return View();
@@ -92,19 +92,30 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Ordenos ordenos)
         {
+            List<Animales> lstAnimales = new List<Animales>();
+            Animales objAnimal = new Animales();
             if (ModelState.IsValid)
             {
+                if(ordenos.AnimalId == -1)
+                {
+                    objAnimal.AnimalId = -1;
+                    objAnimal.CodigoAnimal = "-- Seleccione --";
+                    lstAnimales.Add(objAnimal);
+                    lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Bovino" && O.EshembraAnimal == true && O.EshembraGestanteAnimal == true).ToList());
+                    ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal");
+
+                    return View(ordenos);
+                }
+
                 db.Ordenos.Add(ordenos);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            List<Animales> lstAnimales = new List<Animales>();
-            Animales objAnimal = new Animales();
             objAnimal.AnimalId = -1;
             objAnimal.CodigoAnimal = "-- Seleccione --";
             lstAnimales.Add(objAnimal);
-            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Bovino" && O.EshembraAnimal == true).ToList());
+            lstAnimales.AddRange(db.Animales.Where(O => O.Opciones.Codigopcion == "Bovino" && O.EshembraAnimal == true && O.EshembraGestanteAnimal == true).ToList());
             ViewBag.AnimalId = new SelectList(lstAnimales, "AnimalId", "CodigoAnimal");
 
             return View(ordenos);

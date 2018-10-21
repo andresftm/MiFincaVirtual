@@ -49,7 +49,7 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "OpcionId,Codigopcion,DescripcionOpcion,TipoOpcion")] Opciones opciones)
+        public async Task<ActionResult> Create(Opciones opciones)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "OpcionId,Codigopcion,DescripcionOpcion,TipoOpcion")] Opciones opciones)
+        public async Task<ActionResult> Edit( Opciones opciones)
         {
             if (ModelState.IsValid)
             {

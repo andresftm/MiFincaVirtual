@@ -13,33 +13,33 @@ using MiFincaVirtual.Common.Models;
 namespace MiFincaVirtual.Backend.Controllers
 {
     [Authorize]
-    public class CorralesController : Controller
+    public class LotesController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
 
-        // GET: Corrales
+        // GET: Lotes
         public async Task<ActionResult> Index()
         {
-            var corrales = db.Corrales.Include(c => c.Opciones);
-            return View(await corrales.ToListAsync());
+            var lotes = db.Lotes.Include(l => l.Opciones);
+            return View(await lotes.ToListAsync());
         }
 
-        // GET: Corrales/Details/5
+        // GET: Lotes/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Corrales corrales = await db.Corrales.FindAsync(id);
-            if (corrales == null)
+            Lotes lotes = await db.Lotes.FindAsync(id);
+            if (lotes == null)
             {
                 return HttpNotFound();
             }
-            return View(corrales);
+            return View(lotes);
         }
 
-        // GET: Corrales/Create
+        // GET: Lotes/Create
         public ActionResult Create()
         {
             List<Opciones> lstOpciones = new List<Opciones>();
@@ -49,33 +49,37 @@ namespace MiFincaVirtual.Backend.Controllers
             lstOpciones.Add(objOpcion);
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
             ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
+
             return View();
         }
 
-        // POST: Corrales/Create
+        // POST: Lotes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Corrales corrales)
+        public async Task<ActionResult> Create(Lotes lotes)
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();
 
             if (ModelState.IsValid)
             {
-                if (corrales.OpcionId == -1)
+                if (lotes.OpcionId == -1)
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
                     lstOpciones.Add(objOpcion);
                     lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
-                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", corrales.OpcionId);
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
 
-                    return View(corrales);
+                    return View(lotes);
                 }
 
-                db.Corrales.Add(corrales);
+                lotes.CerradoLote = false;
+                lotes.FechaFinalLote = Convert.ToDateTime("1900-01-01");
+
+                db.Lotes.Add(lotes);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -84,20 +88,20 @@ namespace MiFincaVirtual.Backend.Controllers
             objOpcion.Codigopcion = "-- Seleccione --";
             lstOpciones.Add(objOpcion);
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
-            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", corrales.OpcionId);
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
 
-            return View(corrales);
+            return View(lotes);
         }
 
-        // GET: Corrales/Edit/5
+        // GET: Lotes/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Corrales corrales = await db.Corrales.FindAsync(id);
-            if (corrales == null)
+            Lotes lotes = await db.Lotes.FindAsync(id);
+            if (lotes == null)
             {
                 return HttpNotFound();
             }
@@ -108,35 +112,36 @@ namespace MiFincaVirtual.Backend.Controllers
             objOpcion.Codigopcion = "-- Seleccione --";
             lstOpciones.Add(objOpcion);
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
-            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", corrales.OpcionId);
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
 
-            return View(corrales);
+            return View(lotes);
         }
 
-        // POST: Corrales/Edit/5
+        // POST: Lotes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Corrales corrales)
+        public async Task<ActionResult> Edit(Lotes lotes)
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();
 
             if (ModelState.IsValid)
             {
-                if (corrales.OpcionId == -1)
+                if (lotes.OpcionId == -1)
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
                     lstOpciones.Add(objOpcion);
                     lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
-                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", corrales.OpcionId);
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
 
-                    return View(corrales);
+                    return View(lotes);
                 }
 
-                db.Entry(corrales).State = EntityState.Modified;
+
+                db.Entry(lotes).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -145,33 +150,33 @@ namespace MiFincaVirtual.Backend.Controllers
             objOpcion.Codigopcion = "-- Seleccione --";
             lstOpciones.Add(objOpcion);
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
-            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", corrales.OpcionId);
+            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
 
-            return View(corrales);
+            return View(lotes);
         }
 
-        // GET: Corrales/Delete/5
+        // GET: Lotes/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Corrales corrales = await db.Corrales.FindAsync(id);
-            if (corrales == null)
+            Lotes lotes = await db.Lotes.FindAsync(id);
+            if (lotes == null)
             {
                 return HttpNotFound();
             }
-            return View(corrales);
+            return View(lotes);
         }
 
-        // POST: Corrales/Delete/5
+        // POST: Lotes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Corrales corrales = await db.Corrales.FindAsync(id);
-            db.Corrales.Remove(corrales);
+            Lotes lotes = await db.Lotes.FindAsync(id);
+            db.Lotes.Remove(lotes);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

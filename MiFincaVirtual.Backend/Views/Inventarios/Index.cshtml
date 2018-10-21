@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lista de inventario</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Crear inventario", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.FechaIngreso)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CantidadInventario)
+            Cantidad
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PrecioInventario)
@@ -43,28 +43,28 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td align="left">
             @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.FechaIngreso)
         </td>
-        <td>
+        <td align="right">
             @Html.DisplayFor(modelItem => item.CantidadInventario)
         </td>
-        <td>
+        <td align="right">
             @Html.DisplayFor(modelItem => item.PrecioInventario)
         </td>
-        <td>
+        <td align="right">
             @Html.DisplayFor(modelItem => item.FleteInventario)
         </td>
-        <td>
+        <td align="right">
             @Html.DisplayFor(modelItem => item.ValorUnitarioInventario)
         </td>
-        <td>
+        <td align="right">
             @Html.DisplayFor(modelItem => item.ValorTotalInventario)
         </td>
-        <td>
+        <td align="right">
             @Html.DisplayFor(modelItem => item.RepartidoInventario)
         </td>
         <td>
@@ -74,9 +74,9 @@
             }
         </td>
         <td>
-            @Html.ActionLink("E", "Edit", new { id=item.InventarioId }) |
-            @Html.ActionLink("C", "Details", new { id=item.InventarioId }) |
-            @Html.ActionLink("D", "Delete", new { id=item.InventarioId })
+            @Html.ActionLink("E", "Edit", new { id=item.InventarioId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("C", "Details", new { id=item.InventarioId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("D", "Delete", new { id=item.InventarioId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

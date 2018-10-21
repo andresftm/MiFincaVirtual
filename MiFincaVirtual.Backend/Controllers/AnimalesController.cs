@@ -65,7 +65,7 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "AnimalId,CodigoAnimal,DescripcionAnimal,FechaIngresoAnimal,FechaNacimientoAnimal,ActivoAnimal,PerteneceAnimal,EshembraAnimal,PadreAnimal,MadreAnimal,RazaId,OpcionId")] Animales animales)
+        public async Task<ActionResult> Create(Animales animales)
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();
@@ -74,24 +74,7 @@ namespace MiFincaVirtual.Backend.Controllers
 
             if (ModelState.IsValid)
             {
-                if(animales.OpcionId == -1)
-                {
-                    objOpcion.OpcionId = -1;
-                    objOpcion.Codigopcion = "-- Seleccione --";
-                    lstOpciones.Add(objOpcion);
-                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
-                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
-
-                    objRaza.RazaId = -1;
-                    objRaza.NombreRaza = "-- Seleccione --";
-                    lstRazas.Add(objRaza);
-                    lstRazas.AddRange(db.Razas);
-                    ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
-
-                    return View(animales);
-                }
-
-                if (animales.RazaId == -1)
+                if(animales.OpcionId == -1 || animales.RazaId == -1 || (animales.EshembraGestanteAnimal && !animales.EshembraAnimal))
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
@@ -165,7 +148,7 @@ namespace MiFincaVirtual.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "AnimalId,CodigoAnimal,DescripcionAnimal,FechaIngresoAnimal,FechaNacimientoAnimal,ActivoAnimal,PerteneceAnimal,EshembraAnimal,PadreAnimal,MadreAnimal,RazaId,OpcionId")] Animales animales)
+        public async Task<ActionResult> Edit(Animales animales)
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();
@@ -174,24 +157,7 @@ namespace MiFincaVirtual.Backend.Controllers
 
             if (ModelState.IsValid)
             {
-                if (animales.OpcionId == -1)
-                {
-                    objOpcion.OpcionId = -1;
-                    objOpcion.Codigopcion = "-- Seleccione --";
-                    lstOpciones.Add(objOpcion);
-                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
-                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
-
-                    objRaza.RazaId = -1;
-                    objRaza.NombreRaza = "-- Seleccione --";
-                    lstRazas.Add(objRaza);
-                    lstRazas.AddRange(db.Razas);
-                    ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
-
-                    return View(animales);
-                }
-
-                if (animales.RazaId == -1)
+                if (animales.OpcionId == -1 || animales.RazaId == -1 || (animales.EshembraGestanteAnimal && !animales.EshembraAnimal))
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
