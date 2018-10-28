@@ -3,6 +3,7 @@ namespace MiFincaVirtual.Backend.Models
 {
     using Domain.Models;
     using MiFincaVirtual.Common.Models;
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -17,6 +18,7 @@ namespace MiFincaVirtual.Backend.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Properties<DateTime>().Configure(x => x.HasColumnType("datetime2"));
             Database.SetInitializer<LocalDataContext>(null);
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

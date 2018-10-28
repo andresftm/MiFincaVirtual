@@ -304,6 +304,9 @@
     <Content Include="Content\fonts\roboto-v15-latin-700.woff2" />
     <Content Include="Content\fonts\roboto-v15-latin-regular.woff" />
     <Content Include="Content\fonts\roboto-v15-latin-regular.woff2" />
+    <Content Include="Images\Cuido 20181013.jpg" />
+    <Content Include="Images\escudomedellin.jpg" />
+    <Content Include="Images\factura 2018-10-07.jpg" />
     <Content Include="libman.json" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

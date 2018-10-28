@@ -78,7 +78,7 @@ namespace MiFincaVirtual.Backend.Controllers
                 }
 
                 var pic = string.Empty;
-                var folder = "~/Content/Inventarios";
+                var folder = "~/Images";
 
                 if (view.ImageFile != null)
                 {
@@ -188,7 +188,7 @@ namespace MiFincaVirtual.Backend.Controllers
                 }
 
                 var pic = view.ImagePath;
-                var folder = "~/Content/Inventarios";
+                var folder = "~/Images";
 
                 if (view.ImageFile != null)
                 {
