@@ -56,6 +56,23 @@ namespace MiFincaVirtual.Common.Models
         [Display(Name = "Repartido")]
         public int RepartidoInventario { get; set; }
 
+        [NotMapped]
+        public Decimal SaldoInventario
+        {
+            get
+            {
+                return CantidadInventario - RepartidoInventario;
+            }
+        }
+
+        [NotMapped]
+        public String CuidoSaldoInventario {
+            get
+            {
+                return Opciones.Codigopcion + " :: " + SaldoInventario;
+            }
+        }
+
         /// <summary> Imagen de la factura. </summary>
         [Display(Name = "Image")]
         public string ImagePath { get; set; }

@@ -1,27 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using MiFincaVirtual.Backend.Models;
-using MiFincaVirtual.Common.Models;
-
-namespace MiFincaVirtual.Backend.Controllers
+﻿namespace MiFincaVirtual.Backend.Controllers
 {
+    using MiFincaVirtual.Backend.Models;
+    using MiFincaVirtual.Common.Models;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Runtime.Serialization.Json;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
     [Authorize]
     public class LotesController : Controller
     {
+        #region Metods
+        private String fechaString(DateTime fecha)
+        {
+            String Año = fecha.Year.ToString();
+
+            String Mes = fecha.Month.ToString();
+            if(Mes.Length ==1)
+            {
+                Mes = "0" + Mes;
+            }
+
+            String Dia = fecha.Day.ToString();
+            if (Dia.Length == 1)
+            {
+                Dia = "0" + Dia;
+            }
+
+            return Año + "-" + Mes + "-" + Dia;
+        }
+        #endregion
+
         private LocalDataContext db = new LocalDataContext();
 
         // GET: Lotes
         public async Task<ActionResult> Index()
         {
-            var lotes = db.Lotes.Include(l => l.Opciones);
-            return View(await lotes.ToListAsync());
+            //var lotes = db.Lotes.Include(l => l.Opciones);
+            return View(await db.Lotes.ToListAsync());
         }
 
         // GET: Lotes/Details/5
@@ -50,6 +73,14 @@ namespace MiFincaVirtual.Backend.Controllers
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
             ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion");
 
+            List<Opciones> lstOpcionesCuido = new List<Opciones>();
+            Opciones objOpcionCuido = new Opciones();
+            objOpcionCuido.OpcionId = -1;
+            objOpcionCuido.Codigopcion = "-- Seleccione --";
+            lstOpcionesCuido.Add(objOpcionCuido);
+            lstOpcionesCuido.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+            ViewBag.CuidoId = new SelectList(lstOpcionesCuido, "OpcionId", "Codigopcion");
+
             return View();
         }
 
@@ -62,10 +93,12 @@ namespace MiFincaVirtual.Backend.Controllers
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();
+            List<Opciones> lstOpcionesCuido = new List<Opciones>();
+            Opciones objOpcionCuido = new Opciones();
 
             if (ModelState.IsValid)
             {
-                if (lotes.OpcionId == -1)
+                if (lotes.OpcionId == -1 || lotes.CuidoId == -1)
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
@@ -73,11 +106,26 @@ namespace MiFincaVirtual.Backend.Controllers
                     lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
                     ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
 
+                    objOpcionCuido.OpcionId = -1;
+                    objOpcionCuido.Codigopcion = "-- Seleccione --";
+                    lstOpcionesCuido.Add(objOpcionCuido);
+                    lstOpcionesCuido.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+                    ViewBag.CuidoId = new SelectList(lstOpcionesCuido, "OpcionId", "Codigopcion", lotes.CuidoId);
+
                     return View(lotes);
                 }
 
                 lotes.CerradoLote = false;
                 lotes.FechaFinalLote = Convert.ToDateTime("1900-01-01");
+                //lotes.FechaFinal = this.fechaString(lotes.FechaFinalLote);
+                //lotes.FechaApertura = this.fechaString(lotes.FechaAperturaLote);
+
+                //MemoryStream stream1 = new MemoryStream();
+                //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Lotes));
+                //ser.WriteObject(stream1, lotes);
+                //stream1.Position = 0;
+                //StreamReader sr = new StreamReader(stream1);
+                //String Resultado = sr.ReadToEnd();
 
                 db.Lotes.Add(lotes);
                 await db.SaveChangesAsync();
@@ -90,6 +138,12 @@ namespace MiFincaVirtual.Backend.Controllers
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
             ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
 
+            objOpcionCuido.OpcionId = -1;
+            objOpcionCuido.Codigopcion = "-- Seleccione --";
+            lstOpcionesCuido.Add(objOpcionCuido);
+            lstOpcionesCuido.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+            ViewBag.CuidoId = new SelectList(lstOpcionesCuido, "OpcionId", "Codigopcion", lotes.CuidoId);
+
             return View(lotes);
         }
 
@@ -101,6 +155,7 @@ namespace MiFincaVirtual.Backend.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Lotes lotes = await db.Lotes.FindAsync(id);
+
             if (lotes == null)
             {
                 return HttpNotFound();
@@ -114,6 +169,14 @@ namespace MiFincaVirtual.Backend.Controllers
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
             ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
 
+            List<Opciones> lstOpcionesCuido = new List<Opciones>();
+            Opciones objOpcionCuido = new Opciones();
+            objOpcionCuido.OpcionId = -1;
+            objOpcionCuido.Codigopcion = "-- Seleccione --";
+            lstOpcionesCuido.Add(objOpcionCuido);
+            lstOpcionesCuido.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+            ViewBag.CuidoId = new SelectList(lstOpcionesCuido, "OpcionId", "Codigopcion", lotes.CuidoId);
+
             return View(lotes);
         }
 
@@ -126,10 +189,12 @@ namespace MiFincaVirtual.Backend.Controllers
         {
             List<Opciones> lstOpciones = new List<Opciones>();
             Opciones objOpcion = new Opciones();
+            List<Opciones> lstOpcionesCuido = new List<Opciones>();
+            Opciones objOpcionCuido = new Opciones();
 
             if (ModelState.IsValid)
             {
-                if (lotes.OpcionId == -1)
+                if (lotes.OpcionId == -1 || lotes.CuidoId == -1)
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
@@ -137,9 +202,14 @@ namespace MiFincaVirtual.Backend.Controllers
                     lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
                     ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
 
+                    objOpcionCuido.OpcionId = -1;
+                    objOpcionCuido.Codigopcion = "-- Seleccione --";
+                    lstOpcionesCuido.Add(objOpcionCuido);
+                    lstOpcionesCuido.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+                    ViewBag.CuidoId = new SelectList(lstOpcionesCuido, "OpcionId", "Codigopcion", lotes.CuidoId);
+
                     return View(lotes);
                 }
-
 
                 db.Entry(lotes).State = EntityState.Modified;
                 await db.SaveChangesAsync();
@@ -151,6 +221,12 @@ namespace MiFincaVirtual.Backend.Controllers
             lstOpciones.Add(objOpcion);
             lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
             ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotes.OpcionId);
+
+            objOpcionCuido.OpcionId = -1;
+            objOpcionCuido.Codigopcion = "-- Seleccione --";
+            lstOpcionesCuido.Add(objOpcionCuido);
+            lstOpcionesCuido.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+            ViewBag.CuidoId = new SelectList(lstOpcionesCuido, "OpcionId", "Codigopcion", lotes.CuidoId);
 
             return View(lotes);
         }

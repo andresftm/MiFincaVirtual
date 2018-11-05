@@ -1,20 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using MiFincaVirtual.Backend.Models;
-using MiFincaVirtual.Common.Models;
-
-namespace MiFincaVirtual.Backend.Controllers
+﻿namespace MiFincaVirtual.Backend.Controllers
 {
+    using MiFincaVirtual.Backend.Models;
+    using MiFincaVirtual.Common.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
     public class LotesComidasController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
+
+        public JsonResult GetDisponibilidadCuidos(String  cuido)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var disponibilidadCuido = db.Inventarios.Where(i => i.SaldoInventario > 0 && i.Opciones.Codigopcion == cuido);
+            return Json(disponibilidadCuido);
+        }
 
         // GET: LotesComidas
         public async Task<ActionResult> Index()

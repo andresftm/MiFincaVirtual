@@ -27,6 +27,7 @@
         public virtual ICollection<Inventarios> Inventarios { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Lotes> Lotes { get; set; }
+        public virtual ICollection<LotesOpciones> LotesOpciones { get; set; }
+
     }
 }

@@ -15,9 +15,6 @@
             Tipo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NombreLote)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.AnimalesLote)
         </th>
         <th>
@@ -46,9 +43,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.NombreLote)
         </td>

@@ -30,18 +30,20 @@ namespace MiFincaVirtual.Backend.Models
 
         public DbSet<Fincas> Fincas { get; set; }
 
-        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.CerdasCargadas> CerdasCargadas { get; set; }
+        public DbSet<CerdasCargadas> CerdasCargadas { get; set; }
 
-        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Quesos> Quesos { get; set; }
+        public DbSet<Quesos> Quesos { get; set; }
 
-        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Opciones> Opciones { get; set; }
+        public DbSet<Opciones> Opciones { get; set; }
 
-        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Corrales> Corrales { get; set; }
+        public DbSet<Corrales> Corrales { get; set; }
 
-        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Inventarios> Inventarios { get; set; }
+        public DbSet<Inventarios> Inventarios { get; set; }
 
-        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Lotes> Lotes { get; set; }
+        public DbSet<Lotes> Lotes { get; set; }
 
-        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.LotesComida> LotesComidas { get; set; }
+        public DbSet<LotesComida> LotesComidas { get; set; }
+
+        public DbSet<LotesOpciones> LotesOpciones { get; set; }
     }
 }
