@@ -229,6 +229,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
+    <Compile Include="Migrations\201811070040055_LoteProcesado.cs" />
+    <Compile Include="Migrations\201811070040055_LoteProcesado.Designer.cs">
+      <DependentUpon>201811070040055_LoteProcesado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModelo.cs" />
@@ -238,6 +242,7 @@
     <Compile Include="Models\LocalDataContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ordenosPaginados.cs" />
+    <Compile Include="Models\Respuesta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -452,6 +457,7 @@
     <Content Include="Views\LotesComidas\Details.cshtml" />
     <Content Include="Views\LotesComidas\Edit.cshtml" />
     <Content Include="Views\LotesComidas\Index.cshtml" />
+    <Content Include="Views\LotesComidas\CreateGrupo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -477,6 +483,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811070040055_LoteProcesado.resx">
+      <DependentUpon>201811070040055_LoteProcesado.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

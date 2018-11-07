@@ -33,5 +33,7 @@
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaLoteComida { get; set; }
 
+        public Boolean ProcesadoLoteComida { get; set; }
+
     }
 }

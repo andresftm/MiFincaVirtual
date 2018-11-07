@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using System.Data;
     using System.Data.Entity;
+    using System.Data.SqlClient;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -14,13 +15,6 @@
     public class LotesComidasController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
-
-        public JsonResult GetDisponibilidadCuidos(String  cuido)
-        {
-            db.Configuration.ProxyCreationEnabled = false;
-            var disponibilidadCuido = db.Inventarios.Where(i => i.SaldoInventario > 0 && i.Opciones.Codigopcion == cuido);
-            return Json(disponibilidadCuido);
-        }
 
         // GET: LotesComidas
         public async Task<ActionResult> Index()
@@ -42,6 +36,38 @@
                 return HttpNotFound();
             }
             return View(lotesComida);
+        }
+
+        public ActionResult CreateGrupo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateGrupo(LotesComida lotesComida)
+        {
+            if(lotesComida.FechaLoteComida.Year == 1)
+            {
+                return View(lotesComida);
+            }
+
+            String Fecha = lotesComida.FechaLoteComida.Year.ToString();
+            String Mes = lotesComida.FechaLoteComida.Month.ToString().Length == 1 ? "0" + lotesComida.FechaLoteComida.Month.ToString() : lotesComida.FechaLoteComida.Month.ToString();
+            String Dia = lotesComida.FechaLoteComida.Day.ToString().Length == 1 ? "0" + lotesComida.FechaLoteComida.Day.ToString() : lotesComida.FechaLoteComida.Day.ToString();
+
+            //Fecha = "'" + Fecha + "-" + Mes + "-" + Dia + "'";
+            Fecha = Fecha + "-" + Mes + "-" + Dia;
+
+            List<SqlParameter> lstParametros = new List<SqlParameter>();
+            lstParametros.Add(new SqlParameter("Fecha", Fecha));
+
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                var Respuesta = db.Database.SqlQuery<Respuesta>("uspLotesComidaGrupoInsertar @Fecha", new SqlParameter("Fecha", Fecha)).ToList();
+            }
+
+            return RedirectToAction("Index");
         }
 
         // GET: LotesComidas/Create
@@ -80,7 +106,7 @@
 
             if (ModelState.IsValid)
             {
-                if(lotesComida.LoteId == -1 || lotesComida.OpcionId == 1)
+                if (lotesComida.LoteId == -1 || lotesComida.OpcionId == 1)
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";

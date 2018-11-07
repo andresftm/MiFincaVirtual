@@ -58,31 +58,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#DepartmentId").change(function () {
-                $("#MunicipalityId").empty();
-                $.ajax({
-                    type: 'POST',
-                    url: '@Url.Action("GetMunicipalities")',
-                    dataType: 'json',
-                    data: { departmentId: $("#DepartmentId").val() },
-                    success: function (municipalities) {
-                        $.each(municipalities, function (i, municipality) {
-                            $("#MunicipalityId").append('<option value="'
-                             + municipality.MunicipalityId + '">'
-                             + municipality.Name + '</option>');
-                        });
-                    },
-                    error: function (ex) {
-                        alert('Failed to retrieve municipalities.' + ex);
-                    }
-                });
-                return false;
-            })
-        });
-    </script>
-}

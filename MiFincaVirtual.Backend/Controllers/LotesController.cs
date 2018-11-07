@@ -2,15 +2,12 @@
 {
     using MiFincaVirtual.Backend.Models;
     using MiFincaVirtual.Common.Models;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Data.Entity;
-    using System.IO;
     using System.Linq;
     using System.Net;
-    using System.Runtime.Serialization.Json;
     using System.Threading.Tasks;
     using System.Web.Mvc;
 

@@ -7,7 +7,8 @@
 <h2>Listado de comidas registradas</h2>
 
 <p>
-    @Html.ActionLink("Registrar comidas", "Create", new { }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Registrar comidas individual", "Create", new { }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Registrar comidas lote", "CreateGrupo", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
