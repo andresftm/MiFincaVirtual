@@ -7,13 +7,13 @@ namespace MiFincaVirtual.Backend.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class LoteProcesado : IMigrationMetadata
+    public sealed partial class cuadre : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(LoteProcesado));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(cuadre));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811070040055_LoteProcesado"; }
+            get { return "201811120415489_cuadre"; }
         }
         
         string IMigrationMetadata.Source

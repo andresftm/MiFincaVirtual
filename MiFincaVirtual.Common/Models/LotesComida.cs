@@ -2,6 +2,8 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class LotesComida
     {
         [Key]
@@ -33,7 +35,8 @@
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaLoteComida { get; set; }
 
-        public Boolean ProcesadoLoteComida { get; set; }
+        [NotMapped]
+        public String FechaSLoteComida { get; set; }
 
     }
 }

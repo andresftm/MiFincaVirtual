@@ -45,5 +45,7 @@ namespace MiFincaVirtual.Backend.Models
         public DbSet<LotesComida> LotesComidas { get; set; }
 
         public DbSet<LotesOpciones> LotesOpciones { get; set; }
+
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.InventariosExistencias> InventariosExistencias { get; set; }
     }
 }

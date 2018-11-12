@@ -1,1 +1,8 @@
-﻿** Comparar que si un animal es macho no puede seleccionarlo como gestante
+﻿** En el eliminar de lotes comidas hacer un proceso que agregue el cuido al inventario.
+** Hacer una pantalla que de acuerdo a una consulta muestre hasta cuando se tiene cuido para los cerdos
+** Comparar que si un animal es macho no puede seleccionarlo como gestante.
+** Modificar el ingreso de inventario para que alimente una tabla adicional 
+   en la que se vaya almacenando de forma global por cuido del tipo de animal y
+   nombre de cuido.
+** Modificar el ingreso de lotes comida para que vaya descontando el cuido de la 
+   tabla nueva creada

@@ -218,6 +218,7 @@
     <Compile Include="Controllers\FincasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventariosController.cs" />
+    <Compile Include="Controllers\InventariosExistenciasController.cs" />
     <Compile Include="Controllers\LotesComidasController.cs" />
     <Compile Include="Controllers\LotesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -229,9 +230,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
-    <Compile Include="Migrations\201811070040055_LoteProcesado.cs" />
-    <Compile Include="Migrations\201811070040055_LoteProcesado.Designer.cs">
-      <DependentUpon>201811070040055_LoteProcesado.cs</DependentUpon>
+    <Compile Include="Migrations\201811120415489_cuadre.cs" />
+    <Compile Include="Migrations\201811120415489_cuadre.Designer.cs">
+      <DependentUpon>201811120415489_cuadre.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -245,6 +246,11 @@
     <Compile Include="Models\Respuesta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Tools\Sp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sp.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -458,6 +464,11 @@
     <Content Include="Views\LotesComidas\Edit.cshtml" />
     <Content Include="Views\LotesComidas\Index.cshtml" />
     <Content Include="Views\LotesComidas\CreateGrupo.cshtml" />
+    <Content Include="Views\InventariosExistencias\Create.cshtml" />
+    <Content Include="Views\InventariosExistencias\Delete.cshtml" />
+    <Content Include="Views\InventariosExistencias\Details.cshtml" />
+    <Content Include="Views\InventariosExistencias\Edit.cshtml" />
+    <Content Include="Views\InventariosExistencias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -485,8 +496,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811070040055_LoteProcesado.resx">
-      <DependentUpon>201811070040055_LoteProcesado.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811120415489_cuadre.resx">
+      <DependentUpon>201811120415489_cuadre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\Sp.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sp.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

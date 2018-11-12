@@ -10,6 +10,10 @@ using System.Web.Mvc;
 using MiFincaVirtual.Backend.Models;
 using MiFincaVirtual.Common.Models;
 using MiFincaVirtual.Backend.Helpers;
+using System.IO;
+using System.Runtime.Serialization.Json;
+using MiFincaVirtual.Backend.Tools;
+using System.Data.SqlClient;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
@@ -92,9 +96,21 @@ namespace MiFincaVirtual.Backend.Controllers
                 Inventario.ValorTotalInventario = Inventario.PrecioInventario + Inventario.FleteInventario;
                 Inventario.ValorUnitarioInventario = Inventario.ValorTotalInventario / Inventario.CantidadInventario;
 
-                db.Inventarios.Add(Inventario);
+                MemoryStream stream1 = new MemoryStream();
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Inventarios));
+                ser.WriteObject(stream1, Inventario);
+                stream1.Position = 0;
+                StreamReader sr = new StreamReader(stream1);
+                String Resultado = sr.ReadToEnd();
 
-                await db.SaveChangesAsync();
+                using (LocalDataContext db = new LocalDataContext())
+                {
+                    var Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspInventarioInsertar + " @json", new SqlParameter("json", Resultado)).ToList();
+                }
+
+                //db.Inventarios.Add(Inventario);
+                //await db.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
 
@@ -122,6 +138,7 @@ namespace MiFincaVirtual.Backend.Controllers
                 RepartidoInventario = view.RepartidoInventario,
                 ValorTotalInventario = view.ValorTotalInventario,
                 ValorUnitarioInventario = view.ValorUnitarioInventario,
+                FechaIngresoS = view.FechaIngreso.ToString("yyyy-MM-dd"),
             };
         }
 
@@ -138,13 +155,6 @@ namespace MiFincaVirtual.Backend.Controllers
                 return HttpNotFound();
             }
 
-            List<Opciones> lstOpciones = new List<Opciones>();
-            Opciones objOpcion = new Opciones();
-            objOpcion.OpcionId = -1;
-            objOpcion.Codigopcion = "-- Seleccione --";
-            lstOpciones.Add(objOpcion);
-            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
-            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", inventarios.OpcionId);
             var inventariosView = this.ToView(inventarios);
 
             return View(inventariosView);
@@ -173,20 +183,8 @@ namespace MiFincaVirtual.Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit (InventariosView view)
         {
-            List<Opciones> lstOpciones = new List<Opciones>();
-            Opciones objOpcion = new Opciones();
-
-            if (ModelState.IsValid)
+            if( view.FechaIngreso.Year != 1 && view.ImageFile != null)
             {
-                if (view.OpcionId == -1)
-                {
-                    objOpcion.OpcionId = -1;
-                    objOpcion.Codigopcion = "-- Seleccione --";
-                    lstOpciones.Add(objOpcion);
-                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
-                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", view.OpcionId);
-                }
-
                 var pic = view.ImagePath;
                 var folder = "~/Images";
 
@@ -198,17 +196,20 @@ namespace MiFincaVirtual.Backend.Controllers
 
                 var Inventario = this.ToInventario(view, pic);
 
+                MemoryStream stream1 = new MemoryStream();
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Inventarios));
+                ser.WriteObject(stream1, Inventario);
+                stream1.Position = 0;
+                StreamReader sr = new StreamReader(stream1);
+                String Resultado = sr.ReadToEnd();
 
-                db.Entry(Inventario).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (LocalDataContext db = new LocalDataContext())
+                {
+                    var Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspInventarioModificar + " @json", new SqlParameter("json", Resultado)).ToList();
+                }
+
                 return RedirectToAction("Index");
             }
-
-            objOpcion.OpcionId = -1;
-            objOpcion.Codigopcion = "-- Seleccione --";
-            lstOpciones.Add(objOpcion);
-            lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
-            ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", view.OpcionId);
 
             return View(view);
         }
@@ -233,10 +234,25 @@ namespace MiFincaVirtual.Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Inventarios inventarios = await db.Inventarios.FindAsync(id);
-            db.Inventarios.Remove(inventarios);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            List<Respuesta> Respuesta = new List<Respuesta>();
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspInventariosEliminar + " @InventarioId", new SqlParameter("InventarioId", id)).ToList();
+            }
+
+            if (Respuesta[0].Codigo == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Inventarios inventarios = db.Inventarios.Find(id);
+                if (inventarios == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(inventarios);
+            }
         }
 
         protected override void Dispose(bool disposing)

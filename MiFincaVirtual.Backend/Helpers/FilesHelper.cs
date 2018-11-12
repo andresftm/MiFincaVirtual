@@ -1,6 +1,4 @@
-﻿
-
-namespace MiFincaVirtual.Backend.Helpers
+﻿namespace MiFincaVirtual.Backend.Helpers
 {
     using System.IO;
     using System.Web;

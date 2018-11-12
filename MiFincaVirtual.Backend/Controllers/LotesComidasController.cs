@@ -1,14 +1,17 @@
 ﻿namespace MiFincaVirtual.Backend.Controllers
 {
     using MiFincaVirtual.Backend.Models;
+    using MiFincaVirtual.Backend.Tools;
     using MiFincaVirtual.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Data.Entity;
     using System.Data.SqlClient;
+    using System.IO;
     using System.Linq;
     using System.Net;
+    using System.Runtime.Serialization.Json;
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
@@ -52,22 +55,22 @@
                 return View(lotesComida);
             }
 
-            String Fecha = lotesComida.FechaLoteComida.Year.ToString();
-            String Mes = lotesComida.FechaLoteComida.Month.ToString().Length == 1 ? "0" + lotesComida.FechaLoteComida.Month.ToString() : lotesComida.FechaLoteComida.Month.ToString();
-            String Dia = lotesComida.FechaLoteComida.Day.ToString().Length == 1 ? "0" + lotesComida.FechaLoteComida.Day.ToString() : lotesComida.FechaLoteComida.Day.ToString();
-
-            //Fecha = "'" + Fecha + "-" + Mes + "-" + Dia + "'";
-            Fecha = Fecha + "-" + Mes + "-" + Dia;
-
-            List<SqlParameter> lstParametros = new List<SqlParameter>();
-            lstParametros.Add(new SqlParameter("Fecha", Fecha));
+            List<Respuesta> Respuesta = new List<Respuesta>();
 
             using (LocalDataContext db = new LocalDataContext())
             {
-                var Respuesta = db.Database.SqlQuery<Respuesta>("uspLotesComidaGrupoInsertar @Fecha", new SqlParameter("Fecha", Fecha)).ToList();
+                Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspLotesComidaGrupoInsertar +  " @Fecha", new SqlParameter("Fecha", lotesComida.FechaLoteComida.ToString("yyyy-MM-dd"))).ToList();
             }
 
-            return RedirectToAction("Index");
+            if (Respuesta[0].Codigo == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["testmsg"] = Respuesta[0].Descripcion;
+                return View();
+            }
         }
 
         // GET: LotesComidas/Create
@@ -117,14 +120,49 @@
                     objLote.LoteId = -1;
                     objLote.NombreLote = "-- Seleccione --";
                     lstLotes.Add(objLote);
+                    lstLotes.AddRange(db.Lotes);
                     ViewBag.LoteId = new SelectList(lstLotes, "LoteId", "NombreLote");
 
                     return View(lotesComida);
                 }
 
-                db.LotesComidas.Add(lotesComida);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                lotesComida.FechaSLoteComida = lotesComida.FechaLoteComida.ToString("yyyy-MM-dd");
+
+                MemoryStream stream1 = new MemoryStream();
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(LotesComida));
+                ser.WriteObject(stream1, lotesComida);
+                stream1.Position = 0;
+                StreamReader sr = new StreamReader(stream1);
+                String Resultado = sr.ReadToEnd();
+                List<Respuesta> Respuesta = new List<Respuesta>();
+
+                using (LocalDataContext db = new LocalDataContext())
+                {
+                    Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspLotesComidaIndividualInsertar + " @json", new SqlParameter("json", Resultado)).ToList();
+                }
+
+                if (Respuesta[0].Codigo == 1)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    objOpcion.OpcionId = -1;
+                    objOpcion.Codigopcion = "-- Seleccione --";
+                    lstOpciones.Add(objOpcion);
+                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "CuidoCerdos").ToList());
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", lotesComida.OpcionId);
+
+                    objLote.LoteId = -1;
+                    objLote.NombreLote = "-- Seleccione --";
+                    lstLotes.Add(objLote);
+                    lstLotes.AddRange(db.Lotes);
+                    ViewBag.LoteId = new SelectList(lstLotes, "LoteId", "NombreLote", lotesComida.LoteId);
+
+                    TempData["testmsg"] = Respuesta[0].Descripcion;
+
+                    return View();
+                }
             }
 
             objOpcion.OpcionId = -1;
@@ -136,9 +174,12 @@
             objLote.LoteId = -1;
             objLote.NombreLote = "-- Seleccione --";
             lstLotes.Add(objLote);
+            lstLotes.AddRange(db.Lotes);
             ViewBag.LoteId = new SelectList(lstLotes, "LoteId", "NombreLote", lotesComida.LoteId);
 
-            return View(lotesComida);
+            TempData["testmsg"] = null;
+
+            return View();
         }
 
         // GET: LotesComidas/Edit/5

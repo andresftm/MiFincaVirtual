@@ -1,0 +1,42 @@
+﻿@model MiFincaVirtual.Common.Models.InventariosExistencias
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InventariosExistencias</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GramosConsumoDiaLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GramosConsumoDiaLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorUnitarioInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorUnitarioInventario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InventarioExistenciaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
