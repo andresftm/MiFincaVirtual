@@ -40,8 +40,7 @@
         // GET: Lotes
         public async Task<ActionResult> Index()
         {
-            //var lotes = db.Lotes.Include(l => l.Opciones);
-            return View(await db.Lotes.ToListAsync());
+            return View(await db.Lotes.Where(L => L.CerradoLote == false).ToListAsync());
         }
 
         // GET: Lotes/Details/5

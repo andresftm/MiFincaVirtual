@@ -1,12 +1,14 @@
 ﻿namespace MiFincaVirtual.Backend.Controllers
 {
     using MiFincaVirtual.Backend.Models;
+    using MiFincaVirtual.Backend.Tools;
     using MiFincaVirtual.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Data;
     using System.Data.Entity;
+    using System.Data.SqlClient;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -58,7 +60,6 @@
 
                 return View(modelo);
             }
-            //return View(await db.Ordenos.OrderByDescending(o => o.FechaOrdeno).ToListAsync());
         }
 
         public async Task<ActionResult> Details(int? id)
@@ -170,6 +171,25 @@
             db.Ordenos.Remove(ordenos);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        public async Task<ActionResult> ConsultarOrdenos()
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("ConsultarOrdenosLista")]
+        public async Task<ActionResult> ConsultarOrdenosLista(OrdenosxFechaConsulta objOrdenosxFechaConsulta)
+        {
+            List<OrdenosxFechaConsulta> Respuesta = new List<OrdenosxFechaConsulta>();
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                SqlParameter prFechaIni = new SqlParameter("FechaIni", objOrdenosxFechaConsulta.FechaInicial.ToString("yyyy-MM-dd"));
+                SqlParameter prFechaFin = new SqlParameter("FechaFin", objOrdenosxFechaConsulta.FechaFinal.ToString("yyyy-MM-dd"));
+
+                Respuesta = db.Database.SqlQuery<OrdenosxFechaConsulta>(Sp.uspOrdenosEntreFechasConsultar + " @FechaIni, @FechaFin", prFechaIni, prFechaFin).ToList();
+            }
+            return View(Respuesta);
         }
 
         protected override void Dispose(bool disposing)

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MiFincaVirtual.Backend.Models.OrdenosxFechaConsulta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Totales de ordeños</h2>
+
+<table class="table">
+    <tr>
+        <th align="left">
+            Animal
+        </th>
+        <th align="left">
+            Litros
+        </th>
+        <th align="left">
+            Cuido
+        </th>
+        <th align="left">
+            Peso
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.CodigoAnimal)
+            </td>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.LitrosOrdenoS)
+            </td>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.GramosCuidoOrdenoS)
+            </td>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.PesoOrdenoS)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "ConsultarOrdenos", new { }, new { @class = "btn btn-success" })
+</div>
+
+
+

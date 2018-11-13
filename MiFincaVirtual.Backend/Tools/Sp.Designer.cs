@@ -61,6 +61,24 @@ namespace MiFincaVirtual.Backend.Tools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspInventarioDisponibleConsultar.
+        /// </summary>
+        internal static string uspInventarioDisponibleConsultar {
+            get {
+                return ResourceManager.GetString("uspInventarioDisponibleConsultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspInventarioEliminar.
+        /// </summary>
+        internal static string uspInventarioEliminar {
+            get {
+                return ResourceManager.GetString("uspInventarioEliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to uspInventarioInsertar.
         /// </summary>
         internal static string uspInventarioInsertar {
@@ -79,11 +97,11 @@ namespace MiFincaVirtual.Backend.Tools {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to uspInventariosEliminar.
+        ///   Looks up a localized string similar to uspLotesComidaEliminar.
         /// </summary>
-        internal static string uspInventariosEliminar {
+        internal static string uspLotesComidaEliminar {
             get {
-                return ResourceManager.GetString("uspInventariosEliminar", resourceCulture);
+                return ResourceManager.GetString("uspLotesComidaEliminar", resourceCulture);
             }
         }
         
@@ -102,6 +120,15 @@ namespace MiFincaVirtual.Backend.Tools {
         internal static string uspLotesComidaIndividualInsertar {
             get {
                 return ResourceManager.GetString("uspLotesComidaIndividualInsertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspOrdenosEntreFechasConsultar.
+        /// </summary>
+        internal static string uspOrdenosEntreFechasConsultar {
+            get {
+                return ResourceManager.GetString("uspOrdenosEntreFechasConsultar", resourceCulture);
             }
         }
     }

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using MiFincaVirtual.Backend.Models;
 using MiFincaVirtual.Common.Models;
+using MiFincaVirtual.Backend.Tools;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
@@ -74,8 +75,27 @@ namespace MiFincaVirtual.Backend.Controllers
 
             if (ModelState.IsValid)
             {
-                if(animales.OpcionId == -1 || animales.RazaId == -1 || (animales.EshembraGestanteAnimal && !animales.EshembraAnimal))
+                if(animales.OpcionId == -1 || animales.RazaId == -1 )
                 {
+                    objOpcion.OpcionId = -1;
+                    objOpcion.Codigopcion = "-- Seleccione --";
+                    lstOpciones.Add(objOpcion);
+                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
+
+                    objRaza.RazaId = -1;
+                    objRaza.NombreRaza = "-- Seleccione --";
+                    lstRazas.Add(objRaza);
+                    lstRazas.AddRange(db.Razas);
+                    ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
+
+                    return View(animales);
+                }
+
+                if(animales.EshembraGestanteAnimal && !animales.EshembraAnimal)
+                {
+                    TempData["testmsg"] = Mensajes.GestanteMacho;
+
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
                     lstOpciones.Add(objOpcion);
@@ -157,7 +177,7 @@ namespace MiFincaVirtual.Backend.Controllers
 
             if (ModelState.IsValid)
             {
-                if (animales.OpcionId == -1 || animales.RazaId == -1 || (animales.EshembraGestanteAnimal && !animales.EshembraAnimal))
+                if (animales.OpcionId == -1 || animales.RazaId == -1 )
                 {
                     objOpcion.OpcionId = -1;
                     objOpcion.Codigopcion = "-- Seleccione --";
@@ -173,6 +193,26 @@ namespace MiFincaVirtual.Backend.Controllers
 
                     return View(animales);
                 }
+
+                if (animales.EshembraGestanteAnimal && !animales.EshembraAnimal)
+                {
+                    TempData["testmsg"] = Mensajes.GestanteMacho;
+
+                    objOpcion.OpcionId = -1;
+                    objOpcion.Codigopcion = "-- Seleccione --";
+                    lstOpciones.Add(objOpcion);
+                    lstOpciones.AddRange(db.Opciones.Where(O => O.TipoOpcion == "TiposAnimales").ToList());
+                    ViewBag.OpcionId = new SelectList(lstOpciones, "OpcionId", "Codigopcion", animales.OpcionId);
+
+                    objRaza.RazaId = -1;
+                    objRaza.NombreRaza = "-- Seleccione --";
+                    lstRazas.Add(objRaza);
+                    lstRazas.AddRange(db.Razas);
+                    ViewBag.RazaId = new SelectList(lstRazas, "RazaId", "NombreRaza", animales.RazaId);
+
+                    return View(animales);
+                }
+
 
                 db.Entry(animales).State = EntityState.Modified;
                 await db.SaveChangesAsync();

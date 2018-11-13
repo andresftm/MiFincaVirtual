@@ -92,7 +92,6 @@ namespace MiFincaVirtual.Backend.Controllers
 
                 var Inventario = this.ToInventario(view, pic);
 
-                Inventario.RepartidoInventario = 0;
                 Inventario.ValorTotalInventario = Inventario.PrecioInventario + Inventario.FleteInventario;
                 Inventario.ValorUnitarioInventario = Inventario.ValorTotalInventario / Inventario.CantidadInventario;
 
@@ -107,9 +106,6 @@ namespace MiFincaVirtual.Backend.Controllers
                 {
                     var Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspInventarioInsertar + " @json", new SqlParameter("json", Resultado)).ToList();
                 }
-
-                //db.Inventarios.Add(Inventario);
-                //await db.SaveChangesAsync();
 
                 return RedirectToAction("Index");
             }
@@ -135,7 +131,6 @@ namespace MiFincaVirtual.Backend.Controllers
                 OpcionId = view.OpcionId,
                 Opciones = view.Opciones,
                 PrecioInventario = view.PrecioInventario,
-                RepartidoInventario = view.RepartidoInventario,
                 ValorTotalInventario = view.ValorTotalInventario,
                 ValorUnitarioInventario = view.ValorUnitarioInventario,
                 FechaIngresoS = view.FechaIngreso.ToString("yyyy-MM-dd"),
@@ -169,7 +164,6 @@ namespace MiFincaVirtual.Backend.Controllers
                 FleteInventario = inventario.FleteInventario,
                 ImagePath = inventario.ImagePath,
                 PrecioInventario = inventario.PrecioInventario,
-                RepartidoInventario = inventario.RepartidoInventario,
                 ValorTotalInventario = inventario.ValorTotalInventario,
                 ValorUnitarioInventario = inventario.ValorUnitarioInventario,
                 InventarioId = inventario.InventarioId,
@@ -237,7 +231,7 @@ namespace MiFincaVirtual.Backend.Controllers
             List<Respuesta> Respuesta = new List<Respuesta>();
             using (LocalDataContext db = new LocalDataContext())
             {
-                Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspInventariosEliminar + " @InventarioId", new SqlParameter("InventarioId", id)).ToList();
+                Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspInventarioEliminar + " @InventarioId", new SqlParameter("InventarioId", id)).ToList();
             }
 
             if (Respuesta[0].Codigo == 1)
@@ -253,6 +247,17 @@ namespace MiFincaVirtual.Backend.Controllers
                 }
                 return View(inventarios);
             }
+        }
+
+        public async Task<ActionResult> Disponibilidad()
+        {
+            List<disponibilidadCuido> Respuesta = new List<disponibilidadCuido>();
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                 Respuesta = db.Database.SqlQuery<disponibilidadCuido>(Sp.uspInventarioDisponibleConsultar).ToList();
+            }
+
+            return View(Respuesta);
         }
 
         protected override void Dispose(bool disposing)

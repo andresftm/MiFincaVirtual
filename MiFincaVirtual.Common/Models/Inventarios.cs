@@ -58,31 +58,6 @@
         [DataMember]
         public Decimal ValorTotalInventario { get; set; }
 
-        /// Queryable se ha gastado.
-        [Display(Name = "Repartido")]
-        [DataMember]
-        public int RepartidoInventario { get; set; }
-
-        [NotMapped]
-        [DataMember]
-        public Decimal SaldoInventario
-        {
-            get
-            {
-                return CantidadInventario - RepartidoInventario;
-            }
-        }
-
-        [NotMapped]
-        [DataMember]
-        public String CuidoSaldoInventario
-        {
-            get
-            {
-                return Opciones.Codigopcion + " :: " + SaldoInventario;
-            }
-        }
-
         /// <summary> Imagen de la factura. </summary>
         [Display(Name = "Image")]
         [DataMember]

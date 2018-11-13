@@ -250,10 +250,22 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            LotesComida lotesComida = await db.LotesComidas.FindAsync(id);
-            db.LotesComidas.Remove(lotesComida);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            List<Respuesta> Respuesta = new List<Respuesta>();
+
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspLotesComidaEliminar + " @json", new SqlParameter("json", id)).ToList();
+            }
+
+            if (Respuesta[0].Codigo == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["testmsg"] = Respuesta[0].Descripcion;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

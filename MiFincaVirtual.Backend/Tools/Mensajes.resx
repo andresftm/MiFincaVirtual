@@ -117,28 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="uspInventarioDisponibleConsultar" xml:space="preserve">
-    <value>uspInventarioDisponibleConsultar</value>
-  </data>
-  <data name="uspInventarioEliminar" xml:space="preserve">
-    <value>uspInventarioEliminar</value>
-  </data>
-  <data name="uspInventarioInsertar" xml:space="preserve">
-    <value>uspInventarioInsertar</value>
-  </data>
-  <data name="uspInventarioModificar" xml:space="preserve">
-    <value>uspInventarioModificar</value>
-  </data>
-  <data name="uspLotesComidaEliminar" xml:space="preserve">
-    <value>uspLotesComidaEliminar</value>
-  </data>
-  <data name="uspLotesComidaGrupoInsertar" xml:space="preserve">
-    <value>uspLotesComidaGrupoInsertar</value>
-  </data>
-  <data name="uspLotesComidaIndividualInsertar" xml:space="preserve">
-    <value>uspLotesComidaIndividualInsertar</value>
-  </data>
-  <data name="uspOrdenosEntreFechasConsultar" xml:space="preserve">
-    <value>uspOrdenosEntreFechasConsultar</value>
+  <data name="GestanteMacho" xml:space="preserve">
+    <value>Un macho no se puede registrar como gestante.</value>
   </data>
 </root>
