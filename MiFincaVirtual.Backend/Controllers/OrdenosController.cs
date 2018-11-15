@@ -1,5 +1,6 @@
 ﻿namespace MiFincaVirtual.Backend.Controllers
 {
+    using Microsoft.Reporting.WebForms;
     using MiFincaVirtual.Backend.Models;
     using MiFincaVirtual.Backend.Tools;
     using MiFincaVirtual.Common.Models;
@@ -19,6 +20,7 @@
     public class OrdenosController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
+        public static OrdenosxFechaConsulta ordenosxFechaConsulta;
 
         public ActionResult Index(string animal, int pagina = 1)
         {
@@ -97,7 +99,7 @@
             Animales objAnimal = new Animales();
             if (ModelState.IsValid)
             {
-                if(ordenos.AnimalId == -1)
+                if (ordenos.AnimalId == -1)
                 {
                     objAnimal.AnimalId = -1;
                     objAnimal.CodigoAnimal = "-- Seleccione --";
@@ -189,7 +191,54 @@
 
                 Respuesta = db.Database.SqlQuery<OrdenosxFechaConsulta>(Sp.uspOrdenosEntreFechasConsultar + " @FechaIni, @FechaFin", prFechaIni, prFechaFin).ToList();
             }
+
+            OrdenosController.ordenosxFechaConsulta = objOrdenosxFechaConsulta;
+
             return View(Respuesta);
+        }
+
+        public ActionResult Reports(String reportType)
+        {
+            OrdenosxFechaConsulta objOrdenosxFechaConsulta = OrdenosController.ordenosxFechaConsulta;
+            List<OrdenosxFechaConsulta> Respuesta = new List<OrdenosxFechaConsulta>();
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                SqlParameter prFechaIni = new SqlParameter("FechaIni", objOrdenosxFechaConsulta.FechaInicial.ToString("yyyy-MM-dd"));
+                SqlParameter prFechaFin = new SqlParameter("FechaFin", objOrdenosxFechaConsulta.FechaFinal.ToString("yyyy-MM-dd"));
+                Respuesta = db.Database.SqlQuery<OrdenosxFechaConsulta>(Sp.uspOrdenosEntreFechasConsultar + " @FechaIni, @FechaFin", prFechaIni, prFechaFin).ToList();
+            }
+
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/rptOrdenos.rdlc");
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "dsOrdenosEntreFechas";
+            reportDataSource.Value = Respuesta;
+            List<ReportParameter> lstParametros = new List<ReportParameter>();
+            lstParametros.Add(new ReportParameter("FechaIni", objOrdenosxFechaConsulta.FechaInicial.ToString("yyyy-MM-dd")));
+            lstParametros.Add(new ReportParameter("FechaFin", objOrdenosxFechaConsulta.FechaFinal.ToString("yyyy-MM-dd")));
+            localReport.SetParameters(lstParametros);
+            localReport.DataSources.Add(reportDataSource);
+
+            String nimeType = String.Empty;
+            String encoding = String.Empty;
+            String fileNameExtencion = String.Empty;
+
+            switch (reportType)
+            {
+                case "Excel":
+                    fileNameExtencion = "xls";
+                    break;
+                case "Pdf":
+                    fileNameExtencion = "pdf";
+                    break;
+            }
+
+            String[] stream;
+            Warning[] warning;
+            byte[] renderedByte;
+            renderedByte = localReport.Render(reportType, "", out nimeType, out encoding, out fileNameExtencion, out stream, out warning);
+            //Response.AddHeader("content-disposition", "attachment:filename= ordenos_report." + fileNameExtencion);
+            return File(renderedByte, "application/Excel", "report_Ordenos." + fileNameExtencion);
         }
 
         protected override void Dispose(bool disposing)
