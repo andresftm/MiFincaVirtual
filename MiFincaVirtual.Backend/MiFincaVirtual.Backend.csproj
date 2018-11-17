@@ -238,7 +238,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnimalesController.cs" />
     <Compile Include="Controllers\CerdasCargadasController.cs" />
-    <Compile Include="Controllers\CorralesController.cs" />
     <Compile Include="Controllers\FincasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventariosController.cs" />
@@ -492,11 +491,6 @@
     <Content Include="Views\Opciones\Edit.cshtml" />
     <Content Include="Views\Opciones\Index.cshtml" />
     <Content Include="Views\Ordenos\Create.cshtml" />
-    <Content Include="Views\Corrales\Create.cshtml" />
-    <Content Include="Views\Corrales\Delete.cshtml" />
-    <Content Include="Views\Corrales\Details.cshtml" />
-    <Content Include="Views\Corrales\Edit.cshtml" />
-    <Content Include="Views\Corrales\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />

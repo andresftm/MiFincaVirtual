@@ -36,8 +36,6 @@ namespace MiFincaVirtual.Backend.Models
 
         public DbSet<Opciones> Opciones { get; set; }
 
-        public DbSet<Corrales> Corrales { get; set; }
-
         public DbSet<Inventarios> Inventarios { get; set; }
 
         public DbSet<Lotes> Lotes { get; set; }

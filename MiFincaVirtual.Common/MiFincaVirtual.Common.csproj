@@ -53,7 +53,6 @@
     <Compile Include="Models\BaseModelo.cs" />
     <Compile Include="Models\CerdasCargadas.cs" />
     <Compile Include="Models\Claim.cs" />
-    <Compile Include="Models\Corrales.cs" />
     <Compile Include="Models\InventariosExistencias.cs" />
     <Compile Include="Models\Lotes.cs" />
     <Compile Include="Models\LotesComida.cs" />

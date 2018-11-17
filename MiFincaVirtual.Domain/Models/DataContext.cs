@@ -20,6 +20,5 @@
 
         public DbSet<Opciones> Opciones { get; set; }
 
-        public DbSet<Corrales> Corrales { get; set; }
     }
 }
