@@ -94,6 +94,5 @@
 
         [DataMember]
         public int CuidoId { get; set; }
-
     }
 }

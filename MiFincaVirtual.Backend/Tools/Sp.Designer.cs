@@ -97,6 +97,15 @@ namespace MiFincaVirtual.Backend.Tools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspLotesActivosConsultar.
+        /// </summary>
+        internal static string uspLotesActivosConsultar {
+            get {
+                return ResourceManager.GetString("uspLotesActivosConsultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to uspLotesComidaEliminar.
         /// </summary>
         internal static string uspLotesComidaEliminar {

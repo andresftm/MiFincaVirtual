@@ -1,1 +1,1 @@
-﻿** En la pantalla que muestra la lista de lotes, colocar para que muestre el cuido que esta consumiendo el lote.
+﻿

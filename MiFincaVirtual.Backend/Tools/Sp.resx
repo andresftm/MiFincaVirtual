@@ -129,6 +129,9 @@
   <data name="uspInventarioModificar" xml:space="preserve">
     <value>uspInventarioModificar</value>
   </data>
+  <data name="uspLotesActivosConsultar" xml:space="preserve">
+    <value>uspLotesActivosConsultar</value>
+  </data>
   <data name="uspLotesComidaEliminar" xml:space="preserve">
     <value>uspLotesComidaEliminar</value>
   </data>

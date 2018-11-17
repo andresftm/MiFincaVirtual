@@ -1,15 +1,18 @@
 ﻿namespace MiFincaVirtual.Backend.Controllers
 {
     using MiFincaVirtual.Backend.Models;
+    using MiFincaVirtual.Backend.Tools;
     using MiFincaVirtual.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Data.Entity;
+    using System.Data.SqlClient;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
     using System.Web.Mvc;
+    using Lotes = Common.Models.Lotes;
 
     [Authorize]
     public class LotesController : Controller
@@ -40,7 +43,13 @@
         // GET: Lotes
         public async Task<ActionResult> Index()
         {
-            return View(await db.Lotes.Where(L => L.CerradoLote == false).ToListAsync());
+            List<LotesW> Respuesta = new List<LotesW>();
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                Respuesta = db.Database.SqlQuery<LotesW>(Sp.uspLotesActivosConsultar).ToList();
+            }
+
+            return View(Respuesta);
         }
 
         // GET: Lotes/Details/5

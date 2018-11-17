@@ -262,6 +262,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InventariosView.cs" />
     <Compile Include="Models\LocalDataContext.cs" />
+    <Compile Include="Models\Lotes.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ordenosPaginados.cs" />
     <Compile Include="Models\OrdenosxFechaConsulta.cs" />
@@ -567,7 +568,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\rptOrdenos.rdlc" />
+    <EmbeddedResource Include="Reports\rptOrdenos.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tools\Mensajes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Mensajes.Designer.cs</LastGenOutput>
