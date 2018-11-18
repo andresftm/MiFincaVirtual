@@ -28,6 +28,9 @@
                 Real parto
             </th>
             <th>
+                Fecha destete
+            </th>
+            <th>
                 Nacidos
             </th>
             <th>
@@ -47,43 +50,46 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Animales.CodigoAnimal)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaMontaCerdaCargada)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaInyectarCerdaCargada)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaPosiblePartoCerdaCargada)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaRealPartoCerdaCargada)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NacidosCerdaCargada)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NacidosVivosCerdaCargada)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NacidosMuertosCerdaCargada)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NacidosMomiasCerdaCargada)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DestetosCerdaCargada)
-                </td>
-                <td>
-                    @Html.ActionLink("E", "Edit", new { id = item.CerdaCargadaId }, new { @class = "btn btn-warning" }) |
-                    @Html.ActionLink("C", "Details", new { id = item.CerdaCargadaId }, new { @class = "btn btn-info" }) |
-                    @Html.ActionLink("D", "Delete", new { id = item.CerdaCargadaId }, new { @class = "btn btn-danger" })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Animales.CodigoAnimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaMontaCerdaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInyectarCerdaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPosiblePartoCerdaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRealPartoCerdaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDestetePartoCerdaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NacidosCerdaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NacidosVivosCerdaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NacidosMuertosCerdaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NacidosMomiasCerdaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestetosCerdaCargada)
+            </td>
+            <td>
+                @Html.ActionLink("E", "Edit", new { id = item.CerdaCargadaId }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("C", "Details", new { id = item.CerdaCargadaId }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("D", "Delete", new { id = item.CerdaCargadaId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
         }
 
     </table>

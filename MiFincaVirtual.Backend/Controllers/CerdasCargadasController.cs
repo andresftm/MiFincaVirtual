@@ -79,6 +79,7 @@ namespace MiFincaVirtual.Backend.Controllers
                 cerdasCargadas.FechaRecordacionCerdaCargada = cerdasCargadas.FechaMontaCerdaCargada.AddDays(90);
                 cerdasCargadas.FechaInyectarCerdaCargada = cerdasCargadas.FechaMontaCerdaCargada.AddDays(100);
                 cerdasCargadas.FechaPosiblePartoCerdaCargada = cerdasCargadas.FechaMontaCerdaCargada.AddDays(113);
+                cerdasCargadas.FechaDestetePartoCerdaCargada = Convert.ToDateTime("1900-01-01");
                 cerdasCargadas.ActivoCerdaCargada = true;
                 cerdasCargadas.NacidosCerdaCargada = 0;
                 cerdasCargadas.NacidosVivosCerdaCargada = 0;
@@ -146,6 +147,10 @@ namespace MiFincaVirtual.Backend.Controllers
                     return View(cerdasCargadas);
                 }
 
+                if(cerdasCargadas.FechaRealPartoCerdaCargada.Year != 1)
+                {
+                    cerdasCargadas.FechaDestetePartoCerdaCargada = cerdasCargadas.FechaRealPartoCerdaCargada.AddDays(28);
+                }
 
                 db.Entry(cerdasCargadas).State = EntityState.Modified;
                 await db.SaveChangesAsync();

@@ -1,1 +1,9 @@
-﻿
+﻿** Hacer un proceso de eliminar animales, teniendo en cuenta que no esten 
+   registrados en ordeños, en cerdas gestantes.
+** Hacer un proceso de eliminar opciones que valide que no esten esas opciones
+   en los lotes, registrar comida, inventarios, Animales, 
+** Hacer un poceso que no permita eliminar lotes que tengan registros en la tabla
+   de registro comidas.
+** Hay que mirar una opción para que en ordeños cuando se registre el cuido, se 
+   ingrese tambien el tipo de cuido y se calcule el valor de lo consumido.
+** Hacer el proceso de eliminar en la pantalla de disponibilidad de inventario.

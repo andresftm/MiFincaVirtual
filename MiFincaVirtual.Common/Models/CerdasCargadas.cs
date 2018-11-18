@@ -46,6 +46,12 @@
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaRealPartoCerdaCargada { get; set; }
 
+        [Display(Name = "Fecha parto")]
+        [Column(TypeName = "datetime2")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime FechaDestetePartoCerdaCargada { get; set; }
+
         [Required]
         [Display(Name = "Activo")]
         public Boolean ActivoCerdaCargada { get; set; }
