@@ -244,31 +244,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ECE5A364-A428-47A6-BD2A-913F64D3EE2D}
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://andrestabares.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = MiFincaVirtual\\MiFincaVirtual.Android\\MiFincaVirtual.Android.csproj
-		SccProjectName1 = MiFincaVirtual/MiFincaVirtual.Android
-		SccLocalPath1 = MiFincaVirtual\\MiFincaVirtual.Android
-		SccProjectUniqueName2 = MiFincaVirtual\\MiFincaVirtual.iOS\\MiFincaVirtual.iOS.csproj
-		SccProjectName2 = MiFincaVirtual/MiFincaVirtual.iOS
-		SccLocalPath2 = MiFincaVirtual\\MiFincaVirtual.iOS
-		SccProjectUniqueName3 = MiFincaVirtual\\MiFincaVirtual\\MiFincaVirtual.csproj
-		SccProjectName3 = MiFincaVirtual/MiFincaVirtual
-		SccLocalPath3 = MiFincaVirtual\\MiFincaVirtual
-		SccProjectUniqueName4 = MiFincaVirtual.Backend\\MiFincaVirtual.Backend.csproj
-		SccProjectName4 = MiFincaVirtual.Backend
-		SccLocalPath4 = MiFincaVirtual.Backend
-		SccProjectUniqueName5 = MiFincaVirtual.Common\\MiFincaVirtual.Common.csproj
-		SccProjectName5 = MiFincaVirtual.Common
-		SccLocalPath5 = MiFincaVirtual.Common
-		SccProjectUniqueName6 = MiFincaVirtual.Domain\\MiFincaVirtual.Domain.csproj
-		SccProjectName6 = MiFincaVirtual.Domain
-		SccLocalPath6 = MiFincaVirtual.Domain
-		SccProjectUniqueName7 = MiFincaVirtual.Api\\MiFincaVirtual.Api.csproj
-		SccProjectName7 = MiFincaVirtual.Api
-		SccLocalPath7 = MiFincaVirtual.Api
-	EndGlobalSection
 EndGlobal

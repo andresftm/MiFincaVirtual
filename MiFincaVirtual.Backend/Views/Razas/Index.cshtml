@@ -9,31 +9,53 @@
 <p>
     @Html.ActionLink("Registrar razas", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreRaza)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescripcionRaza)
-        </th>
-        <th></th>
-    </tr>
+<div id="global">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreRaza)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescripcionRaza)
-        </td>
-        <td>
-            @Html.ActionLink("E", "Edit", new { id=item.RazaId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("C", "Details", new { id=item.RazaId }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("D", "Delete", new { id=item.RazaId }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreRaza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionRaza)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreRaza)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionRaza)
+                </td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { id = item.RazaId }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("C", "Details", new { id = item.RazaId }, new { @class = "btn btn-info" }) |
+                    @Html.ActionLink("D", "Delete", new { id = item.RazaId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<style type="text/css">
+    #global {
+        height: 400px;
+        width: 1200px;
+        border: 1px solid #ddd;
+        background: #f1f1f1;
+        overflow-y: scroll;
+    }
+
+    #mensajes {
+        height: auto;
+    }
+
+    .texto {
+        padding: 4px;
+        background: #fff;
+    }
+</style>

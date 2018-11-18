@@ -10,43 +10,64 @@
     @Html.ActionLink("Registrar comidas individual", "Create", new { }, new { @class = "btn btn-primary" })
     @Html.ActionLink("Registrar comidas lote", "CreateGrupo", new { }, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Lote
-        </th>
-        <th>
-           Cuido
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CantidadLoteComida)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaLoteComida)
-        </th>
-        <th></th>
-    </tr>
+<div id="global">
+    <table class="table">
+        <tr>
+            <th>
+                Lote
+            </th>
+            <th>
+                Cuido
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadLoteComida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaLoteComida)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lotes.NombreLote)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CantidadLoteComida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaLoteComida)
-        </td>
-        <td>
-            @Html.ActionLink("E", "Edit", new { id=item.LoteComidaId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("C", "Details", new { id=item.LoteComidaId }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("D", "Delete", new { id=item.LoteComidaId }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lotes.NombreLote)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadLoteComida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaLoteComida)
+                </td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { id = item.LoteComidaId }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("C", "Details", new { id = item.LoteComidaId }, new { @class = "btn btn-info" }) |
+                    @Html.ActionLink("D", "Delete", new { id = item.LoteComidaId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
+<style type="text/css">
+    #global {
+        height: 400px;
+        width: 1200px;
+        border: 1px solid #ddd;
+        background: #f1f1f1;
+        overflow-y: scroll;
+    }
+
+    #mensajes {
+        height: auto;
+    }
+
+    .texto {
+        padding: 4px;
+        background: #fff;
+    }
+</style>

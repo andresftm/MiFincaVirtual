@@ -9,79 +9,100 @@
 <p>
     @Html.ActionLink("Registrar lactancia", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Código
-        </th>
-        <th>
-            Monta
-        </th>
-        <th>
-            Inyectar
-        </th>
-        <th>
-            Posible parto
-        </th>
-        <th>
-            Real parto
-        </th>
-        <th>
-            Nacidos
-        </th>
-        <th>
-            Vivos
-        </th>
-        <th>
-            Muertos
-        </th>
-        <th>
-            Momias
-        </th>
-        <th>
-            Destetos
-        </th>
-        <th></th>
-    </tr>
+<div id="global">
+    <table class="table">
+        <tr>
+            <th>
+                Código
+            </th>
+            <th>
+                Monta
+            </th>
+            <th>
+                Inyectar
+            </th>
+            <th>
+                Posible parto
+            </th>
+            <th>
+                Real parto
+            </th>
+            <th>
+                Nacidos
+            </th>
+            <th>
+                Vivos
+            </th>
+            <th>
+                Muertos
+            </th>
+            <th>
+                Momias
+            </th>
+            <th>
+                Destetos
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Animales.CodigoAnimal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaMontaCerdaCargada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaInyectarCerdaCargada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaPosiblePartoCerdaCargada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaRealPartoCerdaCargada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NacidosCerdaCargada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NacidosVivosCerdaCargada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NacidosMuertosCerdaCargada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NacidosMomiasCerdaCargada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DestetosCerdaCargada)
-        </td>
-        <td>
-            @Html.ActionLink("E", "Edit", new { id=item.CerdaCargadaId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("C", "Details", new { id=item.CerdaCargadaId }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("D", "Delete", new { id=item.CerdaCargadaId }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animales.CodigoAnimal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaMontaCerdaCargada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaInyectarCerdaCargada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaPosiblePartoCerdaCargada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaRealPartoCerdaCargada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NacidosCerdaCargada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NacidosVivosCerdaCargada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NacidosMuertosCerdaCargada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NacidosMomiasCerdaCargada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DestetosCerdaCargada)
+                </td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { id = item.CerdaCargadaId }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("C", "Details", new { id = item.CerdaCargadaId }, new { @class = "btn btn-info" }) |
+                    @Html.ActionLink("D", "Delete", new { id = item.CerdaCargadaId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
+<style type="text/css">
+    #global {
+        height: 400px;
+        width: 1200px;
+        border: 1px solid #ddd;
+        background: #f1f1f1;
+        overflow-y: scroll;
+    }
+
+    #mensajes {
+        height: auto;
+    }
+
+    .texto {
+        padding: 4px;
+        background: #fff;
+    }
+</style>
