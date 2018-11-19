@@ -6,6 +6,12 @@
 
 <h2>Eliminar opción</h2>
 
+@if (TempData["msnOpcionesEliminar"] != null)
+{
+    <script type="text/javascript">
+       alert("@TempData["msnOpcionesEliminar"]");
+    </script>
+}
 <h3>¿Esta seguro que lo desea eliminar?</h3>
 <div>
     <h4>Opciones</h4>
@@ -37,7 +43,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

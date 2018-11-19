@@ -61,6 +61,15 @@ namespace MiFincaVirtual.Backend.Tools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspAnimalEliminar.
+        /// </summary>
+        internal static string uspAnimalEliminar {
+            get {
+                return ResourceManager.GetString("uspAnimalEliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to uspInventarioDisponibleConsultar.
         /// </summary>
         internal static string uspInventarioDisponibleConsultar {
@@ -129,6 +138,24 @@ namespace MiFincaVirtual.Backend.Tools {
         internal static string uspLotesComidaIndividualInsertar {
             get {
                 return ResourceManager.GetString("uspLotesComidaIndividualInsertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspLotesEliminar.
+        /// </summary>
+        internal static string uspLotesEliminar {
+            get {
+                return ResourceManager.GetString("uspLotesEliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspOpcionesEliminar.
+        /// </summary>
+        internal static string uspOpcionesEliminar {
+            get {
+                return ResourceManager.GetString("uspOpcionesEliminar", resourceCulture);
             }
         }
         

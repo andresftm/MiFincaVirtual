@@ -354,7 +354,6 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dsOrdenosEntreFechas</DataSetName>
-            <Top>0cm</Top>
             <Height>1.2cm</Height>
             <Width>10cm</Width>
             <Style>
@@ -367,10 +366,10 @@
         <Height>0.47244in</Height>
         <Style />
       </Body>
-      <Width>7.26909in</Width>
+      <Width>4.87326in</Width>
       <Page>
         <PageHeader>
-          <Height>1.40461cm</Height>
+          <Height>2.35711cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -391,7 +390,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.80461cm</Top>
+              <Top>1.43961cm</Top>
               <Height>0.6cm</Height>
               <Width>12.37808cm</Width>
               <Style>
@@ -423,8 +422,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox16</rd:DefaultName>
-              <Height>0.70583cm</Height>
-              <Width>18.4635cm</Width>
+              <Height>1.47312cm</Height>
+              <Width>12.37808cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>

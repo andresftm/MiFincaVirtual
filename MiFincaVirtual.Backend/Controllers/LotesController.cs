@@ -23,7 +23,7 @@
             String Año = fecha.Year.ToString();
 
             String Mes = fecha.Month.ToString();
-            if(Mes.Length ==1)
+            if (Mes.Length == 1)
             {
                 Mes = "0" + Mes;
             }
@@ -256,10 +256,31 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Lotes lotes = await db.Lotes.FindAsync(id);
-            db.Lotes.Remove(lotes);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            List<Respuesta> Respuesta = new List<Respuesta>();
+
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspLotesEliminar + " @LoteId", new SqlParameter("LoteId", id)).ToList();
+            }
+
+            if (Respuesta[0].Codigo == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                if (Respuesta[0].Descripcion == "0008")
+                {
+                    TempData["msnLotesEliminar"] = Mensajes.Mensaje0008;
+                }
+
+                Lotes lotes = await db.Lotes.FindAsync(id);
+                if (lotes == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(lotes);
+            }
         }
 
         protected override void Dispose(bool disposing)

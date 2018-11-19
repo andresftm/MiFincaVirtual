@@ -284,6 +284,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Sp.resx</DependentUpon>
     </Compile>
+    <Compile Include="uspInventarioDisponibleConsultar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>uspInventarioDisponibleConsultar.xsd</DependentUpon>
+    </Compile>
     <Compile Include="uspOrdenosEntreFechas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -527,6 +532,17 @@
     <Content Include="uspOrdenosEntreFechas.xsc">
       <DependentUpon>uspOrdenosEntreFechas.xsd</DependentUpon>
     </Content>
+    <Content Include="uspInventarioDisponibleConsultar.xsc">
+      <DependentUpon>uspInventarioDisponibleConsultar.xsd</DependentUpon>
+    </Content>
+    <None Include="uspInventarioDisponibleConsultar.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>uspInventarioDisponibleConsultar.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="uspInventarioDisponibleConsultar.xss">
+      <DependentUpon>uspInventarioDisponibleConsultar.xsd</DependentUpon>
+    </Content>
     <None Include="uspOrdenosEntreFechas.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>uspOrdenosEntreFechas.Designer.cs</LastGenOutput>
@@ -562,6 +578,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\Inventarios\rptDisponibilidad.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptOrdenos.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using MiFincaVirtual.Backend.Models;
 using MiFincaVirtual.Common.Models;
+using MiFincaVirtual.Backend.Tools;
+using System.Data.SqlClient;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
@@ -112,10 +114,47 @@ namespace MiFincaVirtual.Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Opciones opciones = await db.Opciones.FindAsync(id);
-            db.Opciones.Remove(opciones);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            List<Respuesta> Respuesta = new List<Respuesta>();
+
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspOpcionesEliminar + " @OpcionId", new SqlParameter("OpcionId", id)).ToList();
+            }
+
+            if (Respuesta[0].Codigo == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                if (Respuesta[0].Descripcion == "0003")
+                {
+                    TempData["msnOpcionesEliminar"] = Mensajes.Mensaje0003;
+                }
+                else if (Respuesta[0].Descripcion == "0004")
+                {
+                    TempData["msnOpcionesEliminar"] = Mensajes.Mensaje0004;
+                }
+                else if (Respuesta[0].Descripcion == "0005")
+                {
+                    TempData["msnOpcionesEliminar"] = Mensajes.Mensaje0005;
+                }
+                else if (Respuesta[0].Descripcion == "0006")
+                {
+                    TempData["msnOpcionesEliminar"] = Mensajes.Mensaje0006;
+                }
+                else if (Respuesta[0].Descripcion == "0007")
+                {
+                    TempData["msnOpcionesEliminar"] = Mensajes.Mensaje0007;
+                }
+
+                Opciones opciones = await db.Opciones.FindAsync(id);
+                if (opciones == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(opciones);
+            }
         }
 
         protected override void Dispose(bool disposing)

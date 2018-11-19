@@ -42,3 +42,8 @@
 
 </table>
 
+<div>
+    @Html.ActionLink("Excel", "Reports", new { ReportType = "Excel" }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Pdf", "Reports", new { ReportType = "Pdf" }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Back to List", "ConsultarOrdenos", new { }, new { @class = "btn btn-primary" })
+</div>

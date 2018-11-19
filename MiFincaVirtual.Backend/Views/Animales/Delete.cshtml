@@ -1,12 +1,22 @@
 ﻿@model MiFincaVirtual.Common.Models.Animales
 
 @{
+    /**/
+
     ViewBag.Title = "Delete";
 }
 
 <h2>Eliminar animal</h2>
 
 <h3>¿Esta seguro que lo desea eliminar?</h3>
+
+@if (TempData["msnAnimalesEliminar"] != null)
+{
+    <script type="text/javascript">
+       alert("@TempData["msnAnimalesEliminar"]");
+    </script>
+}
+
 <div>
     <h4>Animales</h4>
     <hr />
@@ -109,7 +119,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

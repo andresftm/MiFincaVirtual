@@ -14,6 +14,7 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using MiFincaVirtual.Backend.Tools;
 using System.Data.SqlClient;
+using Microsoft.Reporting.WebForms;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
@@ -258,6 +259,50 @@ namespace MiFincaVirtual.Backend.Controllers
             }
 
             return View(Respuesta);
+        }
+
+        public ActionResult Reports(String reportType)
+        {
+            List<disponibilidadCuido> Respuesta = new List<disponibilidadCuido>();
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                Respuesta = db.Database.SqlQuery<disponibilidadCuido>(Sp.uspInventarioDisponibleConsultar).ToList();
+            }
+
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/Inventarios/rptDisponibilidad.rdlc");
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "dsInventarioDisponibleConsultar";
+            reportDataSource.Value = Respuesta;
+            localReport.DataSources.Add(reportDataSource);
+
+            String nimeType = String.Empty;
+            String encoding = String.Empty;
+            String fileNameExtencion = String.Empty;
+
+            switch (reportType)
+            {
+                case "Excel":
+                    fileNameExtencion = "xls";
+                    break;
+                case "Pdf":
+                    fileNameExtencion = "pdf";
+                    break;
+            }
+
+            String[] stream;
+            Warning[] warning;
+            byte[] renderedByte;
+            renderedByte = localReport.Render(reportType, "", out nimeType, out encoding, out fileNameExtencion, out stream, out warning);
+            //Response.AddHeader("content-disposition", "attachment:filename= ordenos_report." + fileNameExtencion);
+            if (reportType == "Excel")
+            {
+                return File(renderedByte, "application/Excel", "report_DisponibilidadCuidos." + fileNameExtencion);
+            }
+            else
+            {
+                return File(renderedByte, "application/Pdf", "report_DisponibilidadCuidos." + fileNameExtencion);
+            }
         }
 
         protected override void Dispose(bool disposing)

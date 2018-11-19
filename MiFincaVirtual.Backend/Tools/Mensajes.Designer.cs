@@ -68,5 +68,104 @@ namespace MiFincaVirtual.Backend.Tools {
                 return ResourceManager.GetString("GestanteMacho", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede eliminar por que hay ordeños registrados a este animal..
+        /// </summary>
+        internal static string Mensaje0001 {
+            get {
+                return ResourceManager.GetString("Mensaje0001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede cargar por que hay cerdas gestantes relacionadas a este animal..
+        /// </summary>
+        internal static string Mensaje0002 {
+            get {
+                return ResourceManager.GetString("Mensaje0002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede eliminar esta opción por que la tiene registrada al menos un lote con un tipo de animal..
+        /// </summary>
+        internal static string Mensaje0003 {
+            get {
+                return ResourceManager.GetString("Mensaje0003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede eliminar esta opción por que la tiene registrada un lote indicando el tipo de cuido del lote..
+        /// </summary>
+        internal static string Mensaje0004 {
+            get {
+                return ResourceManager.GetString("Mensaje0004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede eliminar esta opción por que aparece en un registro de comida como tipo de cuido..
+        /// </summary>
+        internal static string Mensaje0005 {
+            get {
+                return ResourceManager.GetString("Mensaje0005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede eliminar esta opción por que aparece en un registro de inventario como tipo de cuido..
+        /// </summary>
+        internal static string Mensaje0006 {
+            get {
+                return ResourceManager.GetString("Mensaje0006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede eliminar esta opción por que aparece en un registro de animales indicando el tipo de animal..
+        /// </summary>
+        internal static string Mensaje0007 {
+            get {
+                return ResourceManager.GetString("Mensaje0007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede eliminar el lote por que lo tiene relacionado al menos un registro de comidas lote..
+        /// </summary>
+        internal static string Mensaje0008 {
+            get {
+                return ResourceManager.GetString("Mensaje0008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El registro se ha eliminado satisfactoriamente..
+        /// </summary>
+        internal static string RegistroEliminado {
+            get {
+                return ResourceManager.GetString("RegistroEliminado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El registro se ha guardado satifactoriamene..
+        /// </summary>
+        internal static string RegistroGuardado {
+            get {
+                return ResourceManager.GetString("RegistroGuardado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El registro se ha modificado satisfactoriamente..
+        /// </summary>
+        internal static string RegistroModificado {
+            get {
+                return ResourceManager.GetString("RegistroModificado", resourceCulture);
+            }
+        }
     }
 }

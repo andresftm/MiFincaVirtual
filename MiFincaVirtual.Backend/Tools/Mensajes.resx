@@ -120,4 +120,37 @@
   <data name="GestanteMacho" xml:space="preserve">
     <value>Un macho no se puede registrar como gestante.</value>
   </data>
+  <data name="Mensaje0001" xml:space="preserve">
+    <value>No se puede eliminar por que hay ordeños registrados a este animal.</value>
+  </data>
+  <data name="Mensaje0002" xml:space="preserve">
+    <value>No se puede cargar por que hay cerdas gestantes relacionadas a este animal.</value>
+  </data>
+  <data name="Mensaje0003" xml:space="preserve">
+    <value>No se puede eliminar esta opción por que la tiene registrada al menos un lote con un tipo de animal.</value>
+  </data>
+  <data name="Mensaje0004" xml:space="preserve">
+    <value>No se puede eliminar esta opción por que la tiene registrada un lote indicando el tipo de cuido del lote.</value>
+  </data>
+  <data name="Mensaje0005" xml:space="preserve">
+    <value>No se puede eliminar esta opción por que aparece en un registro de comida como tipo de cuido.</value>
+  </data>
+  <data name="Mensaje0006" xml:space="preserve">
+    <value>No se puede eliminar esta opción por que aparece en un registro de inventario como tipo de cuido.</value>
+  </data>
+  <data name="Mensaje0007" xml:space="preserve">
+    <value>No se puede eliminar esta opción por que aparece en un registro de animales indicando el tipo de animal.</value>
+  </data>
+  <data name="Mensaje0008" xml:space="preserve">
+    <value>No se puede eliminar el lote por que lo tiene relacionado al menos un registro de comidas lote.</value>
+  </data>
+  <data name="RegistroEliminado" xml:space="preserve">
+    <value>El registro se ha eliminado satisfactoriamente.</value>
+  </data>
+  <data name="RegistroGuardado" xml:space="preserve">
+    <value>El registro se ha guardado satifactoriamene.</value>
+  </data>
+  <data name="RegistroModificado" xml:space="preserve">
+    <value>El registro se ha modificado satisfactoriamente.</value>
+  </data>
 </root>

@@ -7,6 +7,12 @@
 <h2>Eliminar lote</h2>
 
 <h3>¿Esta seguro que lo desea eliminar?</h3>
+@if (TempData["msnLotesEliminar"] != null)
+{
+    <script type="text/javascript">
+       alert("@TempData["msnLotesEliminar"]");
+    </script>
+}
 <div>
     <h4>Lotes</h4>
     <hr />

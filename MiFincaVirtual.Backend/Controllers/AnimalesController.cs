@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using MiFincaVirtual.Backend.Models;
 using MiFincaVirtual.Common.Models;
 using MiFincaVirtual.Backend.Tools;
+using System.Data.SqlClient;
 
 namespace MiFincaVirtual.Backend.Controllers
 {
@@ -253,10 +254,35 @@ namespace MiFincaVirtual.Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Animales animales = await db.Animales.FindAsync(id);
-            db.Animales.Remove(animales);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            List<Respuesta> Respuesta = new List<Respuesta>();
+
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                Respuesta = db.Database.SqlQuery<Respuesta>(Sp.uspAnimalEliminar + " @AnimalId", new SqlParameter("AnimalId", id)).ToList();
+            }
+
+            if (Respuesta[0].Codigo == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                if (Respuesta[0].Descripcion == "0001")
+                {
+                    TempData["msnAnimalesEliminar"] = Mensajes.Mensaje0001;
+                }
+                else if (Respuesta[0].Descripcion == "0002")
+                {
+                    TempData["msnAnimalesEliminar"] = Mensajes.Mensaje0002;
+                }
+
+                Animales animales = await db.Animales.FindAsync(id);
+                if (animales == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(animales);
+            }
         }
 
         protected override void Dispose(bool disposing)
