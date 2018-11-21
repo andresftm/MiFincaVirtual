@@ -1,3 +1,2 @@
 ﻿** Hay que mirar una opción para que en ordeños cuando se registre el cuido, se 
    ingrese tambien el tipo de cuido y se calcule el valor de lo consumido.
-** Hacer el proceso de eliminar en la pantalla de disponibilidad de inventario.
