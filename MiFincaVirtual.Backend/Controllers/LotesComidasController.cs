@@ -22,7 +22,7 @@
         // GET: LotesComidas
         public async Task<ActionResult> Index()
         {
-            var LotesComidas = db.LotesComidas.Include(a => a.Lotes).Include(a => a.Opciones);
+            var LotesComidas = db.LotesComidas.Include(a => a.Lotes).Include(a => a.Opciones).OrderByDescending(L => L.FechaLoteComida).Take(20);
             return View(await LotesComidas.ToListAsync());
         }
 

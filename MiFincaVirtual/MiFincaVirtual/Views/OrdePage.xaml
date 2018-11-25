@@ -36,7 +36,7 @@
                                 <Label
                                     FontAttributes="Bold"
                                     Grid.Column="0"
-                                    Text="{Binding CodigoAnimal}">
+                                    Text="{Binding Animal}">
                                 </Label>
                                 <Label
                                     FontAttributes="Bold"

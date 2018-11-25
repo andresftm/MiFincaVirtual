@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using MiFincaVirtual.Api.Models;
+using MiFincaVirtual.Api.Tools;
 using MiFincaVirtual.Common.Models;
 using MiFincaVirtual.Domain.Models;
 
@@ -20,9 +22,28 @@ namespace MiFincaVirtual.Api.Controllers
         private DataContext db = new DataContext();
 
         // GET: api/Ordenos
-        public IQueryable<Ordenos> GetOrdenos()
+        public IEnumerable<Ordenos> GetOrdenos()
         {
-            return db.Ordenos.OrderByDescending(o => o.OrdenoId).Take(20);
+            List<ConsultaOrdeno> lstConsultaOrdenos = new List<ConsultaOrdeno>();
+            using (LocalDataContext db = new LocalDataContext())
+            {
+                lstConsultaOrdenos = db.Database.SqlQuery<ConsultaOrdeno>(Sp.uspOrdenosConsultar).ToList();
+            }
+
+            var lstOrdenos = lstConsultaOrdenos.Select(o => new Ordenos()
+            {
+                Animal = o.Animal,
+                AnimalId = o.AnimalId,
+                FechaOrdeno = o.FechaOrdeno,
+                LitrosOrdeno = o.LitrosOrdeno,
+                NumeroOrdeno = o.NumeroOrdeno,
+                PesoOrdeno = o.PesoOrdeno,
+                OrdenoId = o.OrdenoId,
+                GramosCuidoOrdeno = o.GramosCuidoOrdeno,
+
+            });
+
+            return lstOrdenos.Take(20);
         }
 
         // GET: api/Ordenos/5
