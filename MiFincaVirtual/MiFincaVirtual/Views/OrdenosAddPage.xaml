@@ -30,6 +30,7 @@
                         x:Name="pBovinos"
                         ItemsSource ="{Binding myBovinosGestantes}"
                         ItemDisplayBinding="{Binding Animal}"
+                        SelectedItem="{Binding CodigoAnimal}"
                         Grid.Column="1"
                         Grid.Row="0"/>
 

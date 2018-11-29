@@ -25,11 +25,18 @@
                     VerticalOptions="Center"
                     Grid.Column="0"
                     Grid.Row="0"/>
-                <Entry
+                <Picker Title="--Select--"
+                        x:Name="pBovinos"
+                        ItemsSource ="{Binding myBovinosGestantes}"
+                        ItemDisplayBinding="{Binding Animal}"
+                        SelectedItem="{Binding CodigoAnimal}"
+                        Grid.Column="1"
+                        Grid.Row="0"/>                
+                <!--<Entry
                     Placeholder="{i18n:Translate CodeAnimal}"
                     Text="{Binding Ordeno.CodigoAnimal}"
                     Grid.Column="1"
-                    Grid.Row="0"/>
+                    Grid.Row="0"/>-->
                 <Label
                     Text="{i18n:Translate MilkingNumber}"
                     VerticalOptions="Center"

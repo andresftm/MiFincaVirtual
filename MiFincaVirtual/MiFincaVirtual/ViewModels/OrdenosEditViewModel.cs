@@ -5,6 +5,7 @@
     using MiFincaVirtual.Helpers;
     using MiFincaVirtual.Services;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -22,6 +23,11 @@
         #endregion
 
         #region Properties
+
+        public List<Ordenos> myBovinosGestantes { get; set; }
+
+        public Object CodigoAnimal { get; set; }
+
         public Ordenos Ordeno
         {
             get { return this.ordeno; }
@@ -42,11 +48,14 @@
         #endregion
 
         #region Constructors
-        public OrdenosEditViewModel(Ordenos ordenoP)
+        public OrdenosEditViewModel(Ordenos ordenoP, List<Ordenos> lstOrdenos)
         {
             this.ordeno = ordenoP;
             this.apiService = new ApiService();
             this.IsEnabled = true;
+            this.myBovinosGestantes = lstOrdenos;
+            this.CodigoAnimal = lstOrdenos.FirstOrDefault(O => O.AnimalId == ordenoP.AnimalId);
+
         }
         #endregion
 
@@ -63,12 +72,16 @@
         #region Metods
         private async void Edit()
         {
-            if (String.IsNullOrEmpty(this.ordeno.Animales.CodigoAnimal))
+            if (this.CodigoAnimal == null)
             {
                 await Application.Current.MainPage.DisplayAlert(Languages.Error
                     , Languages.CodeAnimalError
                     , Languages.Accept);
                 return;
+            }
+            else
+            {
+                this.ordeno.AnimalId = ((Ordenos)this.CodigoAnimal).AnimalId;
             }
 
             if (this.ordeno.NumeroOrdeno <= 0)

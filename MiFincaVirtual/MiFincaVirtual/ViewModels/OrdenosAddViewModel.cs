@@ -23,7 +23,7 @@ namespace MiFincaVirtual.ViewModels
         #endregion
 
         #region Properties
-        public String CodigoAnimal { get; set; }
+        public Object CodigoAnimal { get; set; }
 
         public String NumeroOrdeno { get; set; }
 
@@ -73,7 +73,7 @@ namespace MiFincaVirtual.ViewModels
         #region Metods
         private async void Save()
         {
-            if (String.IsNullOrEmpty(this.CodigoAnimal))
+            if (this.CodigoAnimal == null)
             {
                 await Application.Current.MainPage.DisplayAlert(Languages.Error
                     , Languages.CodeAnimalError
@@ -165,7 +165,7 @@ namespace MiFincaVirtual.ViewModels
                 NumeroOrdeno = Convert.ToInt32(NumeroOrdeno),
                 PesoOrdeno = pesosOrdeño,
                 GramosCuidoOrdeno = gramosCuidoOrdeno,
-                AnimalId = Convert.ToInt32(CodigoAnimal),
+                AnimalId = ((Ordenos)CodigoAnimal).AnimalId,
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
