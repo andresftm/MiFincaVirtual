@@ -5,11 +5,12 @@
     using MiFincaVirtual.Helpers;
     using MiFincaVirtual.Services;
     using MiFincaVirtual.Views;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class OrdenosItemViewModel: Ordenos
+    public class OrdenosItemViewModel : Ordenos
     {
         #region Attributs
         private ApiService apiService;
@@ -18,7 +19,7 @@
         #region Contructors
         public OrdenosItemViewModel()
         {
-            this.apiService = new ApiService();    
+            this.apiService = new ApiService();
         }
         #endregion
 
@@ -85,6 +86,7 @@
 
             await App.Navigator.PushAsync(new OrdenosEditPage());
         }
+
         #endregion
     }
 }

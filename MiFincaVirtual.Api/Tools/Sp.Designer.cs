@@ -61,6 +61,15 @@ namespace MiFincaVirtual.Api.Tools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspBovinosGestantesConsultar.
+        /// </summary>
+        internal static string uspBovinosGestantesConsultar {
+            get {
+                return ResourceManager.GetString("uspBovinosGestantesConsultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to uspOrdenosConsultar.
         /// </summary>
         internal static string uspOrdenosConsultar {

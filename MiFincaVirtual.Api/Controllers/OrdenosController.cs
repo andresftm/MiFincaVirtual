@@ -21,6 +21,9 @@ namespace MiFincaVirtual.Api.Controllers
     {
         private DataContext db = new DataContext();
 
+
+        /// <summary> Consulta los ordeños registrados.</summary>
+        /// <returns> Listado de los ultimos 20 ordeños registrados.</returns>
         // GET: api/Ordenos
         public IEnumerable<Ordenos> GetOrdenos()
         {
@@ -40,23 +43,50 @@ namespace MiFincaVirtual.Api.Controllers
                 PesoOrdeno = o.PesoOrdeno,
                 OrdenoId = o.OrdenoId,
                 GramosCuidoOrdeno = o.GramosCuidoOrdeno,
-
             });
 
-            return lstOrdenos.Take(20);
+            return lstOrdenos;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"> 0 - Bovinos en lactancia. </param>
+        /// <returns> Listado de bovinos consultados. </returns>
         // GET: api/Ordenos/5
         [ResponseType(typeof(Ordenos))]
-        public async Task<IHttpActionResult> GetOrdenos(int id)
+        public IEnumerable<Ordenos> GetOrdenos(int id)
         {
-            Ordenos ordenos = await db.Ordenos.FindAsync(id);
-            if (ordenos == null)
-            {
-                return NotFound();
-            }
+            List<ConsultaOrdeno> lstConsultaOrdenos = new List<ConsultaOrdeno>();
 
-            return Ok(ordenos);
+            switch (id)
+            {
+                case 0:
+                    using (LocalDataContext db = new LocalDataContext())
+                    {
+                        lstConsultaOrdenos = db.Database.SqlQuery<ConsultaOrdeno>(Sp.uspBovinosGestantesConsultar).ToList();
+                    }
+
+                    var lstOrdenos = lstConsultaOrdenos.Select(o => new Ordenos()
+                    {
+                        Animal = o.Animal,
+                        AnimalId = o.AnimalId,
+                    });
+                    return lstOrdenos.Take(20);
+                    break;
+                default:
+                    using (LocalDataContext db = new LocalDataContext())
+                    {
+                        lstConsultaOrdenos = db.Database.SqlQuery<ConsultaOrdeno>(Sp.uspBovinosGestantesConsultar).ToList();
+                    }
+
+                    var lstOrdenos1 = lstConsultaOrdenos.Select(o => new Ordenos()
+                    {
+                        Animal = o.Animal,
+                        AnimalId = o.AnimalId,
+                    });
+                    return lstOrdenos1.Take(20); break;
+            }
         }
 
         // PUT: api/Ordenos/5

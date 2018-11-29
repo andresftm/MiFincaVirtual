@@ -35,6 +35,8 @@ namespace MiFincaVirtual.ViewModels
 
         public DateTime FechaOrdeno { get; set; }
 
+        public List<Ordenos> myBovinosGestantes { get; set; }
+
         public Boolean IsRunning
         {
             get { return this.isRunning; }
@@ -49,11 +51,12 @@ namespace MiFincaVirtual.ViewModels
         #endregion
 
         #region Contructors
-        public OrdenosAddViewModel()
+        public OrdenosAddViewModel(List<Ordenos> lst)
         {
             this.apiService = new ApiService();
             this.IsEnabled = true;
             this.FechaOrdeno = DateTime.Now;
+            this.myBovinosGestantes = lst;
         }
         #endregion
 
@@ -202,6 +205,7 @@ namespace MiFincaVirtual.ViewModels
             await App.Navigator.PopAsync();
             //await App.Navigator.PopAsync();
         }
+
         #endregion
     }
 }

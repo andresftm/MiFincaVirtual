@@ -1,0 +1,2 @@
+﻿** Hacer la pantalla para registro de comida de cerdos individual.
+** Hacer la pantalla para registro grupal de comida e cerdos,
