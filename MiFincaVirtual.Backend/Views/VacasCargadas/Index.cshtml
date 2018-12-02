@@ -1,0 +1,87 @@
+﻿@model IEnumerable<MiFincaVirtual.Common.Models.VacasCargadas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de vacas lactantes</h2>
+@if (TempData["msnVacasLactanciaEliminar"] != null)
+{
+    <script type="text/javascript">
+       alert("@TempData["msnVacasLactanciaEliminar"]");
+    </script>
+}
+<p>
+    @Html.ActionLink("Registrar lactancia", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Animales.CodigoAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaMontaVacaCargada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaRecordacionVacaCargada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaPosiblePartoVacaCargada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaRealPartoVacaCargada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaDesteteVacaCargada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivoVacaCargada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NacidosVacaCargada)
+        </th>
+        <th>
+            Hembra
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Animales.CodigoAnimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaMontaVacaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRecordacionVacaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPosiblePartoVacaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRealPartoVacaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDesteteVacaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivoVacaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NacidosVacaCargada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SexoCriaVacaCargada)
+            </td>
+            <td>
+                @Html.ActionLink("E", "Edit", new { id = item.VacaCargadaId }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("C", "Details", new { id = item.VacaCargadaId }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("D", "Delete", new { id = item.VacaCargadaId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

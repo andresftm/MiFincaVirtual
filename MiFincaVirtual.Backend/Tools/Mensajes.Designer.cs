@@ -142,6 +142,15 @@ namespace MiFincaVirtual.Backend.Tools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se puede eliminar el registro..
+        /// </summary>
+        internal static string Mensaje0009 {
+            get {
+                return ResourceManager.GetString("Mensaje0009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El registro se ha eliminado satisfactoriamente..
         /// </summary>
         internal static string RegistroEliminado {

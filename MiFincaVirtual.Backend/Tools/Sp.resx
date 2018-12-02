@@ -153,4 +153,13 @@
   <data name="uspOrdenosEntreFechasConsultar" xml:space="preserve">
     <value>uspOrdenosEntreFechasConsultar</value>
   </data>
+  <data name="uspVacaGestanteActualizar" xml:space="preserve">
+    <value>uspVacaGestanteActualizar</value>
+  </data>
+  <data name="uspVacaGestanteEliminar" xml:space="preserve">
+    <value>uspVacaGestanteEliminar</value>
+  </data>
+  <data name="uspVacaGestanteInsertar" xml:space="preserve">
+    <value>uspVacaGestanteInsertar</value>
+  </data>
 </root>

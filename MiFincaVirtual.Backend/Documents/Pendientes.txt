@@ -1,3 +1,6 @@
 ﻿** Hay que mirar una opción para que en ordeños cuando se registre el cuido, se 
    ingrese tambien el tipo de cuido y se calcule el valor de lo consumido.
 ** Hacer una pantalla de hembras gestantes para los bovinos.
+** Validar que no se registren lactancias de cerdas para una cerda que ya tiene una lactancia
+   activa.
+** Es importante registrar cuantos machos y cuantas hembras.

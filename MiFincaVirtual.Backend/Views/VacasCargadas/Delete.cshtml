@@ -1,0 +1,96 @@
+﻿@model MiFincaVirtual.Common.Models.VacasCargadas
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar gestación</h2>
+
+<h3>¿Esta seguro que lo desea eliminar?</h3>
+<div>
+    <h4>Vacas Cargadas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animales.CodigoAnimal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Animales.CodigoAnimal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaMontaVacaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaMontaVacaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRecordacionVacaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRecordacionVacaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPosiblePartoVacaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPosiblePartoVacaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRealPartoVacaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRealPartoVacaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaDesteteVacaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaDesteteVacaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivoVacaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivoVacaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacidosVacaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacidosVacaCargada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SexoCriaVacaCargada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SexoCriaVacaCargada)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+        </div>
+    }
+</div>

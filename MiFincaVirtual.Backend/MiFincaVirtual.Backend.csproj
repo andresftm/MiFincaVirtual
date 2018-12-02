@@ -249,10 +249,15 @@
     <Compile Include="Controllers\OrdenosController.cs" />
     <Compile Include="Controllers\QuesosController.cs" />
     <Compile Include="Controllers\RazasController.cs" />
+    <Compile Include="Controllers\VacasCargadasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
+    <Compile Include="Migrations\201812021417560_AcasCargadas.cs" />
+    <Compile Include="Migrations\201812021417560_AcasCargadas.Designer.cs">
+      <DependentUpon>201812021417560_AcasCargadas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModelo.cs" />
@@ -551,6 +556,11 @@
     <Content Include="uspOrdenosEntreFechas.xss">
       <DependentUpon>uspOrdenosEntreFechas.xsd</DependentUpon>
     </Content>
+    <Content Include="Views\VacasCargadas\Create.cshtml" />
+    <Content Include="Views\VacasCargadas\Delete.cshtml" />
+    <Content Include="Views\VacasCargadas\Details.cshtml" />
+    <Content Include="Views\VacasCargadas\Edit.cshtml" />
+    <Content Include="Views\VacasCargadas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -578,6 +588,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812021417560_AcasCargadas.resx">
+      <DependentUpon>201812021417560_AcasCargadas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Inventarios\rptDisponibilidad.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

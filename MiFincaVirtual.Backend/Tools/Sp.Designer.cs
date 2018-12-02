@@ -167,5 +167,32 @@ namespace MiFincaVirtual.Backend.Tools {
                 return ResourceManager.GetString("uspOrdenosEntreFechasConsultar", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspVacaGestanteActualizar.
+        /// </summary>
+        internal static string uspVacaGestanteActualizar {
+            get {
+                return ResourceManager.GetString("uspVacaGestanteActualizar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspVacaGestanteEliminar.
+        /// </summary>
+        internal static string uspVacaGestanteEliminar {
+            get {
+                return ResourceManager.GetString("uspVacaGestanteEliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspVacaGestanteInsertar.
+        /// </summary>
+        internal static string uspVacaGestanteInsertar {
+            get {
+                return ResourceManager.GetString("uspVacaGestanteInsertar", resourceCulture);
+            }
+        }
     }
 }

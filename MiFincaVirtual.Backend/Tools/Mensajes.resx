@@ -144,6 +144,9 @@
   <data name="Mensaje0008" xml:space="preserve">
     <value>No se puede eliminar el lote por que lo tiene relacionado al menos un registro de comidas lote.</value>
   </data>
+  <data name="Mensaje0009" xml:space="preserve">
+    <value>No se puede eliminar el registro.</value>
+  </data>
   <data name="RegistroEliminado" xml:space="preserve">
     <value>El registro se ha eliminado satisfactoriamente.</value>
   </data>

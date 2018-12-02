@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using MiFincaVirtual.Backend.Models;
-using MiFincaVirtual.Common.Models;
-
-namespace MiFincaVirtual.Backend.Controllers
+﻿namespace MiFincaVirtual.Backend.Controllers
 {
+    using MiFincaVirtual.Backend.Models;
+    using MiFincaVirtual.Common.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
     [Authorize]
     public class CerdasCargadasController : Controller
     {
@@ -20,7 +19,7 @@ namespace MiFincaVirtual.Backend.Controllers
         // GET: CerdasCargadas
         public async Task<ActionResult> Index()
         {
-            var cerdasCargadas = db.CerdasCargadas.Include(c => c.Animales);
+            var cerdasCargadas = db.CerdasCargadas.Include(c => c.Animales).Where(C => C.ActivoCerdaCargada);
             return View(await cerdasCargadas.ToListAsync());
         }
 
