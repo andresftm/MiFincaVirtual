@@ -484,6 +484,15 @@ namespace MiFincaVirtual.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Decimal Liters.
+        /// </summary>
+        internal static string MilkingLitersDecimal {
+            get {
+                return ResourceManager.GetString("MilkingLitersDecimal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must enter the liters of milking.
         /// </summary>
         internal static string MilkingLitersError {

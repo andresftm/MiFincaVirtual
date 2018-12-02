@@ -357,4 +357,7 @@
   <data name="Animals" xml:space="preserve">
     <value>Animals</value>
   </data>
+  <data name="MilkingLitersDecimal" xml:space="preserve">
+    <value>Decimal Liters</value>
+  </data>
 </root>

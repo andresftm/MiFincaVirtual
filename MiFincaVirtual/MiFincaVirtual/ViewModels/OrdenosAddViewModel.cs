@@ -29,6 +29,8 @@ namespace MiFincaVirtual.ViewModels
 
         public String LitrosOrdeno { get; set; }
 
+        public String LitrosOrdenoDecimal { get; set; }
+
         public String PesoOrdeno { get; set; }
 
         public String GramosCuidoOrdeno { get; set; }
@@ -117,6 +119,13 @@ namespace MiFincaVirtual.ViewModels
                     Languages.MilkingLitersError,
                     Languages.Accept);
                 return;
+            }
+            else
+            {
+                if(!String.IsNullOrEmpty(this.LitrosOrdenoDecimal))
+                {
+                    litrosOrdeño = Convert.ToDecimal(this.LitrosOrdeno + "," + this.LitrosOrdenoDecimal);
+                }
             }
 
             if (String.IsNullOrEmpty(this.PesoOrdeno))

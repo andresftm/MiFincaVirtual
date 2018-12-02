@@ -33,12 +33,6 @@
                         SelectedItem="{Binding CodigoAnimal}"
                         Grid.Column="1"
                         Grid.Row="0"/>
-
-                <!--<Entry
-                    Placeholder="{i18n:Translate CodeAnimal}"
-                    Text="{Binding CodigoAnimal}"
-                    Grid.Column="1"
-                    Grid.Row="0"/>-->
                 <Label
                     Text="{i18n:Translate MilkingNumber}"
                     VerticalOptions="Center"
@@ -60,39 +54,47 @@
                     Text="{Binding LitrosOrdeno}"
                     Keyboard="Numeric" 
                     Grid.Column="1"
-                    Grid.Row="2"/>
+                    Grid.Row="2">
+                </Entry>
+                <Entry
+                    Placeholder="{i18n:Translate MilkingLitersDecimal}"
+                    Text="{Binding LitrosOrdenoDecimal}"
+                    Keyboard="Numeric" 
+                    Grid.Column="1"
+                    Grid.Row="3">
+                </Entry>
                 <Label
                     Text="{i18n:Translate MilkingWeight}"
                     VerticalOptions="Center"
                     Grid.Column="0"
-                    Grid.Row="3"/>
+                    Grid.Row="4"/>
                 <Entry
                     Placeholder="{i18n:Translate MilkingWeight}"
                     Text="{Binding PesoOrdeno}"
                     Grid.Column="1"
                     Keyboard="Numeric" 
-                    Grid.Row="3"/>
+                    Grid.Row="4"/>
                 <Label
                     Text="{i18n:Translate Grams}"
                     VerticalOptions="Center"
                     Grid.Column="0"
-                    Grid.Row="4"/>
+                    Grid.Row="5"/>
                 <Entry
                     Placeholder="{i18n:Translate Grams}"
                     Text="{Binding GramosCuidoOrdeno}"
                     Grid.Column="1"
                     Keyboard="Numeric" 
-                    Grid.Row="4"/>
+                    Grid.Row="5"/>
                 <Label
                     Text="{i18n:Translate MilkingDate}"
                     VerticalOptions="Center"
                     Grid.Column="0"
-                    Grid.Row="5"/>
+                    Grid.Row="6"/>
                 <DatePicker 
                     Date="{Binding FechaOrdeno}" 
                     VerticalOptions="Center"
                     Grid.Column="1"
-                    Grid.Row="5"/>
+                    Grid.Row="6"/>
             </Grid>
             <ActivityIndicator 
                 VerticalOptions="FillAndExpand"
