@@ -147,6 +147,9 @@
   <data name="Mensaje0009" xml:space="preserve">
     <value>No se puede eliminar el registro.</value>
   </data>
+  <data name="Mensaje0010" xml:space="preserve">
+    <value>No se puede registrar por que tiene una lactancia activa.</value>
+  </data>
   <data name="RegistroEliminado" xml:space="preserve">
     <value>El registro se ha eliminado satisfactoriamente.</value>
   </data>

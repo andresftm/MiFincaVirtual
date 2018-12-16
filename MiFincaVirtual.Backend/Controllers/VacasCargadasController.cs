@@ -184,6 +184,7 @@ namespace MiFincaVirtual.Backend.Controllers
                     }
                     else
                     {
+                        TempData["msgVacaGestante"] = Mensajes.Mensaje0010;
                         return View(vacasCargadas);
                     }
                 }

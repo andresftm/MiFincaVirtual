@@ -151,6 +151,15 @@ namespace MiFincaVirtual.Backend.Tools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se puede registrar por que tiene una lactancia activa..
+        /// </summary>
+        internal static string Mensaje0010 {
+            get {
+                return ResourceManager.GetString("Mensaje0010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El registro se ha eliminado satisfactoriamente..
         /// </summary>
         internal static string RegistroEliminado {

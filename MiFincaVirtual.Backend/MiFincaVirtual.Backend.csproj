@@ -248,9 +248,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
-    <Compile Include="Migrations\201812021417560_AcasCargadas.cs" />
-    <Compile Include="Migrations\201812021417560_AcasCargadas.Designer.cs">
-      <DependentUpon>201812021417560_AcasCargadas.cs</DependentUpon>
+    <Compile Include="Migrations\201812161714042_VacasLactancias.cs" />
+    <Compile Include="Migrations\201812161714042_VacasLactancias.Designer.cs">
+      <DependentUpon>201812161714042_VacasLactancias.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -590,8 +590,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812021417560_AcasCargadas.resx">
-      <DependentUpon>201812021417560_AcasCargadas.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812161714042_VacasLactancias.resx">
+      <DependentUpon>201812161714042_VacasLactancias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Inventarios\rptDisponibilidad.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

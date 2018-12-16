@@ -6,10 +6,17 @@
 
 <h2>Editar lactancía de vaca</h2>
 
+@if (TempData["msgVacaGestante"] != null)
+{
+    <script type="text/javascript">
+       alert("@TempData["msgVacaGestante"]");
+    </script>
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>VacasCargadas</h4>
         <hr />
