@@ -12,6 +12,8 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using MiFincaVirtual.Common.Models;
+using MiFincaVirtual.Domain.Models;
 
 namespace MiFincaVirtual.Api.Controllers
 {
@@ -38,28 +40,18 @@ namespace MiFincaVirtual.Api.Controllers
       })).Take<Ordenos>(20);
     }
 
-    [ResponseType(typeof (Ordenos))]
-    public IEnumerable<Ordenos> GetOrdenos(int id)
-    {
-      List<ConsultaOrdeno> source = new List<ConsultaOrdeno>();
-      if (id == 0)
-      {
-        using (LocalDataContext localDataContext = new LocalDataContext())
-          source = ((IEnumerable<ConsultaOrdeno>) ((DbContext) localDataContext).get_Database().SqlQuery<ConsultaOrdeno>(Sp.uspBovinosGestantesConsultar, (object[]) Array.Empty<object>())).ToList<ConsultaOrdeno>();
-        return source.Select<ConsultaOrdeno, Ordenos>((Func<ConsultaOrdeno, Ordenos>) (o => new Ordenos()
+        // GET: api/Ordenos/5
+        [ResponseType(typeof(Ordenos))]
+        public async Task<IHttpActionResult> GetOrdenos(int id)
         {
-          Animal = o.Animal,
-          AnimalId = new int?(o.AnimalId)
-        })).Take<Ordenos>(20);
-      }
-      using (LocalDataContext localDataContext = new LocalDataContext())
-        source = ((IEnumerable<ConsultaOrdeno>) ((DbContext) localDataContext).get_Database().SqlQuery<ConsultaOrdeno>(Sp.uspBovinosGestantesConsultar, (object[]) Array.Empty<object>())).ToList<ConsultaOrdeno>();
-      return source.Select<ConsultaOrdeno, Ordenos>((Func<ConsultaOrdeno, Ordenos>) (o => new Ordenos()
-      {
-        Animal = o.Animal,
-        AnimalId = new int?(o.AnimalId)
-      })).Take<Ordenos>(20);
-    }
+            Ordenos ordenos = await db.Ordenos.FindAsync(id);
+            if (ordenos == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(ordenos);
+        }
 
     [ResponseType(typeof (void))]
     public async Task<IHttpActionResult> PutOrdenos(int id, Ordenos ordenos)
@@ -83,20 +75,23 @@ namespace MiFincaVirtual.Api.Controllers
       return (IHttpActionResult) ordenosController.StatusCode(HttpStatusCode.NoContent);
     }
 
-    [ResponseType(typeof (Ordenos))]
-    public async Task<IHttpActionResult> PostOrdenos(Ordenos ordenos)
-    {
-      OrdenosController ordenosController = this;
-      if (!ordenosController.get_ModelState().get_IsValid())
-        return (IHttpActionResult) ordenosController.BadRequest(ordenosController.get_ModelState());
-      ordenos.FechaOrdeno = ordenos.FechaOrdeno.ToUniversalTime();
-      ordenosController.db.get_Ordenos().Add(ordenos);
-      int num = await ((DbContext) ordenosController.db).SaveChangesAsync();
-      return (IHttpActionResult) ordenosController.CreatedAtRoute<Ordenos>("DefaultApi", (object) new
-      {
-        id = ordenos.OrdenoId
-      }, (M0) ordenos);
-    }
+        // POST: api/Ordenos
+        [ResponseType(typeof(Ordenos))]
+        public async Task<IHttpActionResult> PostOrdenos(Ordenos ordenos)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ordenos.FechaOrdeno = ordenos.FechaOrdeno.ToUniversalTime();
+            ordenos.PesoOrdeno = 10;
+
+            db.Ordenos.Add(ordenos);
+            await db.SaveChangesAsync();
+
+            return CreatedAtRoute("DefaultApi", new { id = ordenos.OrdenoId }, ordenos);
+        }
 
     [ResponseType(typeof (Ordenos))]
     public async Task<IHttpActionResult> DeleteOrdenos(int id)

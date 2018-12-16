@@ -23,15 +23,21 @@ namespace MiFincaVirtual.ViewModels
         #endregion
 
         #region Properties
-        public String CodigoAnimal { get; set; }
+        public Object CodigoAnimal { get; set; }
 
         public String NumeroOrdeno { get; set; }
 
         public String LitrosOrdeno { get; set; }
 
+        public String LitrosOrdenoDecimal { get; set; }
+
         public String PesoOrdeno { get; set; }
 
+        public String GramosCuidoOrdeno { get; set; }
+
         public DateTime FechaOrdeno { get; set; }
+
+        public List<Ordenos> myBovinosGestantes { get; set; }
 
         public Boolean IsRunning
         {
@@ -47,11 +53,12 @@ namespace MiFincaVirtual.ViewModels
         #endregion
 
         #region Contructors
-        public OrdenosAddViewModel()
+        public OrdenosAddViewModel(List<Ordenos> lst)
         {
             this.apiService = new ApiService();
             this.IsEnabled = true;
             this.FechaOrdeno = DateTime.Now;
+            this.myBovinosGestantes = lst;
         }
         #endregion
 
@@ -68,7 +75,7 @@ namespace MiFincaVirtual.ViewModels
         #region Metods
         private async void Save()
         {
-            if (String.IsNullOrEmpty(this.CodigoAnimal))
+            if (this.CodigoAnimal == null)
             {
                 await Application.Current.MainPage.DisplayAlert(Languages.Error
                     , Languages.CodeAnimalError
@@ -113,6 +120,13 @@ namespace MiFincaVirtual.ViewModels
                     Languages.Accept);
                 return;
             }
+            else
+            {
+                if(!String.IsNullOrEmpty(this.LitrosOrdenoDecimal))
+                {
+                    litrosOrdeño = Convert.ToDecimal(this.LitrosOrdeno + "," + this.LitrosOrdenoDecimal);
+                }
+            }
 
             if (String.IsNullOrEmpty(this.PesoOrdeno))
             {
@@ -131,6 +145,16 @@ namespace MiFincaVirtual.ViewModels
                 return;
             }
 
+            var gramosCuidoOrdeno = Int32.Parse(this.GramosCuidoOrdeno);
+            if (gramosCuidoOrdeno < 0)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.GramsMilking,
+                    Languages.Accept);
+                return;
+            }
+
             this.IsRunning = true;
             this.IsEnabled = false;
 
@@ -145,11 +169,12 @@ namespace MiFincaVirtual.ViewModels
 
             var ordeno = new Ordenos
             {
-                CodigoAnimal = this.CodigoAnimal,
                 FechaOrdeno = this.FechaOrdeno.ToUniversalTime(),
                 LitrosOrdeno = litrosOrdeño,
                 NumeroOrdeno = Convert.ToInt32(NumeroOrdeno),
                 PesoOrdeno = pesosOrdeño,
+                GramosCuidoOrdeno = gramosCuidoOrdeno,
+                AnimalId = ((Ordenos)CodigoAnimal).AnimalId,
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
@@ -189,6 +214,7 @@ namespace MiFincaVirtual.ViewModels
             await App.Navigator.PopAsync();
             //await App.Navigator.PopAsync();
         }
+
         #endregion
     }
 }

@@ -1,0 +1,4 @@
+﻿** Hacer proceso para que registre los ordeños en sql lite.
+** Hacer proceso para que los registros del sql lite vayan a la base de datos.
+** Hacer la pantalla para registro de comida de cerdos individual.
+** Hacer la pantalla para registro grupal de comida e cerdos,

@@ -97,6 +97,15 @@ namespace MiFincaVirtual.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Animals.
+        /// </summary>
+        internal static string Animals {
+            get {
+                return ResourceManager.GetString("Animals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Cancel {
@@ -349,6 +358,24 @@ namespace MiFincaVirtual.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grams.
+        /// </summary>
+        internal static string Grams {
+            get {
+                return ResourceManager.GetString("Grams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grams of care used in milking.
+        /// </summary>
+        internal static string GramsMilking {
+            get {
+                return ResourceManager.GetString("GramsMilking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Where do you take the picture?.
         /// </summary>
         internal static string ImageSource {
@@ -453,6 +480,15 @@ namespace MiFincaVirtual.Resources {
         internal static string MilkingLiters {
             get {
                 return ResourceManager.GetString("MilkingLiters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decimal Liters.
+        /// </summary>
+        internal static string MilkingLitersDecimal {
+            get {
+                return ResourceManager.GetString("MilkingLitersDecimal", resourceCulture);
             }
         }
         

@@ -1,22 +1,32 @@
 ﻿@model MiFincaVirtual.Common.Models.Animales
 
 @{
+    /**/
+
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar animal</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Esta seguro que lo desea eliminar?</h3>
+
+@if (TempData["msnAnimalesEliminar"] != null)
+{
+    <script type="text/javascript">
+       alert("@TempData["msnAnimalesEliminar"]");
+    </script>
+}
+
 <div>
     <h4>Animales</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AnimalesTipos.TipoAnimalTipo)
+            Tipo animal
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AnimalesTipos.TipoAnimalTipo)
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
         </dd>
 
         <dt>
@@ -84,6 +94,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.EshembraGestanteAnimal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EshembraGestanteAnimal)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.PadreAnimal)
         </dt>
 
@@ -101,12 +119,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
         </div>
     }
 </div>

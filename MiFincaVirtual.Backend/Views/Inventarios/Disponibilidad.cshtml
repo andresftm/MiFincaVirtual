@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MiFincaVirtual.Backend.Models.disponibilidadCuido>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Disponibilidad de inventario</h2>
+
+<table class="table">
+    <tr>
+        <th align="left">
+            Cuido
+        </th>
+        <th align="left">
+            Existencia
+        </th>
+        <th align="left">
+            Consumo diario
+        </th>
+        <th align="left">
+            Dìas
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.Codigopcion)
+            </td>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.ExistenciaS)
+            </td>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.ConsumoDiarioS)
+            </td>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.DiasDisponiblesS)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Excel", "Reports", new { ReportType = "Excel" }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Pdf", "Reports", new { ReportType = "Pdf" }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Back to List", "ConsultarOrdenos", new { }, new { @class = "btn btn-primary" })
+</div>

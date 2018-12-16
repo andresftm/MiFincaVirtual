@@ -3,6 +3,7 @@
     using GalaSoft.MvvmLight.Command;
     using MiFincaVirtual.Helpers;
     using MiFincaVirtual.Views;
+    using System.Collections.Generic;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -14,6 +15,8 @@
         public string Title { get; set; }
 
         public string PageName { get; set; }
+
+        public List<MenuItemViewModel> lstSubMenu { get; set; }
         #endregion
 
         #region Commands

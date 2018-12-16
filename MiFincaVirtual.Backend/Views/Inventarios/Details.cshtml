@@ -1,0 +1,93 @@
+﻿@model MiFincaVirtual.Common.Models.Inventarios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Inventarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaIngreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaIngreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FleteInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FleteInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorUnitarioInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorUnitarioInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotalInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotalInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepartidoInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepartidoInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @if (!String.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Url.Content(Model.ImagePath)" alt="Image" style="width:300px;height:200px;max-width: 100%; height: auto;" />
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InventarioId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

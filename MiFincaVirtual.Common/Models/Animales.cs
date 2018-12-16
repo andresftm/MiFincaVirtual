@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    [Serializable]
     public class Animales
     {
         [Key]
@@ -21,11 +22,13 @@
 
         /// Fecha de ingreso del animal a la finca.
         [Display(Name = "Fecha Ingreso")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime FechaIngresoAnimal { get; set; }
 
         ///Fecha de nacimiento del animal.
         [Display(Name = "Fecha Nacimiento")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime FechaNacimientoAnimal { get; set; }
 
@@ -41,6 +44,10 @@
         [Display(Name = "Hembra")]
         public bool EshembraAnimal { get; set; }
 
+        /// En vcas de ser hemra indica si es gestante o no.
+        [Display(Name = "Gestante")]
+        public bool EshembraGestanteAnimal { get; set; }
+
         /// <summary> Nombre del padre del animal. </summary>
         [Display(Name = "Padre")]
         public string PadreAnimal { get; set; }
@@ -49,12 +56,26 @@
         [Display(Name = "Madre")]
         public string MadreAnimal { get; set; }
 
+        #region Raza
+        [Range(1, 32767, ErrorMessage = "Debe seleccionar una raza")]
         public int RazaId { get; set; }
 
         public virtual Razas Razas { get; set; }
+        #endregion
 
-        public int AnimalTipoId { get; set; }
+        #region Tipo de animal
+        [Display(Name = "Tipo")]
+        [Range (1, 32767, ErrorMessage="Debe seleccionar un tipo de animal")]
+        public int OpcionId { get; set; }
 
-        public virtual AnimalesTipos AnimalesTipos { get; set; }
+        public virtual Opciones Opciones { get; set; }
+        #endregion
+
+        [JsonIgnore]
+        public virtual ICollection<CerdasCargadas> CerdasCargadas { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Ordenos> Ordenos { get; set; }
+
     }
 }

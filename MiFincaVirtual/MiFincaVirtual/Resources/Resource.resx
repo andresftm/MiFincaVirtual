@@ -348,4 +348,16 @@
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="Grams" xml:space="preserve">
+    <value>Grams</value>
+  </data>
+  <data name="GramsMilking" xml:space="preserve">
+    <value>Grams of care used in milking</value>
+  </data>
+  <data name="Animals" xml:space="preserve">
+    <value>Animals</value>
+  </data>
+  <data name="MilkingLitersDecimal" xml:space="preserve">
+    <value>Decimal Liters</value>
+  </data>
 </root>

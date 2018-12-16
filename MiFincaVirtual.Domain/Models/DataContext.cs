@@ -10,9 +10,15 @@
                 
         }
 
-        public DbSet<Ordenos> Ordenos { get; set; }
         public DbSet<Razas> Razas { get; set; }
 
-        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.Fincas> Fincas { get; set; }
+        public DbSet<Ordenos> Ordenos { get; set; }
+
+        public DbSet<Fincas> Fincas { get; set; }
+
+        public DbSet<Animales> Animales { get; set; }
+
+        public DbSet<Opciones> Opciones { get; set; }
+
     }
 }

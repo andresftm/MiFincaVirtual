@@ -1,0 +1,99 @@
+﻿@model IEnumerable<MiFincaVirtual.Common.Models.Inventarios>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de inventario</h2>
+
+<p>
+    @Html.ActionLink("Crear inventario", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<div id="global">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioInventario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FleteInventario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorUnitarioInventario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorTotalInventario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td align="left">
+                    @Html.DisplayFor(modelItem => item.Opciones.Codigopcion)
+                </td>
+                <td align="center">
+                    @Html.DisplayFor(modelItem => item.FechaIngreso)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.CantidadInventario)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.PrecioInventario)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.FleteInventario)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.ValorUnitarioInventario)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.ValorTotalInventario)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+                        <img src="@Url.Content(item.ImagePath)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { id = item.InventarioId }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("C", "Details", new { id = item.InventarioId }, new { @class = "btn btn-info" }) |
+                    @Html.ActionLink("D", "Delete", new { id = item.InventarioId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<style type="text/css">
+    #global {
+        height: 400px;
+        width: 1200px;
+        border: 1px solid #ddd;
+        background: #f1f1f1;
+        overflow-y: scroll;
+    }
+
+    #mensajes {
+        height: auto;
+    }
+
+    .texto {
+        padding: 4px;
+        background: #fff;
+    }
+</style>

@@ -205,7 +205,7 @@
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlFincasController"].ToString();
-            var response = await this.apiService.Put(url, prefix, controller, finca, this.Finca.FincaId, Settings.TokenType, Settings.AccessToken);
+            var response = await this.apiService.Put(url, prefix, controller, this.Finca, this.Finca.FincaId, Settings.TokenType, Settings.AccessToken);
 
             if (!response.IsSuccess)
             {

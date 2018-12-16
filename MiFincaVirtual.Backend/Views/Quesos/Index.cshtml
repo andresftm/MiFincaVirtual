@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MiFincaVirtual.Common.Models.Quesos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Quesos</h2>
+
+<p>
+    @Html.ActionLink("Registrar queso", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<div id="global">
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaQueso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LecheUtilizadaQueso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PesoQueso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioQueso)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaQueso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecheUtilizadaQueso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PesoQueso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioQueso)
+                </td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { id = item.QuedoId }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("C", "Details", new { id = item.QuedoId }, new { @class = "btn btn-info" }) |
+                    @Html.ActionLink("D", "Delete", new { id = item.QuedoId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<style type="text/css">
+    #global {
+        height: 400px;
+        width: 1200px;
+        border: 1px solid #ddd;
+        background: #f1f1f1;
+        overflow-y: scroll;
+    }
+
+    #mensajes {
+        height: auto;
+    }
+
+    .texto {
+        padding: 4px;
+        background: #fff;
+    }
+</style>

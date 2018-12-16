@@ -1,9 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -17,18 +18,37 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Mi finca virtual.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Ordeños", "Index", "Ordenos")</li>
-                    <li>@Html.ActionLink("Razas", "Index", "Razas")</li>
-                    <li>@Html.ActionLink("Tipos de animales", "Index", "AnimalesTipos")</li>
-                    <li>@Html.ActionLink("Animales", "Index", "Animales")</li>
-                    <li>@Html.ActionLink("Fincas", "Index", "Fincas")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Maestros<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Animales", "Index", "Animales")</li>
+                            <li>@Html.ActionLink("Opciones", "Index", "Opciones")</li>
+                            <li>@Html.ActionLink("Razas", "Index", "Razas")</li>
+                            <li>@Html.ActionLink("Lotes", "Index", "Lotes")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Porcinos<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Lactancia cerdas", "Index", "CerdasCargadas")</li>
+                            <li>@Html.ActionLink("Lotes comida", "Index", "LotesComidas")</li>
+                            <li>@Html.ActionLink("Inventarios", "Index", "Inventarios")</li>
+                            <li>@Html.ActionLink("Disponibilidad", "Disponibilidad", "Inventarios")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bovinos<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Lactancia vacas", "Index", "VacasCargadas")</li>
+                            <li>@Html.ActionLink("Ordeños", "Index", "Ordenos")</li>
+                            <li>@Html.ActionLink("Ordeños Consultar", "ConsultarOrdenos", "Ordenos")</li>
+                            <li>@Html.ActionLink("Quesos", "Index", "Quesos")</li>
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -38,7 +58,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - www.mifincavirtual.com</p>
         </footer>
     </div>
 

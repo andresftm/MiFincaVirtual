@@ -15,49 +15,78 @@
 }
 <p>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Nombre
-        </th>
-        <th>
-            # Ordeño
-        </th>
-        <th>
-            Litros
-        </th>
-        <th>
-            Peso
-        </th>
-        <th>
-            Fecha
-        </th>
-        <th></th>
-    </tr>
+<div id="global">
 
-    @foreach (var item in Model.OrdenosO)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoAnimal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroOrdeno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LitrosOrdeno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PesoOrdeno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaOrdeno)
-            </td>
-            <td>
-                @Html.ActionLink("Detalle", "Details", new { id = item.OrdenoId }, new { @class = "btn btn-info" })
-            </td>
+            <th>
+                Nombre
+            </th>
+            <th>
+                # Ordeño
+            </th>
+            <th>
+                Litros
+            </th>
+            <th>
+                Peso
+            </th>
+            <th>
+                Gramos
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th></th>
         </tr>
+
+        @foreach (var item in Model.OrdenosO)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroOrdeno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LitrosOrdeno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PesoOrdeno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GramosCuidoOrdeno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaOrdeno)
+                </td>
+                <td>
+                    @Html.ActionLink("C", "Details", new { id = item.OrdenoId }, new { @class = "btn btn-info" })|
+                    @Html.ActionLink("D", "Delete", new { id = item.OrdenoId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<style type="text/css">
+    #global {
+        height: 400px;
+        width: 1200px;
+        border: 1px solid #ddd;
+        background: #f1f1f1;
+        overflow-y: scroll;
     }
 
-</table>
+    #mensajes {
+        height: auto;
+    }
+
+    .texto {
+        padding: 4px;
+        background: #fff;
+    }
+</style>
+
 @{Html.RenderPartial("_paginador", Model);}

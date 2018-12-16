@@ -1,0 +1,50 @@
+﻿@model MiFincaVirtual.Common.Models.Quesos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Quesos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaQueso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaQueso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LecheUtilizadaQueso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LecheUtilizadaQueso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PesoQueso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PesoQueso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioQueso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioQueso)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.QuedoId }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+</p>

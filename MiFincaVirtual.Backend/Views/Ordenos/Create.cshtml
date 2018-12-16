@@ -1,70 +1,71 @@
 ﻿@model MiFincaVirtual.Common.Models.Ordenos
 
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2>Ordeño</h2>
-
-
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Ordenos</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-horizontal">
-        <h4>Ordenos</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodigoAnimal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CodigoAnimal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CodigoAnimal, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumeroOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumeroOrdeno, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumeroOrdeno, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LitrosOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LitrosOrdeno, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LitrosOrdeno, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PesoOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PesoOrdeno, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PesoOrdeno, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FechaOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaOrdeno, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FechaOrdeno, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AnimalId, "Bovino", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("AnimalId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.AnimalId, "", new { @class = "text-danger" })
         </div>
     </div>
-}
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <div class="form-group">
+        @Html.LabelFor(model => model.NumeroOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NumeroOrdeno, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NumeroOrdeno, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LitrosOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LitrosOrdeno, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LitrosOrdeno, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PesoOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PesoOrdeno, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PesoOrdeno, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.GramosCuidoOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GramosCuidoOrdeno, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GramosCuidoOrdeno, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaOrdeno, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FechaOrdeno, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FechaOrdeno, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
 }
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+</div>

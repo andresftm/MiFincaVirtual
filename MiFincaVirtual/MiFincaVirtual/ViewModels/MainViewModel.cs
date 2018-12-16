@@ -3,13 +3,18 @@
     using GalaSoft.MvvmLight.Command;
     using MiFincaVirtual.Common.Models;
     using MiFincaVirtual.Helpers;
+    using MiFincaVirtual.Services;
     using MiFincaVirtual.Views;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
 
     public class MainViewModel
     {
+        public ApiService apiService { get; set; }
+
         #region Properties
         public LoginViewModel Login { get; set; }
 
@@ -27,6 +32,8 @@
 
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
 
+        public List<Ordenos> myBovinosGestantes { get; set; }
+        
         public RegisterViewModel Register { get; set; }
 
         public MyUserASP UserASP { get; set; }
@@ -70,10 +77,9 @@
         public MainViewModel()
         {
             instance = this;
-            //this.OrdenosM = new OrdeViewModel();
+            this.apiService = new ApiService();
             //this.FincasM = new FincasViewModel();
             this.LoadMenu();
-
         }
         #endregion
 
@@ -93,11 +99,11 @@
                 return new RelayCommand(GoToAddOrdeno);
             }
         }
+
         #endregion
 
         #region Singleton
         private static MainViewModel instance;
-
         public static MainViewModel GetInstance()
         {
             if (instance == null)
@@ -131,9 +137,17 @@
             this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "ic_exit_to_app",
+                PageName = "AnimalesPage",
+                Title = Languages.Animals,
+            });
+
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_exit_to_app",
                 PageName = "LoginPage",
                 Title = Languages.Exit,
             });
+
         }
 
         private async void GoToAddFarm()
@@ -145,10 +159,25 @@
 
         private async void GoToAddOrdeno()
         {
-            this.OrdenoAddM = new OrdenosAddViewModel();
+            await this.GetHembrasGestanes();
+            this.OrdenoAddM = new OrdenosAddViewModel(this.myBovinosGestantes);
             await App.Navigator.PushAsync(new OrdenosAddPage());
-
         }
+
+        private async Task<bool> GetHembrasGestanes()
+        {
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlOrdenosController"].ToString();
+            var response = await this.apiService.GetList<Ordenos>(url, prefix, 0, controller, Settings.TokenType, Settings.AccessToken);
+            if (!response.IsSuccess)
+            {
+                return false;
+            }
+            this.myBovinosGestantes = (List<Ordenos>)response.Result;
+            return true;
+        }
+
         #endregion
     }
 }

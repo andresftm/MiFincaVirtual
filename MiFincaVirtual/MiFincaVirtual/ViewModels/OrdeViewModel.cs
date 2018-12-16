@@ -38,6 +38,9 @@
         }
 
         public List<Ordenos> myOrdenos { get; set; }
+
+        public List<Ordenos> myBovinosGestantes { get; set; }
+
         #endregion
 
         #region Constructor
@@ -69,12 +72,14 @@
         {
             var myListOrdenosItemViewModel = this.myOrdenos.Select(o => new OrdenosItemViewModel()
             {
-                CodigoAnimal = o.CodigoAnimal,
+                AnimalId = o.AnimalId,
                 FechaOrdeno = o.FechaOrdeno,
                 LitrosOrdeno = o.LitrosOrdeno,
                 NumeroOrdeno = o.NumeroOrdeno,
                 PesoOrdeno = o.PesoOrdeno,
                 OrdenoId = o.OrdenoId,
+                GramosCuidoOrdeno = o.GramosCuidoOrdeno,
+                Animal = o.Animal,
             });
 
             this.OrdenosOVM = new ObservableCollection<OrdenosItemViewModel>(myListOrdenosItemViewModel.OrderByDescending(f => f.FechaOrdeno));
@@ -91,6 +96,7 @@
                 if (answer)
                 {
                     this.SaveOrdenosToDB();
+                    this.GetHembrasGestanes();
                 }
             }
             else
@@ -107,6 +113,20 @@
 
             this.RefreshList();
             this.IsRefreshing = false;
+        }
+
+        private async Task<bool> GetHembrasGestanes()
+        {
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlOrdenosController"].ToString();
+            var response = await this.apiService.GetList<Ordenos>(url, prefix, 0, controller, Settings.TokenType, Settings.AccessToken);
+            if (!response.IsSuccess)
+            {
+                return false;
+            }
+            this.myBovinosGestantes = (List<Ordenos>)response.Result;
+            return true;
         }
 
         private async Task LoadOrdenosFromDB()

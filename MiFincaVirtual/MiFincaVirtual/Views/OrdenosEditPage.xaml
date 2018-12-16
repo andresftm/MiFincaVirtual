@@ -25,11 +25,18 @@
                     VerticalOptions="Center"
                     Grid.Column="0"
                     Grid.Row="0"/>
-                <Entry
+                <Picker Title="--Select--"
+                        x:Name="pBovinos"
+                        ItemsSource ="{Binding myBovinosGestantes}"
+                        ItemDisplayBinding="{Binding Animal}"
+                        SelectedItem="{Binding CodigoAnimal}"
+                        Grid.Column="1"
+                        Grid.Row="0"/>                
+                <!--<Entry
                     Placeholder="{i18n:Translate CodeAnimal}"
                     Text="{Binding Ordeno.CodigoAnimal}"
                     Grid.Column="1"
-                    Grid.Row="0"/>
+                    Grid.Row="0"/>-->
                 <Label
                     Text="{i18n:Translate MilkingNumber}"
                     VerticalOptions="Center"
@@ -51,8 +58,7 @@
                     Text="{Binding Ordeno.LitrosOrdeno}"
                     Keyboard="Numeric" 
                     Grid.Column="1"
-                    Grid.Row="2">
-                </Entry>
+                    Grid.Row="2"/>
                 <Label
                     Text="{i18n:Translate MilkingWeight}"
                     VerticalOptions="Center"
@@ -61,18 +67,30 @@
                 <Entry
                     Placeholder="{i18n:Translate MilkingWeight}"
                     Text="{Binding Ordeno.PesoOrdeno}"
+                    Keyboard="Numeric" 
                     Grid.Column="1"
                     Grid.Row="3"/>
+                <Label
+                    Text="{i18n:Translate Grams}"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    Grid.Row="4"/>
+                <Entry
+                    Placeholder="{i18n:Translate Grams}"
+                    Text="{Binding Ordeno.GramosCuidoOrdeno}"
+                    Grid.Column="1"
+                    Keyboard="Numeric" 
+                    Grid.Row="4"/>
                 <Label
                     Text="{i18n:Translate MilkingDate}"
                     VerticalOptions="Center"
                     Grid.Column="0"
-                    Grid.Row="4"/>
+                    Grid.Row="5"/>
                 <DatePicker 
                     Date="{Binding Ordeno.FechaOrdeno}" 
                     VerticalOptions="Center"
                     Grid.Column="1"
-                    Grid.Row="4"/>
+                    Grid.Row="5"/>
             </Grid>
             <ActivityIndicator 
                 VerticalOptions="FillAndExpand"
@@ -83,8 +101,8 @@
                 HeightRequest="46" 
                 BackgroundColor="Navy" 
                 IsEnabled="{Binding IsEnabled}"
-                Command="{Binding SaveCommand}"
-                Text="{i18n:Translate Save}"
+                Command="{Binding EditCommand}"
+                Text="{i18n:Translate Edit}"
                 TextColor="White">
             </Button>
         </StackLayout>

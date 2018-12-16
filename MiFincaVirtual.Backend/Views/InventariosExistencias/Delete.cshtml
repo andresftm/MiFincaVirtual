@@ -1,0 +1,48 @@
+﻿@model MiFincaVirtual.Common.Models.InventariosExistencias
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>InventariosExistencias</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opciones.Codigopcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opciones.Codigopcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GramosConsumoDiaLote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GramosConsumoDiaLote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorUnitarioInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorUnitarioInventario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
