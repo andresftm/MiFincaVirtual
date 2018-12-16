@@ -32,7 +32,7 @@
         [DataType(DataType.Date)]
         [Display(Name = "Fecha Inicial")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime FechaInicialVacasLactancia { get; set; }
+        public DateTime FechaInicialVacasLactancias { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -41,18 +41,18 @@
         public DateTime FechaFinalVacasLactancias { get; set; }
 
         [Display(Name = "Leche")]
-        public Decimal LecheVacasLactancias { get; set; }
+        public Decimal? LecheVacasLactancias { get; set; }
 
         [Display(Name = "Leche Valor")]
-        public Decimal LecheValorVacasLactancias { get; set; }
+        public Decimal? LecheValorVacasLactancias { get; set; }
 
         [Display(Name = "Cuido")]
-        public Decimal Cuido1VacasLactancias { get; set; }
+        public Decimal? CuidoVacasLactancias { get; set; }
 
         [Display(Name = "Cuido Valor")]
-        public Decimal CuidoValorVacasLactancias { get; set; }
+        public Decimal? CuidoValorVacasLactancias { get; set; }
 
         [Display(Name = "Utilidad")]
-        public Decimal UtilidadVacasLactancias { get; set; }
+        public Decimal? UtilidadVacasLactancias { get; set; }
     }
 }

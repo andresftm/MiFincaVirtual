@@ -48,6 +48,9 @@
         [Display(Name = "Gestante")]
         public bool EshembraGestanteAnimal { get; set; }
 
+        [Display(Name = "Lactancia")]
+        public bool EsHembraLactanteAnimal { get; set; }
+
         /// <summary> Nombre del padre del animal. </summary>
         [Display(Name = "Padre")]
         public string PadreAnimal { get; set; }

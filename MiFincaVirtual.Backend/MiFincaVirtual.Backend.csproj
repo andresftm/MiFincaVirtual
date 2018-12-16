@@ -248,9 +248,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelper.cs" />
-    <Compile Include="Migrations\201812161804276_Vaca.cs" />
-    <Compile Include="Migrations\201812161804276_Vaca.Designer.cs">
-      <DependentUpon>201812161804276_Vaca.cs</DependentUpon>
+    <Compile Include="Migrations\201812161826494_ValoresNullos.cs" />
+    <Compile Include="Migrations\201812161826494_ValoresNullos.Designer.cs">
+      <DependentUpon>201812161826494_ValoresNullos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -590,8 +590,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812161804276_Vaca.resx">
-      <DependentUpon>201812161804276_Vaca.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812161826494_ValoresNullos.resx">
+      <DependentUpon>201812161826494_ValoresNullos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Inventarios\rptDisponibilidad.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
