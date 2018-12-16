@@ -1,6 +1,8 @@
 ﻿namespace MiFincaVirtual.Common.Models
 {
+    using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     public class VacasCargadas
@@ -70,5 +72,7 @@
         [NotMapped]
         public String FechaRealPartoVacaCargadaS { get; set; }
 
+        [JsonIgnore]
+        public virtual ICollection<VacasLactancias> VacasLactancias { get; set; }
     }
 }

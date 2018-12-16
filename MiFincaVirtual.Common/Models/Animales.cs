@@ -77,5 +77,8 @@
         [JsonIgnore]
         public virtual ICollection<Ordenos> Ordenos { get; set; }
 
+        [JsonIgnore]
+        public virtual ICollection<VacasLactancias> VacasLactancias { get; set; }
+
     }
 }

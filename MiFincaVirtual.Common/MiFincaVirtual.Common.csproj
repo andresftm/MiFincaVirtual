@@ -74,6 +74,7 @@
     <Compile Include="Models\TwitterResponse.cs" />
     <Compile Include="Models\UserRequest.cs" />
     <Compile Include="Models\VacasCargadas.cs" />
+    <Compile Include="Models\VacasLactancias.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
