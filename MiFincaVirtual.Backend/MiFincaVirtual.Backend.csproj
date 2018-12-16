@@ -244,6 +244,7 @@
     <Compile Include="Controllers\QuesosController.cs" />
     <Compile Include="Controllers\RazasController.cs" />
     <Compile Include="Controllers\VacasCargadasController.cs" />
+    <Compile Include="Controllers\VacasLactanciasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -566,6 +567,11 @@
     <Content Include="Views\VacasCargadas\Details.cshtml" />
     <Content Include="Views\VacasCargadas\Edit.cshtml" />
     <Content Include="Views\VacasCargadas\Index.cshtml" />
+    <Content Include="Views\VacasLactancias\Create.cshtml" />
+    <Content Include="Views\VacasLactancias\Delete.cshtml" />
+    <Content Include="Views\VacasLactancias\Details.cshtml" />
+    <Content Include="Views\VacasLactancias\Edit.cshtml" />
+    <Content Include="Views\VacasLactancias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

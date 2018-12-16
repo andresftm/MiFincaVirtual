@@ -20,5 +20,8 @@
 
         public DbSet<Opciones> Opciones { get; set; }
 
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.VacasLactancias> VacasLactancias { get; set; }
+
+        public System.Data.Entity.DbSet<MiFincaVirtual.Common.Models.VacasCargadas> VacasCargadas { get; set; }
     }
 }

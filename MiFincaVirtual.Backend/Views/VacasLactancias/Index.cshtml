@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MiFincaVirtual.Common.Models.VacasLactancias>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lactancias ativas</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Animales.CodigoAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VacasCargadas.VacaCargadaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TernerosVacasLactancias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivoVacasLactancias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaInicialVacasLactancias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaFinalVacasLactancias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LecheVacasLactancias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LecheValorVacasLactancias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuidoVacasLactancias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuidoValorVacasLactancias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UtilidadVacasLactancias)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Animales.CodigoAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacasCargadas.VacaCargadaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TernerosVacasLactancias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivoVacasLactancias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicialVacasLactancias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFinalVacasLactancias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LecheVacasLactancias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LecheValorVacasLactancias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CuidoVacasLactancias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CuidoValorVacasLactancias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UtilidadVacasLactancias)
+        </td>
+        <td>
+            @Html.ActionLink("Cerrar", "Edit", new { id=item.VacaLactanciaId }, new { @class = "btn btn-warning" }) 
+        </td>
+    </tr>
+}
+
+</table>

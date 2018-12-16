@@ -1,0 +1,106 @@
+﻿@model MiFincaVirtual.Common.Models.VacasLactancias
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VacasLactancias</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animales.CodigoAnimal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Animales.CodigoAnimal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VacasCargadas.VacaCargadaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacasCargadas.VacaCargadaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TernerosVacasLactancias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TernerosVacasLactancias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivoVacasLactancias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivoVacasLactancias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicialVacasLactancias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicialVacasLactancias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinalVacasLactancias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinalVacasLactancias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LecheVacasLactancias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LecheVacasLactancias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LecheValorVacasLactancias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LecheValorVacasLactancias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CuidoVacasLactancias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuidoVacasLactancias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CuidoValorVacasLactancias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuidoValorVacasLactancias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UtilidadVacasLactancias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UtilidadVacasLactancias)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VacaLactanciaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
