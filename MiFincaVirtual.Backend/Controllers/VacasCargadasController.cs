@@ -24,7 +24,7 @@ namespace MiFincaVirtual.Backend.Controllers
         public async Task<ActionResult> Index()
         {
             var vacasCargadas = db.VacasCargadas.Include(v => v.Animales);
-            return View(await vacasCargadas.ToListAsync());
+            return View(await vacasCargadas.Where(V => V.NacidosVacaCargada <= 0).ToListAsync());
         }
 
         // GET: VacasCargadas/Details/5
