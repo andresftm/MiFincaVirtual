@@ -69,5 +69,6 @@
 
         [NotMapped]
         public String FechaRealPartoVacaCargadaS { get; set; }
+
     }
 }
